@@ -1,0 +1,103 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+    <div th:fragment="index-page">
+		<div id="indexPage" class="index-page">
+			
+			<div class="index-frontpage-container">aa</div>	
+			
+			<div class="index-login-container">
+				<div class="index-cdistext">Cree Diabetes Information System</div>
+				<form id="loginform" class="index-login">
+					<div class="index-avatar"></div>
+					<div class="index-errortext common-errormessage"> </div>
+					<div class="index-username">
+						<input type="text" name="user" id="user" class="form-control" placeholder="Username" tabindex="1"/>
+					</div>
+					<div class="index-password">
+						<input type="password" id="pass" name="pass" class="form-control" placeholder="Password" tabindex="2"/>
+					</div>
+					<div id="loginButton" class="btn btn-primary index-login-button" tabindex="3">Login</div>
+					
+					<div class="btn btn-primary index-forgot-button" id="forgotButton">Forgot password?</div>
+					<div class="btn btn-primary index-subscribe-button" id="subscribeButton">Add new CDIS user</div>
+				</form>
+			</div>
+			
+		</div>
+		
+		
+		<div id="modalDialogs">
+			<div id="dialogForgot" title="Forgot Password ? Enter info to recover password." class="index-dialog-forgot">
+				  <p class="validateTips">All form fields are required.</p>
+				   <form>
+				    <fieldset>
+				      <label for="usernameUser">Username</label>
+				      <input type="text" name="usernameUser" id="usernameUser" value="" class="text ui-widget-content ui-corner-all mf">
+				      <label for="firstnameUser">First name</label>
+				      <input type="text" name="firstnameUser" id="firstnameUser" value="" class="text ui-widget-content ui-corner-all mf">
+				      <label for="nameUser">Last name</label>
+				      <input type="text" name="lastnameUser" id="lastnameUser" value="" class="text ui-widget-content ui-corner-all mf">
+				      <label for="emailUser">Email</label>
+				      <input type="text" name="emailUser" id="emailUser" value="" class="text ui-widget-content ui-corner-all mf">
+				 	  <label for="profesionUser">Profession</label>
+				      <select name="profesionUser" id="profesionUser" class="text ui-widget-content ui-corner-all mf">
+				      	<option value="0">Please Choose ...</option>
+				      	<option value="1">CHR</option>
+				      	<option value="2">MD</option>
+				      	<option value="3">Nurse</option>
+				      	<option value="3">Nutritionist</option>
+				      </select>
+				      
+				      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+				      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+				    </fieldset>
+				  </form>
+			</div>
+		
+		
+			<div id="dialogSubscribe" title="Subscribe to CDIS"  class="index-dialog-subscribe">
+				  <p class="validateTips">All form fields are required.</p>
+				  <div id="subscribeForm">
+				   <form>
+				    <fieldset>
+				      <label for="firstnameSub">First name</label>
+				      <input type="text" name="firstnameSub" id="firstnameSub" value="" class="text ui-widget-content ui-corner-all mf">
+				      <label for="lastnameSub">Last name</label>
+				      <input type="text" name="lastnameSub" id="lastnameSub" value="" class="text ui-widget-content ui-corner-all mf">
+				      <label for="emailSub">Email</label>
+				      <input type="text" name="emailSub" id="emailSub" value="" class="text ui-widget-content ui-corner-all mf">
+				 	  <label for="idcommunitySub">User works in community:</label>
+				      <select name="idcommunitySub" id="idcommunitySub" class="text ui-widget-content ui-corner-all mf">
+				      	<option value="0">Please Choose ...</option>
+				      	<option value="1">Chisasibi</option>
+				      	<option value="2">Estmain</option>
+				      	<option value="3">Mistissini</option>
+				      	<option value="4">Nemaska</option>
+						<option value="5">Oujebougoumou</option>
+						<option value="6">Waskaganish</option>
+						<option value="7">Waswanipi</option>
+						<option value="8">Wemindji</option>
+						<option value="9">Whapmagoostui</option>
+				      </select>
+				      <label for="idprofesionSub">User profession:</label>
+				      <select name="idprofesionSub" id="idprofesionSub" class="text ui-widget-content ui-corner-all mf">
+				      	<option value="0">Please Choose ...</option>
+				      	<option value="1">CHR</option>
+				      	<option value="2">MD</option>
+				      	<option value="3">Nurse</option>
+				      	<option value="4">Nutritionist</option>
+				      </select>
+				      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+				      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+				    </fieldset>
+				  </form>
+				  </div>
+			</div>
+		</div>		
+		
+	</div>
+</body>
+</html>
