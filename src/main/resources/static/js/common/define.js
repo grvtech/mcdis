@@ -1,3 +1,4 @@
+var emptySession = "00000000-0000-0000-0000-000000000000";
 var page = getPage();
 var applanguage="en";
 var userObj = null;

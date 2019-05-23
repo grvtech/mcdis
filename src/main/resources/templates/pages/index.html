@@ -12,7 +12,7 @@
 				<div class="index-cdistext">Cree Diabetes Information System</div>
 				<form id="loginform" class="index-login">
 					<div class="index-avatar"></div>
-					<div class="index-errortext common-errormessage"> </div>
+					<div id="errorText" class="common-error"></div>
 					<div class="index-username">
 						<input type="text" name="user" id="user" class="form-control" placeholder="Username" tabindex="1"/>
 					</div>
@@ -29,7 +29,7 @@
 		</div>
 		
 		
-		<div id="modalDialogs">
+		<div id="modalDialogs" style="display:none;">
 			<div id="dialogForgot" title="Forgot Password ? Enter info to recover password." class="index-dialog-forgot">
 				  <p class="validateTips">All form fields are required.</p>
 				   <form>

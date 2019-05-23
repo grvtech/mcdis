@@ -122,22 +122,40 @@ var mes = $.ajax({
 
 */
 
-$("#loginbutton").click(function() {
+
+
+
+$("#loginButton").click(function() {
+	
+	
 	var user = $("#user").val();
 	var pass = $("#pass").val();
 	var validUser = Validate.now(Validate.Presence, $("#user").val());
 	var validPass = Validate.now(Validate.Presence, $("#pass").val());
+	
+	
+	
 	if(validUser && validPass){
+		
+		var data = {'elements':{'username':user, 'password':pass} , 'uuidsession': emptySession, 'action':'gol'};
+		
+		
 		var request = $.ajax({
-		  url: "/ncdis/service/action/loginSession?username="+user+"&password="+pass+"&language=en",
-		  type: "GET",
-		  dataType: "json"
+		  url: "/ncdis/user/authenticate",
+		  type: "post",
+		  dataType: "json",
+		  contentType: 'application/json',
+		  data : JSON.stringify(data)
 		});
 		request.done(function( json ) {
-		  if(json.status == "0"){
-			  $("#errortext").text(json.message);
+			
+			console.log(json);
+			
+		  if(json.status == "error"){
+			  $("#errorText").text(json.elements.message);
 		  }else{
-			 userObj = json.objs[0];
+			 //userObj = json.objs[0];
+			 userObj = json.elements.user;
 			 sid = getSession(userObj.iduser);
 			 var ramq = $.cookie('ramq');
 			 if((ramq != null) && (ramq != "")){
@@ -153,11 +171,11 @@ $("#loginbutton").click(function() {
 		  }
 		});
 		request.fail(function( jqXHR, textStatus ) {
-			$("#errortext").text("Wrong Username or Password");
+			$("#errorText").text("Wrong Username or Password");
 		});
 		
 	}else{
-		$("#errortext").text("Wrong Username or Password");
+		$("#errorText").text("Username or Password cannot be empty");
 		
 	}
 });
