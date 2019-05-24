@@ -3,8 +3,8 @@
 </head>
 <body>
 
-    <div th:fragment="search-page">
-		<div class="mainpage" id="searchPage">
+    <div th:fragment="search-page" class="mainpage" id="searchPage">
+		
 			<div class="header"></div>
 			
 			<div class="main">
@@ -80,20 +80,19 @@
 				
 		</div>
 	</div>
-</div>	
 
  
-<div class="cdisheader uss">
+<div class="common-cdisheader uss">
 	<div class="logo">CDIS</div>
 	<ul class="menu">
-		<li class="personalinfo ubs" title="Personal information"></li>
-		<li class="users ubs" title="Users Administration"></li>
-		<li class="frontpage ubs" title="Front page message"></li>
-		<li class="audit ubs" title="Users actions log"></li>
+		<li class="personalinfo ubs" title="Personal information"><i class="far fa-user"></i></li>
+		<li class="users ubs" title="Users Administration"><i class="fas fa-users"></i></li>
+		<li class="frontpage ubs" title="Front page message"><i class="far fa-sticky-note"></i></li>
+		<li class="audit ubs" title="Users actions log"><i class="fas fa-low-vision"></i></li>
 	</ul>
 </div>
 
-<div class="cdisfooter-left">
+<div class="common-cdisfooter-left">
 	<ul class="leftfootermenu">
 		<li class="flogout ubs" data-toggle="tooltip" data-placement="left" title="Logout from CDIS"><span></span></li>
 		<li class="freports ubs" data-toggle="tooltip" data-placement="left" title="Load CDIS reports"><span></span></li>

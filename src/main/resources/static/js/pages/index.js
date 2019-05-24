@@ -157,7 +157,8 @@ $("#loginButton").click(function() {
 			 //userObj = json.objs[0];
 			 userObj = json.elements.user;
 			 sid = getSession(userObj.iduser);
-			 var ramq = $.cookie('ramq');
+			 //var ramq = $.cookie('ramq');
+			 var ramq = null;
 			 if((ramq != null) && (ramq != "")){
 				 //window.location = "cdis.html?section=patient&ramq="+ramq+"&sid="+sid+"&language=en";
 				 //window.location = "search.html?sid="+sid+"&language=en";
