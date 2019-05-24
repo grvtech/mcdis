@@ -36,7 +36,11 @@ public class UserController {
 		JsonNode req = HttpUtil.getJSONFromPost(request);
 		MessageRequest mreq = new MessageRequest(req);
 		HashMap<String, Object> map = new HashMap<>();
-		User u = userservice.getUserById(1);
+		//User u = userservice.getUserById(1);
+		String user = req.get("elements").get("username").asText();
+		String pass = req.get("elements").get("password").asText();
+		String ip = req.get("ip").asText();
+		User u = userservice.getUserByUsernamePassword(user, pass);
 		if (u.isEmpty()) {
 			map.put("message", "Wrong username or password");
 			MessageResponse mres = new MessageResponse(false, mreq, map);
