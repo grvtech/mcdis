@@ -77,6 +77,8 @@ public class MessageResponse {
 
 		for (String fieldName : fieldNames) {
 			try {
+				System.out.println("response field name : " + fieldName);
+				System.out.println("response field  : " + map.get(fieldName));
 				JsonNode node = mapper.valueToTree(map.get(fieldName));
 				this.elements.set(fieldName, node);
 			} catch (Exception e) {

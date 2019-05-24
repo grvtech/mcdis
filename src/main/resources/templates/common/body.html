@@ -6,7 +6,9 @@
     <div th:fragment="index-template"  id="wraper" class="wrap">
 	    <div th:replace="pages/index :: index-page"/>
     </div>
-    
+    <div th:fragment="search-template"  id="wraper" class="wrap">
+	    <div th:replace="pages/search :: search-page"/>
+    </div>
     <div th:fragment="user-template" class="wrap user-page">
 	    <div class="grv-header">
 	    	<div class="grv-linesbtn"><i class="fas fa-bars"></i></div>

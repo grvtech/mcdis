@@ -149,11 +149,9 @@ function getSession(iduser){
 		  dataType: "json"
 		});
 		request.done(function( json ) {
-			var sObj = json.objs[0];
-			
+			var sObj = json.elements.session;
 			sid = sObj.idsession;
 		});
-
 		request.fail(function( jqXHR, textStatus ) {
 		  alert( "Request failed: " + textStatus );
 		});

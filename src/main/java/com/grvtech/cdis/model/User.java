@@ -1,17 +1,20 @@
 package com.grvtech.cdis.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.stereotype.Repository;
-
-@Repository
+@Entity
+@Table(name = "users", schema = "ncdis")
 public class User {
 
+	/* @GeneratedValue(strategy = GenerationType.AUTO) */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	/* @GeneratedValue(strategy = GenerationType.AUTO) */
+	@Column(name = "iduser")
 	private Integer iduser;
 	private String lname;
 	private String fname;

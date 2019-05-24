@@ -1,5 +1,8 @@
 package com.grvtech.cdis.controller;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.grvtech.cdis.model.MessageRequest;
 import com.grvtech.cdis.model.MessageResponse;
+import com.grvtech.cdis.model.Session;
 import com.grvtech.cdis.model.User;
+import com.grvtech.cdis.service.ISessionService;
 import com.grvtech.cdis.service.IUserService;
 import com.grvtech.cdis.util.HttpUtil;
 
@@ -24,6 +30,9 @@ public class UserController {
 
 	@Autowired
 	IUserService userservice;
+
+	@Autowired
+	ISessionService sessionservice;
 
 	@RequestMapping(value = "/user/guid/{iduser}", method = RequestMethod.GET)
 	public ResponseEntity<MessageResponse> getUserById(@PathVariable("iduser") long iduser) {
@@ -36,24 +45,57 @@ public class UserController {
 		JsonNode req = HttpUtil.getJSONFromPost(request);
 		MessageRequest mreq = new MessageRequest(req);
 		HashMap<String, Object> map = new HashMap<>();
-		//User u = userservice.getUserById(1);
+		// User u = userservice.getUserById(1);
 		String user = req.get("elements").get("username").asText();
 		String pass = req.get("elements").get("password").asText();
+		String reswidth = req.get("elements").get("reswidth").asText();
+		String resheight = req.get("elements").get("resheight").asText();
 		String ip = req.get("ip").asText();
-		
+
 		User u = userservice.getUserByUsernamePassword(user, pass);
 		if (u.isEmpty()) {
 			map.put("message", "Wrong username or password");
 			MessageResponse mres = new MessageResponse(false, mreq, map);
 			return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
 		} else {
-			//good user
-			
-			map.put("user", u);
-			MessageResponse mres = new MessageResponse(true, mreq, map);
-			return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
+			// good user
+
+			String combination = ip + u.getUsername() + (new Date()).toString();
+			String idsession = DigestUtils.md5DigestAsHex(combination.getBytes());
+
+			System.out.println("ID Session : " + idsession);
+			Calendar cal = Calendar.getInstance();
+			cal.getTimeInMillis();
+			Timestamp ts = new Timestamp(cal.getTimeInMillis());
+			Session userSession = new Session(idsession, u.getIduser(), ip, ts, ts, Integer.parseInt(reswidth), Integer.parseInt(resheight), 1);
+			if (sessionservice.addSession(userSession)) {
+				map.put("user", u);
+				MessageResponse mres = new MessageResponse(true, mreq, map);
+				return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
+			} else {
+				map.put("message", "Wrong username or password");
+				MessageResponse mres = new MessageResponse(false, mreq, map);
+				return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
+			}
+
 		}
 
+	}
+
+	@RequestMapping(value = {"/service/data/getUserSession"}, method = RequestMethod.GET)
+	public ResponseEntity<MessageResponse> getUserSession(final HttpServletRequest request) {
+
+		JsonNode req = HttpUtil.getJSONFromGet(request);
+		MessageRequest mreq = new MessageRequest(req);
+		HashMap<String, Object> map = new HashMap<>();
+		System.out.println("req : " + req.get("ip").asText());
+		System.out.println("req : " + req.get("elements"));
+
+		int iduser = Integer.parseInt(req.get("elements").get("iduser").asText());
+		map.put("session", sessionservice.getSessionByIdUser(iduser));
+
+		MessageResponse mres = new MessageResponse(true, mreq, map);
+		return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
 	}
 
 }

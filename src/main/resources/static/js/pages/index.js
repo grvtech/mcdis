@@ -137,7 +137,7 @@ $("#loginButton").click(function() {
 	
 	if(validUser && validPass){
 		
-		var data = {'elements':{'username':user, 'password':pass} , 'uuidsession': emptySession, 'action':'gol'};
+		var data = {'elements':{'username':user, 'password':pass, 'reswidth':$(window).width(), 'resheight':$(window).height()} , 'uuidsession': emptySession, 'action':'gol'};
 		
 		
 		var request = $.ajax({
