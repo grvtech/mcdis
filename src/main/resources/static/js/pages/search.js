@@ -30,6 +30,7 @@ $(document).ready(function(){
 
 
 $('#search').focus();
+/*
 if(typeof(userObj[0].idprofesion) != "undefined"){
 	var hcpcat = profession_index[userObj[0].idprofesion];
 	var iduser = userObj[0].iduser;
@@ -59,7 +60,7 @@ if(userNotes.length > 0){
 	$(".notes_icon_").css("background","none");
 }
 
-
+*/
 
 /**/
 $("#radios .btn").focusin(function() {
@@ -77,7 +78,7 @@ $("#linkedPatients").click(function(){
 });
 
 
-$(".cdisfooter-left").hover(function(){
+$(".common-cdisfooter-left").hover(function(){
 	$(".leftfootermenu").toggle("fade");
 },function(){
 	$(".leftfootermenu").toggle("fade");
@@ -101,11 +102,12 @@ $("#search").autocomplete({
 				criteria: $("#radios :radio:checked").attr('id'),
 				term: request.term,
 				language: "en",
-				sid: sid
+				uuidsession: sid,
+				action: 'search'
 			},
 			success: function( data ) {
 				
-				response( $.map( data.objs, function( item ) {
+				response( $.map( data.elements, function( item ) {
 					return {
 						idpatient : item.idpatient,
 						lastname : item.lastname,
