@@ -9,33 +9,10 @@
     <div th:fragment="search-template"  id="wraper" class="wrap">
 	    <div th:replace="pages/search :: search-page"/>
     </div>
-    <div th:fragment="user-template" class="wrap user-page">
-	    <div class="grv-header">
-	    	<div class="grv-linesbtn"><i class="fas fa-bars"></i></div>
-	    	<div class="grv-logo">a</div>
-	    	<div class="grv-search-aaa">search</div>
-	    	<div class="grv-topmenu"></div>
-	    	<div class="grv-pils">
-		    	<div class="pilbar">
-				  <div class="pil"><i class="fa fa-globe"></i><span class="button__badge">35</span></div>
-				  <div class="pil"><i class="fa fa-comments"></i><span class="button__badge">4</span></div>
-				</div>
-	    	</div> <!-- container for fills like messages notifications alerts -->
-	    	<div class="grv-settings"><i class="fas fa-cog"></i></div>
-	    </div>
-	    <div class="grv-main">
-	    	<div class='coloana'>
-	    		<!-- the template will control the view of the page manually for the moment -->
-	    		<!-- the position of apps in the page will be fixed for the moment -->
-    			<div class="search"></div>
-	    	</div>
-	    </div>
-	    <div id="grv-patientsearch"></div>
-    	<div id="grv-messenger"></div>
-    	<div id="grv-userstats"></div>
-		<div id="grv-info"></div>
-    </div>
     
+    <div th:fragment="cdis-template"  id="wraper" class="wrap">
+	    <div th:replace="pages/cdis :: cdis-page"/>
+    </div>
     
 </div>
 </body>

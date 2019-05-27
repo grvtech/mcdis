@@ -78,11 +78,6 @@ $("#linkedPatients").click(function(){
 });
 
 
-$(".common-cdisfooter-left").hover(function(){
-	$(".leftfootermenu").toggle("fade");
-},function(){
-	$(".leftfootermenu").toggle("fade");
-});
 
 
 initNavigation();
@@ -128,7 +123,7 @@ $("#search").autocomplete({
 	select: function( event, ui ) {
 		optionSelected = true;
 		patientSearchObj = ui.item;
-		$.cookie('ramq',patientSearchObj.ramq);
+		//$.cookie('ramq',patientSearchObj.ramq);
 		gtc(sid,"en",patientSearchObj.ramq,"patient");
 		return false;
 	},

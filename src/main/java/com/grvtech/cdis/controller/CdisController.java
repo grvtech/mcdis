@@ -22,4 +22,11 @@ public class CdisController {
 		modelAndView.setViewName("search");
 		return modelAndView;
 	}
+	@RequestMapping(value = {"/cdis.html"}, method = RequestMethod.GET)
+	public ModelAndView cdis() {
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("cdis");
+		return modelAndView;
+	}
 }

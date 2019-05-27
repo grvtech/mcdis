@@ -99,3 +99,15 @@ function initNavigation() {
 		var p = window.btoa("sid="+sid+"&language="+l+"&section=notes&ramq="+r+"&idnote="+idn);
 		window.location = "cdis.html?"+p;
 	}/*go to admin*/
+	
+	function init(){
+		$(".common-cdisfooter-left").hover(function(){
+			$(".leftfootermenu").toggle("fade");
+		},function(){
+			$(".leftfootermenu").toggle("fade");
+		});
+	}
+	
+
+	$( window ).on( "load", init );
+	
