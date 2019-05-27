@@ -106,19 +106,21 @@ $("#search").autocomplete({
 				action: 'search'
 			},
 			success: function( data ) {
-				
-				response( $.map( data.elements, function( item ) {
+				console.log(data);
+				response($.map( data.elements.search, function( row ) {
+					console.log('array element');
+					console.log(row);
 					return {
-						idpatient : item.idpatient,
-						lastname : item.lastname,
-						firstname : item.firstname,
-						chart : item.chart,
-						ramq : item.ramq,
-						community: item.community,
-						giu: item.giu,
+						idpatient:row.idpatient,
+						lastname:row.lastname,
+						firstname : row.firstname,
+						chart : row.chart,
+						ramq : row.ramq,
+						community: row.community,
+						giu: row.giu,
 						criteria : $("#radios :radio:checked").attr('id'),
 						term : request.term
-					};
+					}
 				}));
 			}
 		});
@@ -138,9 +140,14 @@ $("#search").autocomplete({
     		$("#ub_cdisbody").fadeTo( "fast", 1 );
     	}
 	}
-}).data("ui-autocomplete")._renderItem = function(ul, item) {
-		var $line = $("<a>");
-		var $container = $("<div>").appendTo($line);
+}).data("ui-autocomplete")._renderItem = function(ul,item) {
+		
+		//console.log("item");
+		//console.log(item);
+		
+		/**/
+		//var $line = $("<a>");
+		var $container = $("<div>");
 		//$line.height("95px");
 		if(item.criteria == "fnamelname"){
 			var fn = (item.firstname+" "+item.lastname).toString().toLowerCase();
@@ -152,6 +159,7 @@ $("#search").autocomplete({
 		$("<div>",{class:'searchcommunity'}).text(item.community).appendTo($container);
 		if(item.criteria == "chart"){
 			var cn = item.chart.toString();
+			console.log(cn);
 			cn = replaceAll(cn,item.term, "<strong>"+item.term+"</strong>");
 			//$("<div>",{class:'searchchart'}).html("<label>Chart Number :</label> <span>"+cn+"</span>").appendTo($container);
 			$("<div>",{class:'searchchart'}).html("<span> "+cn+" </span>").appendTo($container);
@@ -174,9 +182,11 @@ $("#search").autocomplete({
 		}else{
 			$("<div>",{class:'searchgiu'}).html("<span>"+item.giu+"</span>").appendTo($container);
 		}
+		
+		//var $line = $("<div>").text(item.chart);
 		var $liline = $("<li>");
-		$liline.height("35px");
-		$liline.append($line).appendTo(ul);
+		//$liline.height("35px");
+		$liline.append($container).appendTo(ul);
 		$(ul).css("overflow-x","hidden");
 		return $liline;
 	};

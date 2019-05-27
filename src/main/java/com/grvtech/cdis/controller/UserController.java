@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.grvtech.cdis.model.MessageRequest;
 import com.grvtech.cdis.model.MessageResponse;
@@ -41,7 +42,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/user/authenticate", method = RequestMethod.POST)
-	public ResponseEntity<MessageResponse> authenticateUser(final HttpServletRequest request) {
+	public ResponseEntity<MessageResponse> authenticateUser(final HttpServletRequest request) throws JsonProcessingException {
 		JsonNode req = HttpUtil.getJSONFromPost(request);
 		MessageRequest mreq = new MessageRequest(req);
 		HashMap<String, Object> map = new HashMap<>();
@@ -83,7 +84,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = {"/service/data/getUserSession"}, method = RequestMethod.GET)
-	public ResponseEntity<MessageResponse> getUserSession(final HttpServletRequest request) {
+	public ResponseEntity<MessageResponse> getUserSession(final HttpServletRequest request) throws JsonProcessingException {
 
 		JsonNode req = HttpUtil.getJSONFromGet(request);
 		MessageRequest mreq = new MessageRequest(req);

@@ -21,27 +21,30 @@ public class MessageRequest {
 		// (this.uuidsession.toString().equals("00000000-0000-0000-0000-000000000000"))
 		// {
 
-		System.out.println(jn.asText());
+		// System.out.println(jn.asText());
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			System.out.println("json elements  in message request :" + mapper.writeValueAsString(jn));
+			this.action = jn.get("action").asText();
+			this.uuidsession = UUID.fromString(jn.get("uuidsession").asText());
 
-		ObjectMapper mapper = new ObjectMapper();
-		this.action = jn.get("action").asText();
-		this.uuidsession = UUID.fromString(jn.get("uuidsession").asText());
+			JsonNode elems = jn.get("elements");
+			this.elements = mapper.createObjectNode();
+			Iterator<String> fieldNames = elems.fieldNames();
 
-		JsonNode elems = jn.get("elements");
-		this.elements = mapper.createObjectNode();
-		Iterator<String> fieldNames = elems.fieldNames();
+			while (fieldNames.hasNext()) {
+				String fieldName = fieldNames.next();
+				elems.get(fieldName).asText();
 
-		while (fieldNames.hasNext()) {
-			String fieldName = fieldNames.next();
-			elems.get(fieldName).asText();
-
-			// System.out.println(" crypto key : " + cryptoKey + " decript:
-			// " + CryptoUtil.decrypt(cryptoKey,
-			// elems.get(fieldName).asText()) + " value : " +
-			// elems.get(fieldName).asText());
-			// this.elements.put(fieldName, CryptoUtil.decrypt(cryptoKey,
-			// elems.get(fieldName).asText()));
-			this.elements.set(fieldName, elems.get(fieldName));
+				// System.out.println(" crypto key : " + cryptoKey + " decript:
+				// " + CryptoUtil.decrypt(cryptoKey,
+				// elems.get(fieldName).asText()) + " value : " +
+				// elems.get(fieldName).asText());
+				// this.elements.put(fieldName, CryptoUtil.decrypt(cryptoKey,
+				// elems.get(fieldName).asText()));
+				this.elements.set(fieldName, elems.get(fieldName));
+			}
+		} catch (Exception e) {
 		}
 
 	}
