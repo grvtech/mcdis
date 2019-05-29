@@ -123,8 +123,10 @@ $("#search").autocomplete({
 	select: function( event, ui ) {
 		optionSelected = true;
 		patientSearchObj = ui.item;
+		console.log(patientSearchObj);
 		//$.cookie('ramq',patientSearchObj.ramq);
-		gtc(sid,"en",patientSearchObj.ramq,"patient");
+		
+		gtc(sid,"en",patientSearchObj.ramq,"dashboard");
 		return false;
 	},
 	open: function() {

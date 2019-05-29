@@ -56,6 +56,7 @@ public class Session {
 
 	public Session() {
 		super();
+		this.idsession = "";
 	}
 
 	public Session(String idsession, int iduser, String ipuser, Timestamp created, Timestamp modified, int reswidth, int resheight, int active) {
@@ -70,6 +71,10 @@ public class Session {
 		this.active = active;
 	}
 
+	public boolean isValid() {
+		return !this.idsession.equals("");
+	}
+	
 	public String getIdsession() {
 		return idsession;
 	}

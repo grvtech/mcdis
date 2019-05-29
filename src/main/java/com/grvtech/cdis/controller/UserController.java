@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -62,7 +63,8 @@ public class UserController {
 			// good user
 
 			String combination = ip + u.getUsername() + (new Date()).toString();
-			String idsession = DigestUtils.md5DigestAsHex(combination.getBytes());
+			//String idsession = DigestUtils.md5DigestAsHex(combination.getBytes());
+			String idsession = UUID.randomUUID().toString();
 
 			System.out.println("ID Session : " + idsession);
 			Calendar cal = Calendar.getInstance();
@@ -99,4 +101,24 @@ public class UserController {
 		return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = {"/service/data/isValidSession"}, method = RequestMethod.GET)
+	public ResponseEntity<MessageResponse> isValidSession(final HttpServletRequest request) throws JsonProcessingException {
+
+		JsonNode req = HttpUtil.getJSONFromGet(request);
+		MessageRequest mreq = new MessageRequest(req);
+		HashMap<String, Object> map = new HashMap<>();
+		System.out.println("req : " + req.get("ip").asText());
+		System.out.println("req : " + req.get("elements"));
+		String session = req.get("uuidsession").asText();
+		//int iduser = Integer.parseInt(req.get("elements").get("iduser").asText());
+		Session s = sessionservice.getSession(session);
+		if(s.isValid()) {
+			MessageResponse mres = new MessageResponse(true, mreq, map);
+			return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
+		}else {
+			MessageResponse mres = new MessageResponse(false, mreq, map);
+			return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
+		}
+	}
+	
 }

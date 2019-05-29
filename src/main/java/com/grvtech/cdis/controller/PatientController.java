@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.grvtech.cdis.dao.IPatientCustomDao;
+import com.grvtech.cdis.dao.IPatientDao;
 import com.grvtech.cdis.model.MessageRequest;
 import com.grvtech.cdis.model.MessageResponse;
+import com.grvtech.cdis.model.Patient;
 import com.grvtech.cdis.model.SearchPatient;
 import com.grvtech.cdis.util.HttpUtil;
 
@@ -24,6 +26,9 @@ public class PatientController {
 
 	@Autowired
 	IPatientCustomDao pcdao;
+	
+	@Autowired
+	IPatientDao pdao;
 
 	@RequestMapping(value = {"/service/data/searchPatient"}, method = RequestMethod.GET)
 	public ResponseEntity<MessageResponse> searchPatient(final HttpServletRequest request) {
@@ -47,4 +52,25 @@ public class PatientController {
 		return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
 	}
 
+	
+	@RequestMapping(value = {"/service/data/getPatientRecord"}, method = RequestMethod.GET)
+	public ResponseEntity<MessageResponse> getPatientRecord(final HttpServletRequest request) {
+
+		JsonNode req = HttpUtil.getJSONFromGet(request);
+		MessageRequest mreq = new MessageRequest(req);
+		HashMap<String, Object> map = new HashMap<>();
+		System.out.println("req : " + req.get("ip").asText());
+		System.out.println("req : " + req.get("elements"));
+		String sid = req.get("uuidsession").asText();
+		String ramq = req.get("elements").get("ramq").asText();
+
+		Patient p = pdao.findByRamq(ramq);
+		
+		//List<SearchPatient> sp = pcdao.searchPatient(criteria, value);
+		map.put("record", p);
+
+		MessageResponse mres = new MessageResponse(true, mreq, map);
+		return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
+	}
+	
 }

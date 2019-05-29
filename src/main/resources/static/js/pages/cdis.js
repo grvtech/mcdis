@@ -1,3 +1,22 @@
+var cdisSection = "dashboard";
+$( window ).on( "load", initCdisPage );	
+
+
+function initCdisPage(){
+	var flag = isUserLoged(sid);
+	
+	if (!flag){
+		logoutUser(sid);
+	}else{
+		initCdisHeader();
+		loadTemplate(cdisSection);
+	}	
+}
+
+
+
+
+function initCdisHeader(){
 	$(".dropdown-item").click(function(){
 		$('.dropdown-item').removeClass('active');
 		$(this).addClass('active');
@@ -6,50 +25,8 @@
 		$("#criteria").val(v);
 		var l = ' number';
 		if(v == 'name') l = '';
-		//$("#search").attr("placeholder","Search patient by "+$(this).text().toUpperCase() + ($(this).attr("value") == 'name')?'':' number');
 		$("#search").attr("placeholder","Search patient by "+$(this).text().toLowerCase()+l);
-		//alert($(this).attr('value'));
 	});
-
-
-
-$("#radios .btn").focusin(function() {
-		$("#search").val("");
-		$("#search").focus();
-		$("#criteria").text($("#radios :radio:checked").parent().text());
-		$("#radios").hide();
-	});
-	
-	var c = getParameterByName("criteria");
-	if(c != ""){
-		$("#"+c).prop("checked", true).button("refresh");
-		$("#criteria").text($("#radios :radio:checked").text());
-	}
-	
-	$("#criteria").on("click",function(e){
-		if(cdisSection != "dashboard"){
-			$("#radios").show().delay(5000).fadeOut();	
-		}
-	});
-	
-	$("#menu li").each(function( index ) {
-		var sclass = $(this).children("span").attr("class");
-		var sec = sclass.substring(0,sclass.indexOf("_icon"));
-		$(this).click(function() {
-			//selectSection(sec);
-			//window.location="cdis.html?section="+sec+"&ramq="+patientObj.ramq+"&sid="+sid+"&language=en";
-			gtc(sid,"en",patientObj.ramq,sec);
-		});
-	});
-	
-	$(".cdisfooter-left").hover(function(){
-		$(".leftfootermenu").toggle("fade");
-	},function(){
-		$(".leftfootermenu").toggle("fade");
-	});
-	
-	
-	
 	
 	var optionSelected = false;
 	$("#search").autocomplete({
@@ -88,7 +65,7 @@ $("#radios .btn").focusin(function() {
 			optionSelected = true;
 			//clearSections();
 			patientSearchObj = ui.item;
-			gtc(sid,"en",patientSearchObj.ramq,"patient");
+			gtc(sid,"en",patientSearchObj.ramq,"dashboard");
 			return false;
 		},
 		open: function(event, ui) {
@@ -141,3 +118,103 @@ $("#radios .btn").focusin(function() {
 			$liline.append($container).appendTo(ul);
 			return $liline;
 		};
+
+}
+
+
+function drawPatientRecord(pObj){
+	var patientRecord = pObj.record;
+	//patientObj = prepareData(patientObj);
+	
+	var container = $('.patient-record-container');
+	//container.empty();
+	/*
+	$("#patient-record div .record").each(function( index ) {
+		if($( this ).attr("id") == "name_value"){
+			$(this).text(patientObj.lname +" "+patientObj.fname);
+		}else if($( this ).attr("id") == "sex_value"){
+			if(patientObj.sex == "1"){
+				$("#sex_value").text("Male");
+			}else{
+				$("#sex_value").text("Female");
+			}
+		}else if($( this ).attr("id") == "dtype_value"){
+			var idtype = pObj[2].dtype.values[0].value;
+			if(idtype == "10"){
+				idtype= "3";
+			}else if(idtype == "11"){
+				idtype= "4";
+			}
+			$(this).text(dtype[idtype]);
+		}else if($( this ).attr("id") == "ddate_value"){
+				$("#ddate_value").text(pObj[2].dtype.values[0].date);
+		}else{
+			var att = $( this ).attr("id");
+			if(typeof(att) != "undefined"){
+				att = att.replace("_value","");
+				$(this).text(eval("patientObj."+att));
+			}
+		}
+	});
+	
+	
+	var dobj = pObj[2];
+	var vd = dobj.dtype.values;
+	
+	$.each(vd,function(index,val){
+		var linie = $("<tr>",{id:"diabetid-"+val.idvalue});
+		var cdate = $("<td>",{class:"diabet-history-value"}).text(val.date);
+		var ii = val.value;
+		if(val.value == "10"){ii=3;}
+		if(val.value == "11"){ii=4;}
+		
+		var ctype = $("<td>",{class:"diabet-history-value"}).text(dtype[ii]);
+		var btype = $("<td>",{class:"diabet-history-value"});
+		linie.append(cdate);
+		linie.append(ctype);
+		linie.append(btype);
+		if(vd.length > 1){
+			if(userProfileObj.role.idrole == 1){
+				var bb = $("<span>",{id:"diabet-"+val.idvalue}).html("<i class=\"fa fa-times-circle\" aria-hidden=\"true\"></i>").appendTo(btype);
+				bb.click(function(){
+					var $d = $("<div>",{id:"dialog-confirm",title:"Delete diabetes type"}).appendTo($("body"));
+					var $p = $("<p>").text("This type of diabetes will be permanently deleted. Are you sure ?").appendTo($d); 
+					$d.dialog({
+					      resizable: false,
+					      height: "auto",
+					      width: 400,
+					      modal: true,
+					      buttons: {
+					        "Delete diabates type": function() {
+					        	deleteValue(val.idvalue,patientObjArray);
+								$("#diabetid-"+val.idvalue).remove();
+								if($("#diabet-history tr").length == 3){
+									$(".diabet-history-value span").hide();
+								}
+								$( this ).dialog( "close" );
+						        $(this.remove());
+					        },
+					        Cancel: function() {
+					          $( this ).dialog( "close" );
+					          $(this.remove());
+					        }
+					      }
+					    });
+				});
+			}
+		}		
+		$("#diabet-history").append(linie);
+		
+	});
+	$("#editpatient-button, #editpatient-button-second").click(function() {
+		gtc(sid,"en",patientObj.ramq,"editpatient");
+		//window.location = "cdis.html?section=editpatient&ramq="+patientObj.ramq+"&sid="+sid+"&language=en";
+	});
+	*/
+}
+
+
+
+		
+		
+		

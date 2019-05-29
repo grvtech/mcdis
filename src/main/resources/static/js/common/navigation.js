@@ -1,5 +1,7 @@
 
-
+/*
+ * function to apply actions to buttons in the page
+ * */
 function initNavigation() {
 	
 	$(".fback").click(function() {gts(sid,applanguage);	});
@@ -47,9 +49,9 @@ function initNavigation() {
 
 	function startReport(reportid){
 		if(reportid == null){
-			window.location = "reports.html?sid="+sid;
+			window.location = "reports.html?uuidsession="+sid;
 		}else{
-			window.location = "reports.html?sid="+sid+"&reportid="+reportid;
+			window.location = "reports.html?uuidsession="+sid+"&reportid="+reportid;
 		}
 	}
 
@@ -75,28 +77,29 @@ function initNavigation() {
 
 
 	function gti(){window.location = "index.html";}/*go to index*/
+	
 	function gts(s,l){
-		var p = window.btoa("sid="+sid+"&language="+l);
+		var p = window.btoa("uuidsession="+sid+"&language="+l);
 		window.location = "search.html?"+p;
 	}/*go to search*/
 	function gtc(s,l,r,sec){
-		var p = window.btoa("sid="+sid+"&language="+l+"&section="+sec+"&ramq="+r);
+		var p = window.btoa("uuidsession="+sid+"&language="+l+"&section="+sec+"&ramq="+r);
 		window.location = "cdis.html?"+p;
 	}/*go to cdis*/
 	function gtr(s,l,rid){
-		var p = window.btoa("sid="+sid+"&language="+l+"&reportid="+rid);
+		var p = window.btoa("uuidsession="+sid+"&language="+l+"&reportid="+rid);
 		window.location = "reports.html?"+p;
 	}/*go to reports*/
 	function gto(s,l,sec){
-		var p = window.btoa("sid="+sid+"&language="+l+"&section="+sec);
+		var p = window.btoa("uuidsession="+sid+"&language="+l+"&section="+sec);
 		window.location = "options.html?"+p;
 	}/*go to options*/
 	function gta(s,l,sec){
-		var p = window.btoa("sid="+sid+"&language="+l+"&section="+sec);
+		var p = window.btoa("uuidsession="+sid+"&language="+l+"&section="+sec);
 		window.location = "admin.html?"+p;
 	}/*go to admin*/
 	function gtn(s,l,r,idn){
-		var p = window.btoa("sid="+sid+"&language="+l+"&section=notes&ramq="+r+"&idnote="+idn);
+		var p = window.btoa("uuidsession="+sid+"&language="+l+"&section=notes&ramq="+r+"&idnote="+idn);
 		window.location = "cdis.html?"+p;
 	}/*go to admin*/
 	

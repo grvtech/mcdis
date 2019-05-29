@@ -88,7 +88,7 @@ public class HttpUtil {
 			if (!names.contains("uuidsession")) {
 				((ObjectNode) jNode).put("uuidsession", "00000000-0000-0000-0000-000000000000");
 			} else {
-				((ObjectNode) jNode).put("action", request.getParameter("uuidsession").toString());
+				((ObjectNode) jNode).put("uuidsession", request.getParameter("uuidsession").toString());
 			}
 			ObjectNode elements = ((ObjectNode) jNode).putObject("elements");
 			for (String name : names) {
