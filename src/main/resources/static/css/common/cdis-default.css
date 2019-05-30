@@ -1,5 +1,5 @@
 html {text-rendering: optimizelegibility !important;-webkit-font-smoothing: antialiased !important;height: 100%;}
-body{font-size:14px;font-weight:normal;font-family: Helvetica,Sans-Serif, Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;background:#5c6c9d;}
+body{font-size:14px;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans-Serif, Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;background:#5c6c9d;}
 
 
 /*COMMON CLASSES*/
@@ -8,7 +8,7 @@ body{font-size:14px;font-weight:normal;font-family: Helvetica,Sans-Serif, Verdan
 .uss{-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);}
 /*user button style used in all buttons  - round with shadow*/
 .ubs{border-radius: 50%;box-shadow: 0 0 3px rgba(0,0,0,.22),0 3px 4px rgba(0,0,0,.34);-webkit-transform: translateX(-12px);transform: translateX(-12px);-webkit-transition: -webkit-transform 150ms,cubic-bezier(.4,0,.2,1),background-color,150ms,cubic-bezier(.4,0,.2,1);transition: transform 150ms,cubic-bezier(.4,0,.2,1),background-color,150ms,cubic-bezier(.4,0,.2,1);}
-.umbra{-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);}
+.umbra{box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);}
 
 
 
@@ -215,122 +215,130 @@ CDIS PAGE
 #cdisSectionsPage{display:none;}
 
 #cdisDashboardPage .container-fluid .row > *{padding: 0 !important;width:100%;}
-#cdisDashboardPage .container-fluid .patient-container{margin:10px;}
-#cdisDashboardPage .patient-record-container{height:200px; background-color:#ededed;}
-#cdisDashboardPage .patient-thumbnail-container{height:200px; background-color:green;}
-#cdisDashboardPage .patient-graph-container{height:400px; background-color:blue;}
-#cdisDashboardPage .patient-notes-container{height:200px; background-color:cyan;}
-#cdisDashboardPage .patient-stats-container{height:200px; background-color:yellow;}
-#cdisDashboardPage .patient-tools-container{height:180px; background-color:grey;}
-#cdisDashboardPage .patient-hcw-container{height:200px;background-color:orange;}
+#cdisDashboardPage .container-fluid .patient-container{margin:10px;background-color:#ededed;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);}
+#cdisDashboardPage .patient-record-container{height:200px;}
+#cdisDashboardPage .patient-thumbnail-container{height:200px;}
+#cdisDashboardPage .patient-graph-container{height:400px;}
+#cdisDashboardPage .patient-notes-container{height:200px;}
+#cdisDashboardPage .patient-stats-container{height:200px;}
+#cdisDashboardPage .patient-tools-container{height:180px;}
+#cdisDashboardPage .patient-hcw-container{height:200px;}
 
 #cdisSectionsPage .container-fluid .row > *{padding: 0 !important;width:100%;}
 #cdisSectionsPage .container-fluid .patient-container{margin:10px;}
-#cdisSectionsPage .patient-record-container{height:150px; background-color:red;}
-#cdisSectionsPage .patient-menu-container{height:30px; background-color:green;}
-#cdisSectionsPage .patient-depresion-container{height:160px; background-color:pink;}
-#cdisSectionsPage .patient-vaccination-container{height:160px; background-color:indigo;}
-#cdisSectionsPage .patient-section-container{height:400px; background-color:blue;}
-#cdisSectionsPage .patient-notes-container{height:160px; background-color:cyan;}
-#cdisSectionsPage .patient-meds-container{height:160px; background-color:yellow;}
-#cdisSectionsPage .patient-tools-container{height:40px; background-color:grey;}
-#cdisSectionsPage .patient-visit-container{height:100px;background-color:orange;}
+#cdisSectionsPage .patient-record-container{height:150px;}
+#cdisSectionsPage .patient-menu-container{height:30px;}
+#cdisSectionsPage .patient-depresion-container{height:160px;}
+#cdisSectionsPage .patient-vaccination-container{height:160px;}
+#cdisSectionsPage .patient-section-container{height:400px;}
+#cdisSectionsPage .patient-notes-container{height:160px;}
+#cdisSectionsPage .patient-meds-container{height:160px;}
+#cdisSectionsPage .patient-tools-container{height:40px;}
+#cdisSectionsPage .patient-visit-container{height:100px;}
 
 
 
 @media screen  and  (max-height: 2160px) {
 	#cdisDashboardPage .patient-record-container{height:200px;}
-	#cdisDashboardPage .patient-thumbnail-container{height:200px; background-color:green;}
-	#cdisDashboardPage .patient-graph-container{height:780px; background-color:blue;}
-	#cdisDashboardPage .patient-notes-container{height:250px; background-color:cyan;}
-	#cdisDashboardPage .patient-stats-container{height:250px; background-color:yellow;}
-	#cdisDashboardPage .patient-tools-container{height:180px; background-color:grey;}
-	#cdisDashboardPage .patient-hcw-container{height:250px;background-color:orange;}
+	#cdisDashboardPage .patient-thumbnail-container{height:200px;}
+	#cdisDashboardPage .patient-graph-container{height:780px;}
+	#cdisDashboardPage .patient-notes-container{height:250px;}
+	#cdisDashboardPage .patient-stats-container{height:250px;}
+	#cdisDashboardPage .patient-tools-container{height:180px;}
+	#cdisDashboardPage .patient-hcw-container{height:250px;}
 	
-	#cdisSectionsPage .patient-record-container{height:200px; background-color:red;}
-	#cdisSectionsPage .patient-menu-container{height:30px; background-color:green;}
-	#cdisSectionsPage .patient-depresion-container{height:200px; background-color:pink;}
-	#cdisSectionsPage .patient-vaccination-container{height:200px; background-color:indigo;}
-	#cdisSectionsPage .patient-section-container{height:680px; background-color:blue;}
-	#cdisSectionsPage .patient-notes-container{height:200px; background-color:cyan;}
-	#cdisSectionsPage .patient-meds-container{height:200px; background-color:yellow;}
-	#cdisSectionsPage .patient-tools-container{height:40px; background-color:grey;}
-	#cdisSectionsPage .patient-visit-container{height:150px;background-color:orange;}
+	#cdisSectionsPage .patient-record-container{height:200px; }
+	#cdisSectionsPage .patient-menu-container{height:30px; }
+	#cdisSectionsPage .patient-depresion-container{height:200px; }
+	#cdisSectionsPage .patient-vaccination-container{height:200px; }
+	#cdisSectionsPage .patient-section-container{height:680px; }
+	#cdisSectionsPage .patient-notes-container{height:200px; }
+	#cdisSectionsPage .patient-meds-container{height:200px; }
+	#cdisSectionsPage .patient-tools-container{height:40px; }
+	#cdisSectionsPage .patient-visit-container{height:150px;}
 }
 @media screen  and  (max-height: 1080px) {
 	body{font-size:18px;}
 	#cdisDashboardPage .patient-record-container{height:200px;}
-	#cdisDashboardPage .patient-thumbnail-container{height:200px; background-color:green;}
-	#cdisDashboardPage .patient-graph-container{height:600px; background-color:blue;}
-	#cdisDashboardPage .patient-notes-container{height:200px; background-color:cyan;}
-	#cdisDashboardPage .patient-stats-container{height:200px; background-color:yellow;}
-	#cdisDashboardPage .patient-tools-container{height:160px; background-color:grey;}
-	#cdisDashboardPage .patient-hcw-container{height:200px;background-color:orange;}
+	#cdisDashboardPage .patient-thumbnail-container{height:200px; }
+	#cdisDashboardPage .patient-graph-container{height:600px; }
+	#cdisDashboardPage .patient-notes-container{height:200px; }
+	#cdisDashboardPage .patient-stats-container{height:200px; }
+	#cdisDashboardPage .patient-tools-container{height:160px; }
+	#cdisDashboardPage .patient-hcw-container{height:200px;}
 	
-	#cdisSectionsPage .patient-record-container{height:200px; background-color:red;}
-	#cdisSectionsPage .patient-menu-container{height:30px; background-color:green;}
-	#cdisSectionsPage .patient-depresion-container{height:200px; background-color:pink;}
-	#cdisSectionsPage .patient-vaccination-container{height:200px; background-color:indigo;}
-	#cdisSectionsPage .patient-section-container{height:560px; background-color:blue;}
-	#cdisSectionsPage .patient-notes-container{height:200px; background-color:cyan;}
-	#cdisSectionsPage .patient-meds-container{height:200px; background-color:yellow;}
-	#cdisSectionsPage .patient-tools-container{height:40px; background-color:grey;}
-	#cdisSectionsPage .patient-visit-container{height:120px;background-color:orange;}
+	#cdisSectionsPage .patient-record-container{height:200px; }
+	#cdisSectionsPage .patient-menu-container{height:30px; }
+	#cdisSectionsPage .patient-depresion-container{height:200px;}
+	#cdisSectionsPage .patient-vaccination-container{height:200px; }
+	#cdisSectionsPage .patient-section-container{height:560px; }
+	#cdisSectionsPage .patient-notes-container{height:200px; }
+	#cdisSectionsPage .patient-meds-container{height:200px; }
+	#cdisSectionsPage .patient-tools-container{height:40px; }
+	#cdisSectionsPage .patient-visit-container{height:120px;}
 	
 	
 }
 @media screen  and  (max-height: 900px) {
 	body{font-size:16px;}
 	#cdisDashboardPage .patient-record-container{height:200px;}
-	#cdisDashboardPage .patient-thumbnail-container{height:200px; background-color:green;}
-	#cdisDashboardPage .patient-graph-container{height:500px; background-color:blue;}
-	#cdisDashboardPage .patient-notes-container{height:160px; background-color:cyan;}
-	#cdisDashboardPage .patient-stats-container{height:160px; background-color:yellow;}
-	#cdisDashboardPage .patient-tools-container{height:160px; background-color:grey;}
-	#cdisDashboardPage .patient-hcw-container{height:160px;background-color:orange;}
+	#cdisDashboardPage .patient-thumbnail-container{height:200px;}
+	#cdisDashboardPage .patient-graph-container{height:500px; }
+	#cdisDashboardPage .patient-notes-container{height:160px; }
+	#cdisDashboardPage .patient-stats-container{height:160px; }
+	#cdisDashboardPage .patient-tools-container{height:160px; }
+	#cdisDashboardPage .patient-hcw-container{height:160px;}
 	
-	#cdisSectionsPage .patient-record-container{height:200px; background-color:red;}
-	#cdisSectionsPage .patient-menu-container{height:30px; background-color:green;}
-	#cdisSectionsPage .patient-depresion-container{height:200px; background-color:pink;}
-	#cdisSectionsPage .patient-vaccination-container{height:200px; background-color:indigo;}
-	#cdisSectionsPage .patient-section-container{height:480px; background-color:blue;}
-	#cdisSectionsPage .patient-notes-container{height:200px; background-color:cyan;}
-	#cdisSectionsPage .patient-meds-container{height:200px; background-color:yellow;}
-	#cdisSectionsPage .patient-tools-container{height:40px; background-color:grey;}
-	#cdisSectionsPage .patient-visit-container{height:120px;background-color:orange;}
+	#cdisSectionsPage .patient-record-container{height:200px; }
+	#cdisSectionsPage .patient-menu-container{height:30px; }
+	#cdisSectionsPage .patient-depresion-container{height:200px; }
+	#cdisSectionsPage .patient-vaccination-container{height:200px;}
+	#cdisSectionsPage .patient-section-container{height:480px;}
+	#cdisSectionsPage .patient-notes-container{height:200px;}
+	#cdisSectionsPage .patient-meds-container{height:200px;}
+	#cdisSectionsPage .patient-tools-container{height:40px;}
+	#cdisSectionsPage .patient-visit-container{height:120px;}
 	
 }
 @media screen  and  (max-height: 800px) {
 	body{font-size:14px;}
-	#cdisDashboardPage .patient-record-container{height:130px;}
-	#cdisDashboardPage .patient-thumbnail-container{height:180px; background-color:green;}
-	#cdisDashboardPage .patient-graph-container{height:400px; background-color:blue;}
-	#cdisDashboardPage .patient-notes-container{height:150px; background-color:cyan;}
-	#cdisDashboardPage .patient-stats-container{height:150px; background-color:yellow;}
-	#cdisDashboardPage .patient-tools-container{height:120px; background-color:grey;}
-	#cdisDashboardPage .patient-hcw-container{height:150px;background-color:orange;}
+	#cdisDashboardPage .patient-record-container{height:160px;}
+	#cdisDashboardPage .patient-thumbnail-container{height:180px; }
+	#cdisDashboardPage .patient-graph-container{height:400px;}
+	#cdisDashboardPage .patient-notes-container{height:150px;}
+	#cdisDashboardPage .patient-stats-container{height:150px;}
+	#cdisDashboardPage .patient-tools-container{height:120px;}
+	#cdisDashboardPage .patient-hcw-container{height:150px;}
 	
-	#cdisSectionsPage .patient-record-container{height:150px; background-color:red;}
-	#cdisSectionsPage .patient-menu-container{height:30px; background-color:green;}
-	#cdisSectionsPage .patient-depresion-container{height:160px; background-color:pink;}
-	#cdisSectionsPage .patient-vaccination-container{height:160px; background-color:indigo;}
-	#cdisSectionsPage .patient-section-container{height:400px; background-color:blue;}
-	#cdisSectionsPage .patient-notes-container{height:160px; background-color:cyan;}
-	#cdisSectionsPage .patient-meds-container{height:160px; background-color:yellow;}
-	#cdisSectionsPage .patient-tools-container{height:40px; background-color:grey;}
-	#cdisSectionsPage .patient-visit-container{height:100px;background-color:orange;}
+	#cdisSectionsPage .patient-record-container{height:150px;}
+	#cdisSectionsPage .patient-menu-container{height:30px;}
+	#cdisSectionsPage .patient-depresion-container{height:160px;}
+	#cdisSectionsPage .patient-vaccination-container{height:160px;}
+	#cdisSectionsPage .patient-section-container{height:400px;}
+	#cdisSectionsPage .patient-notes-container{height:160px; }
+	#cdisSectionsPage .patient-meds-container{height:160px; }
+	#cdisSectionsPage .patient-tools-container{height:40px; }
+	#cdisSectionsPage .patient-visit-container{height:100px;}
 }
 
 
-#cdisDashboardPage .prc-wmenu {position:absolute;right:10px;padding:5px 10px 5px 10px;text-align:center;color:#4d4d4d;background-color:#cdcdcd;}
+#cdisDashboardPage .block-wmenu {position:absolute;top:10px;right:10px;padding:5px 10px 5px 10px;text-align:center;color:#4d4d4d;background-color:#cdcdcd;}
+#cdisDashboardPage .block-title {color:#4d4d4d;background-color:#cdcdcd;width:140px;position:relative;height:25px;line-height:22px; font-weight:900;padding:2px 2px 2px 5px;}
+#cdisDashboardPage .block-title div{position:absolute;top:0px;width: 0;height: 0;border-top: 25px solid #cdcdcd;border-right: 25px solid #ededed;vertical-align:middle;right:0px;}
+
+
+
+
 #cdisDashboardPage .prc-avatar {display:inline-block;background-color:#cdcdcd;width:80px;height:80px;text-align:center;line-height:80px;font-size:60px;margin:5px;vertical-align:top;}
 #cdisDashboardPage .prc-name {display:inline-block;}
-#cdisDashboardPage .prc-fname {font-size:120%;padding:2px;}
-#cdisDashboardPage .prc-lname {font-size:120%;padding:2px;font-weight:900;}
-#cdisDashboardPage .prc-community {font-size:130%;padding:5px;background-color:#4d4d4d;color:#ffffff;margin-left:-10px;}
+#cdisDashboardPage .prc-fname {font-size:180%;padding:2px;}
+#cdisDashboardPage .prc-lname {font-size:180%;padding:2px;}
+#cdisDashboardPage .prc-community {font-size:160%;padding:5px 8px 5px 8px;background-color:#4d4d4d;color:#ffffff;margin-left:-10px;}
 #cdisDashboardPage .prc-ramq,.prc-chart, .prc-ipm, .prc-dtype {margin:5px;}
-#cdisDashboardPage .spanv{background-color:#cdcdcd;padding:2px 7px 2px 3px;font-weight:bold;}
-#cdisDashboardPage .spanl{padding:2px 3px 2px 7px;background-color:#4d4d4d;color:#ffffff;text-transform: uppercase;}
+#cdisDashboardPage .spanv{background-color:#cdcdcd;padding:2px 7px 2px 3px;font-weight:bold;margin:0px;}
+#cdisDashboardPage .spanl{padding:2px 3px 2px 7px;background-color:#4d4d4d;color:#ffffff;text-transform: uppercase;margin:0px;}
+#cdisDashboardPage .prc-dtype .spanl{width:120px; text-align:center;}
+#cdisDashboardPage .prc-dtype .spanv{width:120px;text-align:center;}
 
 
 
