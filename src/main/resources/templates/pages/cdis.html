@@ -34,7 +34,7 @@
 			      				
 			      				<div class="patient-container patient-record-container umbra">
 			      					<div class="block-title"><span>Patient Record</span><div></div></div>
-			      					<div class="block-wmenu"><i class="fas fa-ellipsis-v"></i></div>
+			      					<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
 			      					
 			      					<div class="container-fluid">
 			      						<div class="row">
@@ -65,7 +65,7 @@
 			      			<div class="col-4">
 			      				<div class="patient-container patient-thumbnail-container">
 			      					<div class="block-title"><span>Blood Pressure</span><div></div></div>
-			      					<div class="block-wmenu"><i class="fas fa-ellipsis-v"></i></div>
+			      					<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
 			      				</div>
 			      			</div>
 			      		</div>
@@ -73,7 +73,49 @@
 			      			<div class="col">
 			      				<div class="patient-container patient-graph-container">
 			      					<div class="block-title"><span>ABC Graphs</span><div></div></div>
-			      					<div class="block-wmenu"><i class="fas fa-ellipsis-v"></i></div>
+			      					<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
+			      					
+			      					<div class="abcgraphs-container">
+			      						<div class="widget-container">
+			      							<div class="widget-menu">
+			      								<div class="widget-menu-item"><i class="fas fa-table"></i></div>
+			      								<div class="widget-menu-item"><i class="fas fa-history"></i></div>
+			      								<div class="widget-menu-item"><i class="fas fa-plus"></i></div>
+			      								<div class="widget-menu-item"><i class="fas fa-print"></i></div>
+			      							</div>
+			      							<div class="widget"><canvas id="canvas1"></canvas></div>
+			      						</div>
+				      					<div class="widget-container">
+				      							<div class="widget-menu">
+				      								<div class="widget-menu-item grvtm"><i class="fas fa-table"></i></div>
+				      								<div class="widget-menu-item grvhm"><i class="fas fa-history"></i></div>
+				      								<div class="widget-menu-item grvam"><i class="fas fa-plus"></i></div>
+				      								<div class="widget-menu-item grvpm"><i class="fas fa-print"></i></div>
+				      							</div>
+			      							<div class="widget"><canvas id="canvas2"></canvas></div>
+			      						</div>
+				      					<div class="widget-container">
+				      							<div class="widget-menu">
+				      								<div class="widget-menu-item"><i class="fas fa-table"></i></div>
+				      								<div class="widget-menu-item"><i class="fas fa-history"></i></div>
+				      								<div class="widget-menu-item"><i class="fas fa-plus"></i></div>
+				      								<div class="widget-menu-item"><i class="fas fa-print"></i></div>
+				      							</div>
+	
+			      							<div class="widget"><canvas id="canvas3"></canvas></div>
+			      						</div>
+				      					<div class="widget-container">
+				      							<div class="widget-menu">
+				      								<div class="widget-menu-item"><i class="fas fa-table"></i></div>
+				      								<div class="widget-menu-item"><i class="fas fa-history"></i></div>
+				      								<div class="widget-menu-item"><i class="fas fa-plus"></i></div>
+				      								<div class="widget-menu-item"><i class="fas fa-print"></i></div>
+				      							</div>
+	
+			      							<div class="widget"><canvas id="canvas4"></canvas></div>
+			      						</div>
+			      					</div>
+			      					
 			      				</div>
 			      				
 			      			</div>
@@ -83,28 +125,36 @@
 			    <div class="col-3">
 			      <div class="container-fluid">
 			      	<div class="row">
-			      		<div class="patient-container patient-tools-container">
-			      			<div class="block-title"><span>Tools</span><div></div></div>
-			      			<div class="block-wmenu"><i class="fas fa-ellipsis-v"></i></div>
-			      		</div>
+			      		<div class="col">
+				      		<div class="patient-container patient-tools-container">
+				      			<div class="block-title"><span>Tools</span><div></div></div>
+				      			<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
+				      		</div>
+				      	</div>
 			      	</div>
 			      	<div class="row">
-			      		<div class="patient-container patient-hcw-container">
-			      			<div class="block-title"><span>Healthcare Worker</span><div></div></div>
-			      			<div class="block-wmenu"><i class="fas fa-ellipsis-v"></i></div>
-			      		</div>
+			      		<div class="col">
+				      		<div class="patient-container patient-hcw-container">
+				      			<div class="block-title"><span>Healthcare Worker</span><div></div></div>
+				      			<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
+				      		</div>
+				      	</div>
 			      	</div>
 			      	<div class="row">
-			      		<div class="patient-container patient-notes-container">
-			      			<div class="block-title"><span>Patient Notes</span><div></div></div>
-			      			<div class="block-wmenu"><i class="fas fa-ellipsis-v"></i></div>
-			      		</div>
+			      		<div class="col">
+				      		<div class="patient-container patient-notes-container">
+				      			<div class="block-title"><span>Patient Notes</span><div></div></div>
+				      			<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
+				      		</div>
+				      	</div>
 			      	</div>
 			      	<div class="row">
-			      		<div class="patient-container  patient-stats-container">
-			      			<div class="block-title"><span>Patient Statistics</span><div></div></div>
-			      			<div class="block-wmenu"><i class="fas fa-ellipsis-v"></i></div>
-			      		</div>
+			      		<div class="col">
+				      		<div class="patient-container  patient-stats-container">
+				      			<div class="block-title"><span>Patient Statistics</span><div></div></div>
+				      			<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
+				      		</div>
+				      	</div>
 			      	</div>
 			      	
 			      </div>

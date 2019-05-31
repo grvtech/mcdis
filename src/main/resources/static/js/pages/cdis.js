@@ -214,6 +214,43 @@ function drawPatientRecord(pObj){
 }
 
 
+var d = null;
+var dparent = null;
+$('.grvhm').click(function(){
+	//alert('a');
+	dparent = $('.abcgraphs-container').parent();
+	$('.abcgraphs-container').fadeOut(2000);
+	d = $('.abcgraphs-container').detach();
+	$('<div>').text('attach').appendTo(dparent).click(function(){
+		$(this).empty();
+		dparent.append(d);
+		d.fadeIn("slow");
+	});
+});
+
+
+
+
+var widgetPatientRecord = {
+		title:'Patient Record',
+		
+		actions : [
+			{
+				label : 'add patient',
+				class : 'fas fa-plus',
+				callback : addPatient,
+				roles:[1,2,3]
+			},
+			{
+				label : 'edit patient',
+				class : 'far fa-edit',
+				callback : editPatient,
+				roles: [1,2,3]
+			}
+		]
+}
+
+
 
 		
 		

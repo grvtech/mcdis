@@ -1,5 +1,6 @@
 html {text-rendering: optimizelegibility !important;-webkit-font-smoothing: antialiased !important;height: 100%;}
-body{font-size:14px;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans-Serif, Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;background:#5c6c9d;}
+/*body{font-size:14px;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans-Serif, Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;background:#5c6c9d;}*/
+body{font-size:14px;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans-Serif, Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;background:#ffffff;}
 
 
 /*COMMON CLASSES*/
@@ -17,8 +18,9 @@ body{font-size:14px;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans-
 .common-error{text-align:center; font-weight:900; color:#ff0000;}
 
 .common-header{height:50px;width:100%;}
-.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#4b3b3b;z-index: 100;}
-.common-cdisheader .logo{position:absolute;left:20px;top:50%;height:40px;width:auto;margin-top:-20px;background:no-repeat url(../../images/cdis-logo50.png) #4b3b3b left center;background-size: 32px 40px;font-size:220%;color:#ffffff;padding:0px 0px 0px 35px;}
+/*.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#4b3b3b;z-index: 100;}*/
+.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#cdcdcd;z-index: 100;}
+.common-cdisheader .logo{position:absolute;left:20px;top:50%;height:40px;width:auto;margin-top:-20px;background:no-repeat url(../../images/cdis-logo50.png) left center;background-size: 32px 40px;font-size:220%;color:#ffffff;padding:0px 0px 0px 35px;}
 .common-cdisheader .menu{position:absolute;margin:0px;padding:0px;list-style-type: none;right:15px;top:10px;height:35px;width:auto;}
 .common-cdisheader .menu li {display: inline-block;width:35px;height:35px;line-height:35px;text-align:center;color:#ffffff;margin:0px 10px 0px 0px;background-color:#bbb2b2;}
 .common-cdisheader .menu li:hover {background-color:#db4437; box-shadow: 0 0 4px rgba(0,0,0,.15),0 2px 6px rgba(0,0,0,.54);}
@@ -218,14 +220,16 @@ CDIS PAGE
 #cdisDashboardPage .container-fluid .patient-container{margin:10px;background-color:#ededed;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);}
 #cdisDashboardPage .patient-record-container{height:200px;}
 #cdisDashboardPage .patient-thumbnail-container{height:200px;}
-#cdisDashboardPage .patient-graph-container{height:400px;}
+#cdisDashboardPage .patient-graph-container{min-height:400px;}
 #cdisDashboardPage .patient-notes-container{height:200px;}
 #cdisDashboardPage .patient-stats-container{height:200px;}
 #cdisDashboardPage .patient-tools-container{height:180px;}
 #cdisDashboardPage .patient-hcw-container{height:200px;}
 
+
 #cdisSectionsPage .container-fluid .row > *{padding: 0 !important;width:100%;}
-#cdisSectionsPage .container-fluid .patient-container{margin:10px;}
+#cdisSectionsPage .container-fluid .patient-container{position:relative;margin:10px;}
+
 #cdisSectionsPage .patient-record-container{height:150px;}
 #cdisSectionsPage .patient-menu-container{height:30px;}
 #cdisSectionsPage .patient-depresion-container{height:160px;}
@@ -241,7 +245,7 @@ CDIS PAGE
 @media screen  and  (max-height: 2160px) {
 	#cdisDashboardPage .patient-record-container{height:200px;}
 	#cdisDashboardPage .patient-thumbnail-container{height:200px;}
-	#cdisDashboardPage .patient-graph-container{height:780px;}
+	#cdisDashboardPage .patient-graph-container{min-height:780px;}
 	#cdisDashboardPage .patient-notes-container{height:250px;}
 	#cdisDashboardPage .patient-stats-container{height:250px;}
 	#cdisDashboardPage .patient-tools-container{height:180px;}
@@ -261,7 +265,7 @@ CDIS PAGE
 	body{font-size:18px;}
 	#cdisDashboardPage .patient-record-container{height:200px;}
 	#cdisDashboardPage .patient-thumbnail-container{height:200px; }
-	#cdisDashboardPage .patient-graph-container{height:600px; }
+	#cdisDashboardPage .patient-graph-container{min-height:600px; }
 	#cdisDashboardPage .patient-notes-container{height:200px; }
 	#cdisDashboardPage .patient-stats-container{height:200px; }
 	#cdisDashboardPage .patient-tools-container{height:160px; }
@@ -283,7 +287,7 @@ CDIS PAGE
 	body{font-size:16px;}
 	#cdisDashboardPage .patient-record-container{height:200px;}
 	#cdisDashboardPage .patient-thumbnail-container{height:200px;}
-	#cdisDashboardPage .patient-graph-container{height:500px; }
+	#cdisDashboardPage .patient-graph-container{min-height:500px; }
 	#cdisDashboardPage .patient-notes-container{height:160px; }
 	#cdisDashboardPage .patient-stats-container{height:160px; }
 	#cdisDashboardPage .patient-tools-container{height:160px; }
@@ -304,7 +308,7 @@ CDIS PAGE
 	body{font-size:14px;}
 	#cdisDashboardPage .patient-record-container{height:160px;}
 	#cdisDashboardPage .patient-thumbnail-container{height:180px; }
-	#cdisDashboardPage .patient-graph-container{height:400px;}
+	#cdisDashboardPage .patient-graph-container{min-height:400px;}
 	#cdisDashboardPage .patient-notes-container{height:150px;}
 	#cdisDashboardPage .patient-stats-container{height:150px;}
 	#cdisDashboardPage .patient-tools-container{height:120px;}
@@ -322,7 +326,26 @@ CDIS PAGE
 }
 
 
-#cdisDashboardPage .block-wmenu {position:absolute;top:10px;right:10px;padding:5px 10px 5px 10px;text-align:center;color:#4d4d4d;background-color:#cdcdcd;}
+#cdisDashboardPage .block-wmenu {position:absolute;top:10px;right:10px;padding:2px 10px 2px 10px;text-align:center;color:#4d4d4d;background-color:#cdcdcd;}
+#cdisDashboardPage .block-wmenu:hover{background-color:red;color:#cdcdcd;}
+#cdisDashboardPage .block-wmenu:hover  .slider{height:25px;}
+#cdisDashboardPage .block-wmenu .slider{
+	position:absolute;
+	text-align:center;
+	color:#4d4d4d;
+	background-color:#cdcdcd;
+	width:100px;
+	height:0px;
+	top:0;
+	left:-100px;
+	transition: height .25s ease-in-out;
+	
+	}
+
+
+
+
+
 #cdisDashboardPage .block-title {color:#4d4d4d;background-color:#cdcdcd;width:140px;position:relative;height:25px;line-height:22px; font-weight:900;padding:2px 2px 2px 5px;}
 #cdisDashboardPage .block-title div{position:absolute;top:0px;width: 0;height: 0;border-top: 25px solid #cdcdcd;border-right: 25px solid #ededed;vertical-align:middle;right:0px;}
 
@@ -341,8 +364,15 @@ CDIS PAGE
 #cdisDashboardPage .prc-dtype .spanv{width:120px;text-align:center;}
 
 
+.abcgraphs-container{width:100%;text-align:center;}
+.graph-container{width:40%;border:1px solid #000000;display:inline-block;}
 
-
+.widget-container{width:41%;border:1px solid #000000;display:inline-flex;flex-flow:row nowrap;margin:10px;}
+.widget-container .widget-menu{width:25px;flex:1 auto;background-color:#000000;}
+.widget-container .widget{flex:1 auto;background-color:#ffffff;}
+.widget-menu{color:#ffffff;}
+.widget-menu .widget-menu-item {width:22px;height:22px;margin:auto;}
+.widget-menu .widget-menu-item:hover {background-color:red; color:#cdcdcd;}
 
 
 
