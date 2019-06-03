@@ -16,7 +16,7 @@ import com.grvtech.cdis.model.Visit;
 public interface IDataDao {
 
 	Values getValuesPatientData(int idpatient, int iddata);
-	Values getValuesUserData(int iduser, String codedata);
+	Values getValuesPatientData(int idpatient, String codedata);
 	Lab getLabPatient(int idpatient);
 	Renal getRenalPatient(int idpatient);
 	Lipid getLipidPatient(int idpatient);

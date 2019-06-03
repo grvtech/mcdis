@@ -10,7 +10,6 @@ import java.util.HashMap;
  *
  */
 public class Visit {
-
 	private Values sbp;
 	private Values dbp;
 	private Values weight;

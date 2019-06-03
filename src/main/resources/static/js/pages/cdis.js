@@ -14,6 +14,188 @@ function initCdisPage(){
 }
 
 
+/*
+ * load the good section of the page 
+ * possible values : dashboard , patient (for add and edit), lab, renal, lipids, complications, 
+ * */
+function loadSection(obj){
+	var section = obj.data.section;
+	var action = obj.data.action;
+	cdisSection = section;
+	
+	if(section == "dashboard"){
+		loadDashboardPage();
+	}else if(section == "patient"){
+		loadPatientPage(action);
+	}else{
+		loadSectionPage(section);
+	}
+	
+}
+
+
+function loadSectionPage(section){
+	//clearSections();
+	$("#cdisDashboardPage").hide();
+	$("#cdisSectionsPage").show();
+	
+	buildCdisMenu(appObj.menu, section);
+	buildWidget(appObj.widgets.record, patientObj.record);
+	
+	//drawPatientRecord(patientObj);
+	//drawABCGraphs();
+	//populatePageside();
+	
+	/*
+	$(".mainpage .main .page").load("/ncdis/client/templates/cdis.patient.html", function(patientObjArr){
+		cdisSection = "patient";
+		$(".side").hide();
+		$(".cdismenu").hide();
+		$("#menu li").removeClass("selected");
+		$("#menu li").children(".patient_icon_").parent().addClass("selected");
+		
+		
+		
+		var hcpObject = patientObjArray[1];
+		var cnt = 0;
+		
+		$.each(hcpObject,function(k,v){
+			if(k != 'idpatient'){
+				var n = '';
+				$(usersArray).each(function(kk,vv){  
+					if(vv.iduser == v){
+						n = (capitalizeFirstLetter((vv.firstname).toLowerCase())+" "+capitalizeFirstLetter((vv.lastname).toLowerCase()));
+					}
+				});
+				$("<tr>").append($("<td>",{class:"hcp-profession"}).text(profession_object[k])).append($("<td>",{class:"hcp-name"}).text(n)).appendTo($("#hcp"));
+			}
+		});
+		initPage();
+	});
+	*/
+}
+
+
+
+
+
+
+
+var appObj={
+		widgets:{
+			record:{
+				container:'patient-record-container',
+				title:'Patient record',
+				menu:{
+					add:{
+						label:'Add new patient',
+						icon:'fas fa-user-plus',
+						action : loadSection,
+						parameter:{data:{section:'patient',action:'add'}}
+					},
+					edit:{
+						label:'Modify patient data',
+						icon:'fas fa-user-edit',
+						action : loadSection,
+						parameter:{data:{section:'patient',action:'edit'}}
+					},
+					delete:{
+						label:'Delete patient',
+						icon:'fas fa-user-minus',
+						action : deletePatient,
+						parameter:{}
+					}
+				},
+				layout:'/ncdis/layouts/default_sections_patient-record.layout',
+				value:'recordValue'
+			}
+		},
+		menu:{
+			container:'patient-menu-container',
+			items: [
+				{label:'Glucose Control',section:'lab'},
+				{label:'Renal',section:'renal'},
+				{label:'Lipids',section:'lipid'},
+				{label:'Patient complications',section:'complications'},
+				{label:'Miscellaneous',section:'miscellaneous'},
+				{label:'',section:''},
+				{label:'Patient Dashboard',section:'dashboard'},
+			],
+			callback:null
+		}
+		
+}
+
+var test=0;
+function buildWidget(widgetObject, data){
+	var container = $('.'+widgetObject.container);
+	container.empty();
+	
+	/*<div class="block-title"><span>Patient Record</span><div></div></div>*/
+	if(container){
+		/*title*/
+		$('<div>',{class:'block-title'}).append($('<span>').text(widgetObject.title)).append($('<div>')).appendTo(container);
+		/*menu*/
+		if(!$.isEmptyObject(widgetObject.menu)){
+			/*<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>*/
+			var wmenuSlider = $('<div>',{class:'slider'}).appendTo($('<div>',{class:'block-wmenu'}).append($('<i>',{class:'fas fa-ellipsis-v'})).appendTo(container));
+			$.each(widgetObject.menu, function(obKey,obValue){
+				var item = $('<div>',{class:'slider-item','data-toggle':'tooltip',title:obValue.label}).append($('<i>',{class:obValue.icon})).appendTo(wmenuSlider);
+				item.on("click",obValue.parameter,obValue.action);
+			});
+		}
+		/*content*/
+		$('<div>').appendTo(container).load(widgetObject.layout, function(){
+			$.each($('['+widgetObject.value+']'), function(index,element){
+				console.log($(this).text());
+				var v = $(this).attr(widgetObject.value);
+				//exceptions
+				if(v == 'gender'){
+					var dv = data.sex;
+					$(this).addClass(dv=='2'?'fa-venus':'fa-mars');
+				}else{
+					$(this).text( eval("data."+$(this).attr(widgetObject.value) ) );
+				}
+				
+			});
+		});
+		
+	}
+	
+}
+
+function deletePatient(){}
+
+
+
+function buildCdisMenu(obj, section){
+	var container = $('.'+obj.container);
+	container.empty();
+	var m = $('<ul>',{class:'sections-menu'}).appendTo(container);
+	
+	console.log(obj.items);
+	
+	
+	$.each(obj.items,function(index, ob){
+		var active = '';
+		if(section == ob.section){active = 'active';}
+		if(ob.section == ''){
+			var li = $('<li>',{style:'flex:2 auto;'}).text('     ').appendTo(m);
+		}else{
+			var li = $('<li>',{class:'sections-menu-item '+active, 'data-toggle':'tooltip', title:ob.label}).text(ob.label).appendTo(m);
+		}
+		
+		li.on("click",{section:ob.section},loadSection);
+	})
+	
+}
+
+
+
+
+
+
+
 
 
 function initCdisHeader(){
@@ -122,6 +304,9 @@ function initCdisHeader(){
 }
 
 
+
+
+
 function drawPatientRecord(pObj){
 	var patientRecord = pObj.record;
 	//patientObj = prepareData(patientObj);
@@ -214,6 +399,9 @@ function drawPatientRecord(pObj){
 }
 
 
+
+/*
+
 var d = null;
 var dparent = null;
 $('.grvhm').click(function(){
@@ -250,7 +438,7 @@ var widgetPatientRecord = {
 		]
 }
 
-
+*/
 
 		
 		

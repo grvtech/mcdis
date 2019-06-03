@@ -1,6 +1,19 @@
 html {text-rendering: optimizelegibility !important;-webkit-font-smoothing: antialiased !important;height: 100%;}
 /*body{font-size:14px;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans-Serif, Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;background:#5c6c9d;}*/
-body{font-size:0.8vw;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans-Serif, Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;background:rgba(49,49,49,1);}
+body{font-size:0.8vw;font-weight:normal;font-family: Sans-Serif,Trebuchet MS,Helvetica,Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;
+/*background:rgba(49,49,49,1);*/
+background-image: radial-gradient(circle, #4D81DC, #305BA2);
+color:#4d4d4d;
+}
+/*
+
+gradinet background  #4D81DC  to #305BA2
+header :#2D65C6
+button color #47BFC0
+
+section background #F5F6F8
+widget header #E6E9EE
+*/
 
 
 /*COMMON CLASSES*/
@@ -19,18 +32,18 @@ body{font-size:0.8vw;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans
 
 .common-header{height:50px;width:100%;}
 /*.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#4b3b3b;z-index: 100;}*/
-.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:rgba(46,80,150,1);z-index: 100;}
+.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#2D65C6;z-index: 100;}
 .common-cdisheader .logo{position:absolute;left:20px;top:50%;height:40px;width:auto;margin-top:-20px;background:no-repeat url(../../images/cdis-logo50.png) left center;background-size: 32px 40px;font-size:30px;color:#ffffff;padding:0px 0px 0px 35px;}
 .common-cdisheader .menu{position:absolute;margin:0px;padding:0px;list-style-type: none;right:15px;top:10px;height:35px;width:auto;font-size:16px;}
-.common-cdisheader .menu li {display: inline-block;width:35px;height:35px;line-height:35px;text-align:center;color:#ffffff;margin:0px 10px 0px 0px;background-color:rgba(28,28,28,1);}
+.common-cdisheader .menu li {display: inline-block;width:35px;height:35px;line-height:35px;text-align:center;color:#ffffff;margin:0px 10px 0px 0px;background-color:#47BFC0;}
 .common-cdisheader .menu li:hover {background-color:#db4437; box-shadow: 0 0 4px rgba(0,0,0,.15),0 2px 6px rgba(0,0,0,.54);}
 
 .common-cdisfooter-left{position:fixed;right:10px;bottom:10px;width:60px;margin-top:-65px;z-index: 20;font-size:16px;}
-.common-cdisfooter-left .leftmenu{margin:0px 0px 0px 15px;padding:0px;bottom:5px;width:50px;height:50px;text-align:center;background-color:rgba(28,28,28,1);}
+.common-cdisfooter-left .leftmenu{margin:0px 0px 0px 15px;padding:0px;bottom:5px;width:50px;height:50px;text-align:center;background-color:#47BFC0;}
 .common-cdisfooter-left .leftmenu:hover {background-color:#db4437;}
 .common-cdisfooter-left .leftmenu i{margin:auto;line-height:50px;font-size:160%;color:#ffffff;}
 .common-cdisfooter-left .leftfootermenu{display:none;margin-left:15px;padding:0px;list-style-type: none;width:auto;margin-bottom:5px;}
-.common-cdisfooter-left .leftfootermenu li{display:block;width:50px;height:50px;margin:10px 10px 10px 0px;background-color:rgba(28,28,28,1);line-height:50px;text-align:center;color:#ffffff;font-size:120%;}
+.common-cdisfooter-left .leftfootermenu li{display:block;width:50px;height:50px;margin:10px 10px 10px 0px;background-color:#47BFC0;line-height:50px;text-align:center;color:#ffffff;font-size:120%;}
 .common-cdisfooter-left .leftfootermenu li:hover{background-color:#db4437;}
 
 
@@ -111,6 +124,9 @@ SEARCH PAGE CSS
 .search-search .ssearch{flex:1 0;}
 .search-search .ssearch .label{width:auto; text-align:center;font-size:220%;color:#ffffff;margin:0px;}
 .search-search .ssearch .input{height:30px;}
+
+
+
 .search-search .scriteria{flex:1 0;max-width:150px;left:0px;top:0px;margin:0px;border:1px solid #4b3b3b;}
 .search-search .ssearch .searchtext{width:100%;height:100%;color:#000000;margin:0px;padding-left:10px;border-left:none;border-bottom:1px solid #4b3b3b;border-top:1px solid #4b3b3b;border-right:1px solid #4b3b3b;font-family: Sans-Serif,Tahoma,Verdana,Arial,sans-serif;font-size: 100%;text-transform: uppercase;text-align: left;}
 .search-search #radios{border-color:#4b3b3b;}
@@ -193,10 +209,15 @@ CDIS PAGE
 .common-cdisheader .search .ssearch .searchtext{width:100%;height:100%;color:#000000;margin:0px;padding:0px 0px 0px 10px;border:1px solid #ffffff;text-transform: uppercase;}
 .common-cdisheader .search #criteria{border:1px solid #ffffff;line-height:40px;text-transform: uppercase;text-align: center;cursor:pointer;color:#ffffff;background-color:#4b3b3b;}
 .common-cdisheader .search .scriteria{position:absolute;width:150px;left:0;margin: 0;border:1px solid #ffffff;display:none;}
-.common-cdisheader .search #radios{border-color:#4b3b3b;}
+
+.common-cdisheader .search #radios{/*border-color:#4b3b3b;*/}
+
 .common-cdisheader .search #radios .btn-default{background-color:#ececec;margin-bottom:0px;}
 .common-cdisheader .search #radios .btn-default.active{background-color:#4b3b3b;color:#ffffff;font-weight:bold;}
 .common-cdisheader .search #radios .btn.focus {  outline: none;box-shadow:none;}
+
+.common-cdisheader .search .btn-secondary{background-color:#2D65C6;border-color:#2D65C6;}
+
 
 
 .cdis-page .ui-autocomplete{height:300px;overflow: auto;font-size: 90%;padding:3px;} 
@@ -216,8 +237,9 @@ CDIS PAGE
 #cdisDashboardPage{display:none;}
 #cdisSectionsPage{display:none;}
 
-#cdisDashboardPage .container-fluid .row > *{padding: 0 !important;width:100%;}
-#cdisDashboardPage .container-fluid .patient-container{margin:10px;background-color:rgba(251,251,251, 1);box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);}
+.main .container-fluid .row > *{padding: 0 !important;width:100%;}
+.main .container-fluid .patient-container{margin:10px;background-color:#F5F6F8;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);}
+
 #cdisDashboardPage .patient-record-container{min-height:230px;}
 #cdisDashboardPage .patient-thumbnail-container{height:200px;}
 #cdisDashboardPage .patient-graph-container{min-height:400px;}
@@ -226,12 +248,19 @@ CDIS PAGE
 #cdisDashboardPage .patient-tools-container{height:180px;}
 #cdisDashboardPage .patient-hcw-container{height:200px;}
 
-
+/*
 #cdisSectionsPage .container-fluid .row > *{padding: 0 !important;width:100%;}
 #cdisSectionsPage .container-fluid .patient-container{position:relative;margin:10px;}
+*/
 
 #cdisSectionsPage .patient-record-container{min-height:230px;}
-#cdisSectionsPage .patient-menu-container{height:30px;}
+#cdisSectionsPage .patient-menu-container{height:30px;background-color:#47BFC0;}
+
+#cdisSectionsPage .patient-menu-container .sections-menu{list-style: none;margin:0px;padding:0px;height:100%;display:flex;flex-flow:row nowrap;color:#ffffff;}
+#cdisSectionsPage .patient-menu-container .sections-menu .sections-menu-item{flex:1 auto;text-align:center;line-height:30px;cursor:default;font-weight:900;}
+#cdisSectionsPage .patient-menu-container .sections-menu .sections-menu-item:hover{background-color:#db4437;}
+#cdisSectionsPage .patient-menu-container .sections-menu .sections-menu-item.active{background-color:#2D65C6;}
+
 #cdisSectionsPage .patient-depresion-container{height:160px;}
 #cdisSectionsPage .patient-vaccination-container{height:160px;}
 #cdisSectionsPage .patient-section-container{height:400px;}
@@ -326,53 +355,56 @@ CDIS PAGE
 }
 
 
-#cdisDashboardPage .block-wmenu {position:absolute;top:10px;right:10px;padding:2px 10px 2px 10px;text-align:center;color:#4d4d4d;background-color:rgba(46,80,150,1);}
-#cdisDashboardPage .block-wmenu:hover{background-color:red;color:rgba(46,80,150,1);}
-#cdisDashboardPage .block-wmenu:hover  .slider{height:25px;}
-#cdisDashboardPage .block-wmenu .slider{
+.main .block-wmenu {position:absolute;top:10px;right:10px;padding:2px 10px 2px 10px;text-align:center;color:#cdcdcd;background-color:#E6E9EE;}
+.main .block-wmenu:hover{color:#4d4d4d;}
+.main .block-wmenu:hover  .slider{height:25px;}
+.main .block-wmenu .slider{
 	position:absolute;
 	text-align:center;
 	color:#4d4d4d;
-	background-color:rgba(46,80,150,1);
+	/*background-color:rgba(46,80,150,1);*/
 	width:100px;
 	height:0px;
+	overflow:hidden;
 	top:0;
 	left:-100px;
 	transition: height .25s ease-in-out;
 	
 	}
+.main .block-wmenu .slider .slider-item{display:inline-block;margin:2px 4px 2px 4px;padding:3px;}
+.main .block-wmenu .slider .slider-item:hover{background-color:#cdcdcd;}
 
 
 
 
-
-#cdisDashboardPage .block-title {color:#4d4d4d;background-color:rgba(46,80,150,1);width:150px;position:relative;height:25px;line-height:22px;padding:2px 2px 2px 5px;font-size:16px;}
-#cdisDashboardPage .block-title div{position:absolute;top:0px;width: 0;height: 0;border-top: 25px solid rgba(46,80,150,1);border-right: 25px solid rgba(251,251,251, 1);vertical-align:middle;right:0px;}
-
+.main .block-title {color:#ffffff;background-color:#2D65C6;width:150px;position:relative;height:25px;line-height:22px;padding:2px 2px 2px 5px;font-size:16px;}
+.main .block-title div{position:absolute;top:0px;width: 0;height: 0;border-top: 25px solid #2D65C6;border-right: 25px solid #F5F6F8;vertical-align:middle;right:0px;}
 
 
 
-#cdisDashboardPage .prc-avatar {display:inline-block;background-color:rgba(46,80,150,1);width:80px;height:80px;text-align:center;line-height:80px;font-size:60px;margin:5px;vertical-align:top;}
-#cdisDashboardPage .prc-name {display:inline-block;}
-#cdisDashboardPage .prc-fname {font-size:180%;padding:2px;}
-#cdisDashboardPage .prc-lname {font-size:180%;padding:2px;}
-#cdisDashboardPage .prc-community {font-size:140%;padding:5px 8px 5px 8px;background-color:rgba(46,80,150,1);color:#4d4d4d;margin:5px;text-align:center;}
-#cdisDashboardPage .prc-ramq,.prc-chart, .prc-ipm{margin:7px;}
-#cdisDashboardPage .spanv{background-color:rgba(46,80,150,1);padding:2px 7px 2px 3px;font-weight:bold;margin:0px;}
-#cdisDashboardPage .spanl{padding:2px 3px 2px 7px;background-color:#4d4d4d;color:#ffffff;text-transform: uppercase;margin:0px;}
-#cdisDashboardPage .prc-dtype{margin:5px;}
-#cdisDashboardPage .prc-dtype .spanl{width:auto; text-align:center;}
-#cdisDashboardPage .prc-dtype .spanv{width:auto;text-align:center;}
+
+.main .prc-avatar {display:inline-block;background-color:#E6E9EE;width:80px;height:80px;border-radius: 50%;text-align:center;line-height:80px;font-size:60px;margin:5px;vertical-align:top;}
+.main .prc-name {display:inline-block;}
+.main .prc-fname {font-size:180%;padding:2px;}
+.main .prc-lname {font-size:180%;padding:2px;}
+.main .prc-community {font-size:140%;padding:5px 8px 5px 8px;background-color:#E6E9EE;color:#4d4d4d;margin:5px;text-align:center;}
+.main .prc-ramq,.prc-chart, .prc-ipm{margin:7px;}
+.main .spanv{background-color:#cdcdcd;;padding:2px 3px 2px 3px;font-weight:bold;margin:0px;}
+.main .spanl{padding:2px 10px 2px 5px;background-color:#4d4d4d;color:#ffffff;text-transform: uppercase;margin:0px;}
+.main .prc-dtype{margin:5px;}
+.main .prc-dtype .spanl{width:auto; text-align:center;}
+.main .prc-dtype .spanv{width:auto;text-align:center;}
+
 
 
 .abcgraphs-container{width:100%;text-align:center;}
 .graph-container{width:40%;border:1px solid #000000;display:inline-block;}
 
-.widget-container{width:47%;border:1px solid #000000;display:inline-flex;flex-flow:row nowrap;margin:10px;}
-.widget-container .widget-menu{min-width:25px;max-width:25px;flex:1 auto;background-color:#000000;color:#ffffff;}
+.widget-container{width:47%;border:1px solid #E6E9EE;display:inline-flex;flex-flow:row nowrap;margin:10px;}
+.widget-container .widget-menu{min-width:25px;max-width:25px;flex:1 auto;background-color:#E6E9EE;color:#ffffff;}
 .widget-container .widget{flex:1 auto;background-color:#ffffff;}
-.widget-menu .widget-menu-item {width:22px;height:22px;margin:auto;}
-.widget-menu .widget-menu-item:hover {background-color:red; color:rgba(46,80,150,1);}
+.widget-menu .widget-menu-item {width:22px;height:22px;line-height:22px;margin:auto;color:#cdcdcd;text-align:center;}
+.widget-menu .widget-menu-item:hover {background-color:#cdcdcd;color:#4d4d4d;}
 
 
 

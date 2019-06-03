@@ -33,17 +33,18 @@ function loadTemplate(pageName){
 		*/
 		var pr = getParameterByName("ramq"); //required
 		var sec = getParameterByName("section"); //optional  - default is dashboard
+		var pact = getParameterByName("patientAction"); //optional  - default is dashboard
 		
 		if(pr == ""){
 			//display message and go to search page
 			gts(sid,language);
 		}else{
 			loadPatientObject(pr);
-			if(sec == ""){
-				//load dashboard
-				sec = 'dashboard';
-			}
-			loadSection(sec);
+			if(sec == ""){sec = 'dashboard';}
+			if(pact == ""){pact = null;}
+			var obj = {data:{section:sec, action:pact}};
+			obj = {data:{section:'lab'}};
+			loadSection(obj);
 		}
 		/*
 		setTimeout(function(){
@@ -52,48 +53,6 @@ function loadTemplate(pageName){
 		},500);
 		*/
 	}
-}
-
-/*
- * load the good section of the page 
- * possible values : dashboard , patient (for add and edit), lab, renal, lipids, complications, 
- * */
-function loadSection(section,action){
-	cdisSection = section;
-	
-	
-	if(section == "dashboard"){
-		loadDashboardPage();
-	}else if(section == "patient"){
-		loadPatientPage(action);
-		/*
-		$(".cdismenu").hide();
-		$(".side").hide();
-		$(".mainpage .main .page").load("/ncdis/client/templates/cdis."+section+".html", function(patientObjArr){
-			$(".cdisbody_"+section).fadeIn(350);
-			$(".fnew").hide();
-			$(".freports").hide();
-			initPage();
-		});
-		*/
-	}else{
-		loadSectionPage(section);
-		/*
-		$(".mainpage .main .page").load("/ncdis/client/templates/cdis."+section+".html", function(patientObjArr){
-			$(".cdisbody_"+section).fadeIn(350);
-			//drawPatientRecord(patientObjArray);
-			drawSectionRecord(patientObjArray);
-			populateRecord();
-			populatePageside();
-			initPage();
-		});
-		$("#menu li").removeClass("selected");
-		$("#menu li").each(function( index ) {
-			$(this).children("."+section+"_icon_").parent().addClass("selected");
-		});
-		*/
-	}
-	
 }
 
 
@@ -176,6 +135,9 @@ function loadDashboardPage(){
 	});
 	*/
 }
+
+
+
 
 
 function loadPatientObject(value){
