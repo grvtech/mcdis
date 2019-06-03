@@ -1,6 +1,6 @@
 html {text-rendering: optimizelegibility !important;-webkit-font-smoothing: antialiased !important;height: 100%;}
 /*body{font-size:14px;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans-Serif, Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;background:#5c6c9d;}*/
-body{font-size:14px;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans-Serif, Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;background:#ffffff;}
+body{font-size:0.8vw;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans-Serif, Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;background:rgba(49,49,49,1);}
 
 
 /*COMMON CLASSES*/
@@ -13,24 +13,24 @@ body{font-size:14px;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans-
 
 
 
-.common-button{border:none;margin-right:10px;font-family: Sans-Serif;font-size:90%;display:inline-block;text-align:center;vertical-align:middle;color:#ffffff;padding:3px 10px 3px 10px;background-color:#4b3b3b;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);cursor: pointer;text-decoration:none;}
+.common-button{border:none;margin-right:10px;font-family: Sans-Serif;font-size:1vm;display:inline-block;text-align:center;vertical-align:middle;color:#ffffff;padding:3px 10px 3px 10px;background-color:#4b3b3b;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);cursor: pointer;text-decoration:none;}
 .common-button:hover{background-color:#db4437;color:#000000;-moz-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);-webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);}
 .common-error{text-align:center; font-weight:900; color:#ff0000;}
 
 .common-header{height:50px;width:100%;}
 /*.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#4b3b3b;z-index: 100;}*/
-.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#cdcdcd;z-index: 100;}
-.common-cdisheader .logo{position:absolute;left:20px;top:50%;height:40px;width:auto;margin-top:-20px;background:no-repeat url(../../images/cdis-logo50.png) left center;background-size: 32px 40px;font-size:220%;color:#ffffff;padding:0px 0px 0px 35px;}
-.common-cdisheader .menu{position:absolute;margin:0px;padding:0px;list-style-type: none;right:15px;top:10px;height:35px;width:auto;}
-.common-cdisheader .menu li {display: inline-block;width:35px;height:35px;line-height:35px;text-align:center;color:#ffffff;margin:0px 10px 0px 0px;background-color:#bbb2b2;}
+.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:rgba(46,80,150,1);z-index: 100;}
+.common-cdisheader .logo{position:absolute;left:20px;top:50%;height:40px;width:auto;margin-top:-20px;background:no-repeat url(../../images/cdis-logo50.png) left center;background-size: 32px 40px;font-size:30px;color:#ffffff;padding:0px 0px 0px 35px;}
+.common-cdisheader .menu{position:absolute;margin:0px;padding:0px;list-style-type: none;right:15px;top:10px;height:35px;width:auto;font-size:16px;}
+.common-cdisheader .menu li {display: inline-block;width:35px;height:35px;line-height:35px;text-align:center;color:#ffffff;margin:0px 10px 0px 0px;background-color:rgba(28,28,28,1);}
 .common-cdisheader .menu li:hover {background-color:#db4437; box-shadow: 0 0 4px rgba(0,0,0,.15),0 2px 6px rgba(0,0,0,.54);}
 
-.common-cdisfooter-left{position:fixed;right:10px;bottom:10px;width:60px;margin-top:-65px;z-index: 20;}
-.common-cdisfooter-left .leftmenu{margin:0px 0px 0px 15px;padding:0px;bottom:5px;width:50px;height:50px;text-align:center;background-color:#bbb2b2;}
+.common-cdisfooter-left{position:fixed;right:10px;bottom:10px;width:60px;margin-top:-65px;z-index: 20;font-size:16px;}
+.common-cdisfooter-left .leftmenu{margin:0px 0px 0px 15px;padding:0px;bottom:5px;width:50px;height:50px;text-align:center;background-color:rgba(28,28,28,1);}
 .common-cdisfooter-left .leftmenu:hover {background-color:#db4437;}
 .common-cdisfooter-left .leftmenu i{margin:auto;line-height:50px;font-size:160%;color:#ffffff;}
 .common-cdisfooter-left .leftfootermenu{display:none;margin-left:15px;padding:0px;list-style-type: none;width:auto;margin-bottom:5px;}
-.common-cdisfooter-left .leftfootermenu li{display:block;width:50px;height:50px;margin:10px 10px 10px 0px;background-color:#bbb2b2;line-height:50px;text-align:center;color:#ffffff;font-size:120%;}
+.common-cdisfooter-left .leftfootermenu li{display:block;width:50px;height:50px;margin:10px 10px 10px 0px;background-color:rgba(28,28,28,1);line-height:50px;text-align:center;color:#ffffff;font-size:120%;}
 .common-cdisfooter-left .leftfootermenu li:hover{background-color:#db4437;}
 
 
@@ -104,7 +104,7 @@ INDEX PAGE
 /**
 SEARCH PAGE CSS
 */
-.search-message{width:1000px;margin:auto;background-color:#ededed;margin-top:10px;margin-bottom:10px;height:150px;}
+.search-message{width:1000px;margin:auto;background-color:rgba(251,251,251, 1);margin-top:10px;margin-bottom:10px;height:150px;}
 
 
 .search-search{width:1000px;height:150px;margin:auto;padding:0px;display:flex;flex-direction:row;flex-wrap:nowrap;}
@@ -124,7 +124,7 @@ SEARCH PAGE CSS
 .search-dashboard-menu{position:relative;width:1000px;text-align:right;margin:auto;padding:5px;}
 
 .search-personal-patients{position:relative;max-height:250px;width:1000px;margin:auto;z-index:2;background-color:#efefef;overflow-x: hidden;padding:5px;}
-.search-personal-patients .linkedHeader{position:relative;width:auto;padding:5px;background:#cdcdcd;border:1px solid #4d4d4d;}
+.search-personal-patients .linkedHeader{position:relative;width:auto;padding:5px;background:rgba(46,80,150,1);border:1px solid #4d4d4d;}
 .search-personal-patients .linkedHeader #linkedPatients{position:absolute;right:2px;top:6px;}
 
 .search-personal-patients table{width:100%;border:1px solid #4d4d4d;}
@@ -133,13 +133,13 @@ SEARCH PAGE CSS
 .search-personal-patients table thead td{padding:5px;text-align:center;}
 .search-personal-patients table tbody td{padding:5px;text-align:center;}
 .search-personal-patients table tbody tr{background:#ffffff;cursor:pointer;}
-.search-personal-patients table tbody tr:hover{background:#cdcdcd;}
+.search-personal-patients table tbody tr:hover{background:rgba(46,80,150,1);}
 
 .search-personal-patients table tbody tr.notvisits{background:#ffc4c4;}
-.search-personal-patients table tbody tr.notvisits:hover{background:#cdcdcd;}
+.search-personal-patients table tbody tr.notvisits:hover{background:rgba(46,80,150,1);}
 .futurevisits{}
 .search-personal-patients table tbody tr.currentvisits{background:#c4ffc8;}
-.search-personal-patients table tbody tr.currentvisits:hover{background:#cdcdcd;}
+.search-personal-patients table tbody tr.currentvisits:hover{background:rgba(46,80,150,1);}
 .search-personal-patients p{margin:2px;padding:2px;}
 .search-personal-patients #userfullname{font-weight:bold;}
 
@@ -148,7 +148,7 @@ SEARCH PAGE CSS
 
 .search-page .ui-autocomplete{width:612px;margin-left:-200px;height:400px;overflow: auto;-moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;}
 .search-page .ui-autocomplete li div div{display:inline-block;padding:3px;overflow:hidden;}
-.search-page  .ui-autocomplete li div div strong{background-color:#cdcdcd;}
+.search-page  .ui-autocomplete li div div strong{background-color:rgba(46,80,150,1);}
 .search-page .searchname {width:330px;}
 .search-page .searchcommunity {width:130px;}
 .search-page .searchchart {width:80px;}
@@ -159,12 +159,12 @@ SEARCH PAGE CSS
 
 .notes-alert{position:relative;height:100px;width:1000px;margin:auto;z-index:2;background-color:#efefef;display:none;overflow-x: hidden;padding:5px;}
 .notes-alert .message{position:relative;background-color:#fefefe;text-align:left;font-size:90%;line-height:25px;margin:3px;padding:3px;}
-.notes-alert .message-button{position:absolute;color:#cdcdcd;font-size:80%;cursor:pointer;right:15px;width:auto;top:2px;}
+.notes-alert .message-button{position:absolute;color:rgba(46,80,150,1);font-size:80%;cursor:pointer;right:15px;width:auto;top:2px;}
 .notes-alert .message-button:hover{color:#4d4d4d;font-weight:bold;}
 
 
 .personal-patients{position:relative;max-height:250px;width:1000px;margin:auto;z-index:2;background-color:#efefef;overflow-x: hidden;padding:5px;}
-.personal-patients .linkedHeader{position:relative;width:auto;padding:5px;background:#cdcdcd;border:1px solid #4d4d4d;}
+.personal-patients .linkedHeader{position:relative;width:auto;padding:5px;background:rgba(46,80,150,1);border:1px solid #4d4d4d;}
 .personal-patients .linkedHeader #linkedPatients{position:absolute;right:2px;top:6px;}
 .personal-patients table{width:100%;display:none;border:1px solid #4d4d4d;}
 .personal-patients table thead{font-size:90%;font-weight:bold;background:#4d4d4d;color:#ffffff;text-transform: uppercase;}
@@ -172,11 +172,11 @@ SEARCH PAGE CSS
 .personal-patients table thead td{padding:5px;text-align:center;}
 .personal-patients table tbody td{padding:5px;text-align:center;}
 .personal-patients table tbody tr{background:#ffffff;cursor:pointer;}
-.personal-patients table tbody tr:hover{background:#cdcdcd;}
+.personal-patients table tbody tr:hover{background:rgba(46,80,150,1);}
 .personal-patients table tbody tr.notvisits{background:#ffc4c4;}
-.personal-patients table tbody tr.notvisits:hover{background:#cdcdcd;}
+.personal-patients table tbody tr.notvisits:hover{background:rgba(46,80,150,1);}
 .personal-patients table tbody tr.currentvisits{background:#c4ffc8;}
-.personal-patients table tbody tr.currentvisits:hover{background:#cdcdcd;}
+.personal-patients table tbody tr.currentvisits:hover{background:rgba(46,80,150,1);}
 .personal-patients p{margin:2px;padding:2px;}
 .personal-patients #userfullname{font-weight:bold;}
 
@@ -201,7 +201,7 @@ CDIS PAGE
 
 .cdis-page .ui-autocomplete{height:300px;overflow: auto;font-size: 90%;padding:3px;} 
 .cdis-page .ui-autocomplete li div div{display:inline-block;padding:3px;overflow:hidden;}
-.cdis-page .ui-autocomplete li div div strong{background-color:#cdcdcd;}
+.cdis-page .ui-autocomplete li div div strong{background-color:rgba(46,80,150,1);}
 .searchname {width:220px;}
 .searchcommunity {width:100px;}
 .searchchart {width:60px;}
@@ -210,15 +210,15 @@ CDIS PAGE
 
 
 /*.mainpage #cdisDashboardPage{width:100%;}*/ 
-/*.mainpage #cdisDashboardPage .container-fluid {width:100%;background-color:#cdcdcd;}*/
+/*.mainpage #cdisDashboardPage .container-fluid {width:100%;background-color:rgba(46,80,150,1);}*/
 /*.mainpage #cdisDashboardPage .container-fluid .row > *{border:1px solid #000000;}*/
 
 #cdisDashboardPage{display:none;}
 #cdisSectionsPage{display:none;}
 
 #cdisDashboardPage .container-fluid .row > *{padding: 0 !important;width:100%;}
-#cdisDashboardPage .container-fluid .patient-container{margin:10px;background-color:#ededed;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);}
-#cdisDashboardPage .patient-record-container{height:200px;}
+#cdisDashboardPage .container-fluid .patient-container{margin:10px;background-color:rgba(251,251,251, 1);box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);}
+#cdisDashboardPage .patient-record-container{min-height:230px;}
 #cdisDashboardPage .patient-thumbnail-container{height:200px;}
 #cdisDashboardPage .patient-graph-container{min-height:400px;}
 #cdisDashboardPage .patient-notes-container{height:200px;}
@@ -230,7 +230,7 @@ CDIS PAGE
 #cdisSectionsPage .container-fluid .row > *{padding: 0 !important;width:100%;}
 #cdisSectionsPage .container-fluid .patient-container{position:relative;margin:10px;}
 
-#cdisSectionsPage .patient-record-container{height:150px;}
+#cdisSectionsPage .patient-record-container{min-height:230px;}
 #cdisSectionsPage .patient-menu-container{height:30px;}
 #cdisSectionsPage .patient-depresion-container{height:160px;}
 #cdisSectionsPage .patient-vaccination-container{height:160px;}
@@ -243,7 +243,7 @@ CDIS PAGE
 
 
 @media screen  and  (max-height: 2160px) {
-	#cdisDashboardPage .patient-record-container{height:200px;}
+	
 	#cdisDashboardPage .patient-thumbnail-container{height:200px;}
 	#cdisDashboardPage .patient-graph-container{min-height:780px;}
 	#cdisDashboardPage .patient-notes-container{height:250px;}
@@ -262,8 +262,8 @@ CDIS PAGE
 	#cdisSectionsPage .patient-visit-container{height:150px;}
 }
 @media screen  and  (max-height: 1080px) {
-	body{font-size:18px;}
-	#cdisDashboardPage .patient-record-container{height:200px;}
+	
+	
 	#cdisDashboardPage .patient-thumbnail-container{height:200px; }
 	#cdisDashboardPage .patient-graph-container{min-height:600px; }
 	#cdisDashboardPage .patient-notes-container{height:200px; }
@@ -284,8 +284,8 @@ CDIS PAGE
 	
 }
 @media screen  and  (max-height: 900px) {
-	body{font-size:16px;}
-	#cdisDashboardPage .patient-record-container{height:200px;}
+	
+	
 	#cdisDashboardPage .patient-thumbnail-container{height:200px;}
 	#cdisDashboardPage .patient-graph-container{min-height:500px; }
 	#cdisDashboardPage .patient-notes-container{height:160px; }
@@ -305,8 +305,8 @@ CDIS PAGE
 	
 }
 @media screen  and  (max-height: 800px) {
-	body{font-size:14px;}
-	#cdisDashboardPage .patient-record-container{height:160px;}
+	
+	
 	#cdisDashboardPage .patient-thumbnail-container{height:180px; }
 	#cdisDashboardPage .patient-graph-container{min-height:400px;}
 	#cdisDashboardPage .patient-notes-container{height:150px;}
@@ -326,14 +326,14 @@ CDIS PAGE
 }
 
 
-#cdisDashboardPage .block-wmenu {position:absolute;top:10px;right:10px;padding:2px 10px 2px 10px;text-align:center;color:#4d4d4d;background-color:#cdcdcd;}
-#cdisDashboardPage .block-wmenu:hover{background-color:red;color:#cdcdcd;}
+#cdisDashboardPage .block-wmenu {position:absolute;top:10px;right:10px;padding:2px 10px 2px 10px;text-align:center;color:#4d4d4d;background-color:rgba(46,80,150,1);}
+#cdisDashboardPage .block-wmenu:hover{background-color:red;color:rgba(46,80,150,1);}
 #cdisDashboardPage .block-wmenu:hover  .slider{height:25px;}
 #cdisDashboardPage .block-wmenu .slider{
 	position:absolute;
 	text-align:center;
 	color:#4d4d4d;
-	background-color:#cdcdcd;
+	background-color:rgba(46,80,150,1);
 	width:100px;
 	height:0px;
 	top:0;
@@ -346,33 +346,33 @@ CDIS PAGE
 
 
 
-#cdisDashboardPage .block-title {color:#4d4d4d;background-color:#cdcdcd;width:140px;position:relative;height:25px;line-height:22px; font-weight:900;padding:2px 2px 2px 5px;}
-#cdisDashboardPage .block-title div{position:absolute;top:0px;width: 0;height: 0;border-top: 25px solid #cdcdcd;border-right: 25px solid #ededed;vertical-align:middle;right:0px;}
+#cdisDashboardPage .block-title {color:#4d4d4d;background-color:rgba(46,80,150,1);width:150px;position:relative;height:25px;line-height:22px;padding:2px 2px 2px 5px;font-size:16px;}
+#cdisDashboardPage .block-title div{position:absolute;top:0px;width: 0;height: 0;border-top: 25px solid rgba(46,80,150,1);border-right: 25px solid rgba(251,251,251, 1);vertical-align:middle;right:0px;}
 
 
 
 
-#cdisDashboardPage .prc-avatar {display:inline-block;background-color:#cdcdcd;width:80px;height:80px;text-align:center;line-height:80px;font-size:60px;margin:5px;vertical-align:top;}
+#cdisDashboardPage .prc-avatar {display:inline-block;background-color:rgba(46,80,150,1);width:80px;height:80px;text-align:center;line-height:80px;font-size:60px;margin:5px;vertical-align:top;}
 #cdisDashboardPage .prc-name {display:inline-block;}
 #cdisDashboardPage .prc-fname {font-size:180%;padding:2px;}
 #cdisDashboardPage .prc-lname {font-size:180%;padding:2px;}
-#cdisDashboardPage .prc-community {font-size:160%;padding:5px 8px 5px 8px;background-color:#4d4d4d;color:#ffffff;margin-left:-10px;}
-#cdisDashboardPage .prc-ramq,.prc-chart, .prc-ipm, .prc-dtype {margin:5px;}
-#cdisDashboardPage .spanv{background-color:#cdcdcd;padding:2px 7px 2px 3px;font-weight:bold;margin:0px;}
+#cdisDashboardPage .prc-community {font-size:140%;padding:5px 8px 5px 8px;background-color:rgba(46,80,150,1);color:#4d4d4d;margin:5px;text-align:center;}
+#cdisDashboardPage .prc-ramq,.prc-chart, .prc-ipm{margin:7px;}
+#cdisDashboardPage .spanv{background-color:rgba(46,80,150,1);padding:2px 7px 2px 3px;font-weight:bold;margin:0px;}
 #cdisDashboardPage .spanl{padding:2px 3px 2px 7px;background-color:#4d4d4d;color:#ffffff;text-transform: uppercase;margin:0px;}
-#cdisDashboardPage .prc-dtype .spanl{width:120px; text-align:center;}
-#cdisDashboardPage .prc-dtype .spanv{width:120px;text-align:center;}
+#cdisDashboardPage .prc-dtype{margin:5px;}
+#cdisDashboardPage .prc-dtype .spanl{width:auto; text-align:center;}
+#cdisDashboardPage .prc-dtype .spanv{width:auto;text-align:center;}
 
 
 .abcgraphs-container{width:100%;text-align:center;}
 .graph-container{width:40%;border:1px solid #000000;display:inline-block;}
 
-.widget-container{width:41%;border:1px solid #000000;display:inline-flex;flex-flow:row nowrap;margin:10px;}
-.widget-container .widget-menu{width:25px;flex:1 auto;background-color:#000000;}
+.widget-container{width:47%;border:1px solid #000000;display:inline-flex;flex-flow:row nowrap;margin:10px;}
+.widget-container .widget-menu{min-width:25px;max-width:25px;flex:1 auto;background-color:#000000;color:#ffffff;}
 .widget-container .widget{flex:1 auto;background-color:#ffffff;}
-.widget-menu{color:#ffffff;}
 .widget-menu .widget-menu-item {width:22px;height:22px;margin:auto;}
-.widget-menu .widget-menu-item:hover {background-color:red; color:#cdcdcd;}
+.widget-menu .widget-menu-item:hover {background-color:red; color:rgba(46,80,150,1);}
 
 
 
