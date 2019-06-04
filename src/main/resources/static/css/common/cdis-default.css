@@ -258,8 +258,11 @@ CDIS PAGE
 
 #cdisSectionsPage .patient-menu-container .sections-menu{list-style: none;margin:0px;padding:0px;height:100%;display:flex;flex-flow:row nowrap;color:#ffffff;}
 #cdisSectionsPage .patient-menu-container .sections-menu .sections-menu-item{flex:1 auto;text-align:center;line-height:30px;cursor:default;font-weight:900;}
-#cdisSectionsPage .patient-menu-container .sections-menu .sections-menu-item:hover{background-color:#db4437;}
-#cdisSectionsPage .patient-menu-container .sections-menu .sections-menu-item.active{background-color:#2D65C6;}
+#cdisSectionsPage .patient-menu-container .sections-menu .sections-menu-item:hover{background-image: radial-gradient(circle, #f76559, #db4437);}
+#cdisSectionsPage .patient-menu-container .sections-menu .sections-menu-item.active{background-image: radial-gradient(circle, #77a5f4, #2D65C6);}
+/*
+background-image: radial-gradient(circle, #4D81DC, #305BA2);  #ef594c
+*/
 
 #cdisSectionsPage .patient-depresion-container{height:160px;}
 #cdisSectionsPage .patient-vaccination-container{height:160px;}

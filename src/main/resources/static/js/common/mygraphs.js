@@ -133,13 +133,13 @@ window.chartColors = {
 }(this));
 
 
-
+/*labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],*/
 
 var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		var config = {
-			type: 'line',
+			type: 'scater',
 			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				labels: [0, 10, 20, 30, 40, 50, 60],
 				datasets: [{
 					label: 'My First dataset',
 					backgroundColor: window.chartColors.red,
@@ -172,30 +172,42 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
 			},
 			options: {
 				annotation: {
-					annotations: [{
-						type: 'box',
-						drawTime: 'beforeDatasetsDraw',
-						yScaleID: 'y-axis-0',
-						yMin: 20,
-						yMax: 150,
-						backgroundColor: 'rgba(0, 255, 0, 0.2)'
-					},
+					annotations: [
+						{
+							type: 'box',
+							drawTime: 'beforeDatasetsDraw',
+							yScaleID: 'y-axis-0',
+							yMin: 0,
+							yMax: 150,
+							xScaleID: 'x-axis-0',
+							xMin: 0,
+							xMax: 60,
+							backgroundColor: 'rgba(0, 0, 255, 1)'
+						},
+						{
+							type: 'box',
+							drawTime: 'beforeDatasetsDraw',
+							yScaleID: 'y-axis-0',
+							yMin: 0,
+							yMax: 100,
+							xScaleID: 'x-axis-0',
+							xMin: 0,
+							xMax: 40,
+							backgroundColor: 'rgba(255, 0, 0, 1)'
+						},
 					{
 						type: 'box',
 						drawTime: 'beforeDatasetsDraw',
 						yScaleID: 'y-axis-0',
-						yMin: -40,
-						yMax: 20,
-						backgroundColor: 'rgba(255, 0, 0, 0.2)'
-					},
-					{
-						type: 'box',
-						drawTime: 'beforeDatasetsDraw',
-						yScaleID: 'y-axis-0',
-						yMin: -150,
-						yMax: -40,
-						backgroundColor: 'rgba(0, 0, 255, 0.2)'
+						yMin: 0,
+						yMax: 50,
+						xScaleID: 'x-axis-0',
+						xMin: 0,
+						xMax: 20,
+						backgroundColor: 'rgba(0, 255, 0, 1)'
 					}
+					
+					
 					]
 				},
 				responsive: true,
