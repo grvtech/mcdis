@@ -1,9 +1,10 @@
 var emptySession = "00000000-0000-0000-0000-000000000000";
+var sid = getParameterByName("uuidsession");
 var page = getPage();
+console.log(page)
 var applanguage="en";
 var userObj = null;
 var userProfileObj = null;
-var sid = getParameterByName("uuidsession");
 var patientObj = null;
 var patientObjArray = null;
 var messagesArray = null;
@@ -11,6 +12,9 @@ var patientSearchObj = null;
 var backArray = [];
 var backArrayIndex = 0;
 var $body = $("body");
+let apppath= '/ncdis/js/apps/';
+let pageNavigationElements = [];
+
 //var usersArray = getUsers();
 //var userNotes = getUserNotes(sid);
 dbp_dec=0;

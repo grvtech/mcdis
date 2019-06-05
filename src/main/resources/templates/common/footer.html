@@ -3,15 +3,15 @@
 </head>
 <body>
 <div th:fragment="index-footer-js">
-	<script th:src="@{/js/pages/index.js}" ></script>
+	<script type="module" th:src="@{/js/pages/index.js}" ></script>
 </div>
 
 <div th:fragment="search-footer-js">
-	<script th:src="@{/js/pages/search.js}" ></script>
+	<script defer th:src="@{/js/pages/search.js}" ></script>
 </div>
 
 <div th:fragment="cdis-footer-js">
-	<script th:src="@{/js/pages/cdis.js}" ></script>
+	<script defer th:src="@{/js/pages/cdis.js}" ></script>
 </div>
 
 </body>
