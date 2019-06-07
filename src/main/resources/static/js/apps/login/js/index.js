@@ -22,75 +22,93 @@ export default class GRVlogin{
 		this.fb = $('<div>',{class:'btn btn-primary index-forgot-button', id:'forgotButton'}).text('Forgot password').appendTo(this.form);
 		this.sb = $('<div>',{class:'btn btn-primary index-subscribe-button', id:'subscribeButton'}).text('Add new CDIS user').appendTo(this.form);
 		this.lb.on('click',{action:this.config.actions.login},this.l);
-		this.lb.on('click',this.f);
-		
-		var df = $('<div>',{class:'index-dialog-forgot', title:'Entrer info to recover passord', id:'dialogForgot'}).appendTo($('body'));
+		this.fb.on('click',this.f);
+		this.sb.on('click',this.s);
 		this.container.fadeIn(1000);
+		this.buildForgotDialog();
+		this.buildSubscribeDialog();
 	}
 
-	f(event){
-		
-		$("#dialogForgot").dialog({
-			  autoOpen: false,
-		    	resizable: false,
-		    	height: 650,
-		   		width: 420,
-		    	modal: true,
+	
+	buildForgotDialog(){
+		var body = $('body');
+		var imsg ='All form fields are required.';
+		var df = $('<div>',{class:'index-dialog-forgot', title:'Entrer info to recover passord', id:'dialogForgot'}).appendTo(body);
+		$('<p>',{class:'validate-tips'}).text('All form fields are required.').appendTo(df);
+		var fs = $('<fieldset>').appendTo($('<form>').appendTo(df));
+		$('<label>',{for:'usernameUser'}).text('User name').appendTo(fs);
+		$('<input>',{type:'text',name:'usernameUser',id:'usernameUser',class:'text ui-widget-content ui-corner-all mf'}).appendTo(fs);
+		$('<label>',{for:'firstnameUser'}).text('First name').appendTo(fs);
+		$('<input>',{type:'text',name:'firstnameUser',id:'firstnameUser',class:'text ui-widget-content ui-corner-all mf'}).appendTo(fs);
+		$('<label>',{for:'lastnameUser'}).text('Last name').appendTo(fs);
+		$('<input>',{type:'text',name:'lastnameUser',id:'lastnameUser',class:'text ui-widget-content ui-corner-all mf'}).appendTo(fs);
+		$('<label>',{for:'emailUser'}).text('Email').appendTo(fs);
+		$('<input>',{type:'text',name:'emailUser',id:'emailUser',class:'text ui-widget-content ui-corner-all mf'}).appendTo(fs);
+		$('<label>',{for:'profesionUser'}).text('Profession').appendTo(fs);
+		$('<select>',{name:'profesionUser',id:'profesionUser',class:'text ui-widget-content ui-corner-all mf'}).appendTo(fs);
+		var ops = ['Please Choose','CHR', 'MD', 'Nurse', 'Nutritionist'];
+		for(let i=0;i<ops.length;i++){
+			$('<option>',{value:i}).text(ops[i]).appendTo($('#profesionUser'));
+		}
+		df.dialog({autoOpen: false,resizable: false,height: 650,width: 420,modal: true,
 		    buttons: {
-		      Cancel: function() {
-		        $( this ).dialog( "close" );
-		      },
-		      "Recover Password": function() {
-		    	  forgotPassword(formForgot[0]);
-		        }
-		    },
-		    close: function() {
-		        formForgot[ 0 ].reset();
-		        $(".mf").removeClass( "ui-state-error" );
-		        tips.text(imsg);
-		      }
-		  });
-
-		
-		<div id="dialogForgot" title="Forgot Password ? Enter info to recover password." class="index-dialog-forgot">
-		  <p class="validateTips">All form fields are required.</p>
-		   <form>
-		    <fieldset>
-		      <label for="usernameUser">Username</label>
-		      <input type="text" name="usernameUser" id="usernameUser" value="" class="text ui-widget-content ui-corner-all mf">
-		      <label for="firstnameUser">First name</label>
-		      <input type="text" name="firstnameUser" id="firstnameUser" value="" class="text ui-widget-content ui-corner-all mf">
-		      <label for="nameUser">Last name</label>
-		      <input type="text" name="lastnameUser" id="lastnameUser" value="" class="text ui-widget-content ui-corner-all mf">
-		      <label for="emailUser">Email</label>
-		      <input type="text" name="emailUser" id="emailUser" value="" class="text ui-widget-content ui-corner-all mf">
-		 	  <label for="profesionUser">Profession</label>
-		      <select name="profesionUser" id="profesionUser" class="text ui-widget-content ui-corner-all mf">
-		      	<option value="0">Please Choose ...</option>
-		      	<option value="1">CHR</option>
-		      	<option value="2">MD</option>
-		      	<option value="3">Nurse</option>
-		      	<option value="3">Nutritionist</option>
-		      </select>
-		      
-		      <!-- Allow form submission with keyboard without duplicating the dialog button -->
-		      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-		    </fieldset>
-		  </form>
-	</div>
-
-		
-		
+		    	Cancel: function() {$( this ).dialog( "close" );},
+		    	"Recover Password": function() {GRVlogin.forgot();}},
+		    	close: function() {$('#dialogForgot form')[0].reset();$(".mf").removeClass( "ui-state-error" );$('.validate-tips').text(imsg);}
+		});
+		$('.ui-dialog-buttonpane button').addClass('btn btn-primary');
 	}
 	
+	
+	buildSubscribeDialog(){
+		var body = $('body');
+		var imsg = 'All form fields are required.';
+		var df = $('<div>',{class:'index-dialog-subscribe', title:'Subscribe to CDIS', id:'dialogSubscribe'}).appendTo(body);
+		$('<p>',{class:'validate-tips'}).text(imsg).appendTo(df);
+		var fs = $('<fieldset>').appendTo($('<form>').appendTo(df));
+		$('<label>',{for:'firstnameSub'}).text('First name').appendTo(fs);
+		$('<input>',{type:'text',name:'firstnameSub',id:'firstnameSub',class:'text ui-widget-content ui-corner-all mf'}).appendTo(fs);
+		$('<label>',{for:'lastnameSub'}).text('Last name').appendTo(fs);
+		$('<input>',{type:'text',name:'lastnameSub',id:'lastnameSub',class:'text ui-widget-content ui-corner-all mf'}).appendTo(fs);
+		$('<label>',{for:'emailSub'}).text('Email').appendTo(fs);
+		$('<input>',{type:'text',name:'emailSub',id:'emailSub',class:'text ui-widget-content ui-corner-all mf'}).appendTo(fs);
+		$('<label>',{for:'idcommunitySub'}).text('Community').appendTo(fs);
+		$('<select>',{name:'idcommunitySub',id:'idcommunitySub',class:'text ui-widget-content ui-corner-all mf'}).appendTo(fs);
+		var ops = ['Please Choose','Chisasibi','Estmain','Mistissini','Nemaska','Oujebougoumou','Waskaganish','Waswanipi','Wemindji','Whapmagoostui'];
+		for(let i=0;i<ops.length;i++){
+			$('<option>',{value:i}).text(ops[i]).appendTo($('#idcommunitySub'));
+		}
+		$('<label>',{for:'idprofesionSub'}).text('Profession').appendTo(fs);
+		$('<select>',{name:'idprofesionSub',id:'idprofesionSub',class:'text ui-widget-content ui-corner-all mf'}).appendTo(fs);
+		var ops = ['Please Choose','CHR', 'MD', 'Nurse', 'Nutritionist'];
+		for(let i=0;i<ops.length;i++){
+			$('<option>',{value:i}).text(ops[i]).appendTo($('#idprofesionSub'));
+		}
+		df.dialog({autoOpen: false,resizable: false,height: 650,width: 420,modal: true,
+		    buttons: {
+		    	Cancel: function() {$( this ).dialog( "close" );},
+		    	"Recover Password": function() {GRVlogin.forgot($('#dialogForgot form'));}},
+		    	close: function() {$('#dialogForgot form')[0].reset();$(".mf").removeClass( "ui-state-error" );$('.validate-tips').text(imsg);}
+		  });
+		
+		df.dialog({autoOpen: false,resizable: false,height: 650,width: 420,modal: true,
+		  buttons: {
+		    Cancel: function() {$( this ).dialog( "close" );},
+		    "Subscribe to CDIS": function() {GRVlogin.subscribe();}},
+		  close: function() {$('#dialogForgot form')[0].reset();$(".mf").removeClass( "ui-state-error" );}
+		});
+		$('.ui-dialog-buttonpane button').addClass('btn btn-primary');
+	}
+	
+	/*forgot password click action*/
+	f(event){$("#dialogForgot").dialog("open");}
+	
+	/*subscribe click action*/
+	s(event){$("#dialogSubscribe").dialog("open");}
 	
 	/*login method*/
 	l(event){
-		var user = $("#user").val();
-		var pass = $("#pass").val();
-		var error = $("#errorText");
-		var validUser = Validate.now(Validate.Presence, $("#user").val());
-		var validPass = Validate.now(Validate.Presence, $("#pass").val());
+		var user = $("#user").val();var pass = $("#pass").val();var error = $("#errorText");var validUser = Validate.now(Validate.Presence, $("#user").val());var validPass = Validate.now(Validate.Presence, $("#pass").val());
 		if(validUser && validPass){
 			var data = {'elements':{'username':user, 'password':pass, 'reswidth':$(window).width(), 'resheight':$(window).height()} , 'uuidsession': emptySession, 'action':'gol'};
 			var request = $.ajax({url:event.data.action,type: "post",dataType: "json",contentType: 'application/json',data : JSON.stringify(data)});
@@ -101,6 +119,105 @@ export default class GRVlogin{
 		}
 	}
 	
+	
+	/*forgot password send action*/
+	static forgot(){
+		    var valid = true;
+		    $(".mf").removeClass( "ui-state-error" );
+		    valid = valid && GRVlogin.checkLength($( "#usernameUser" ), "Username" );
+		    valid = valid && GRVlogin.checkLength(  $( "#firstnameUser" ), "First name" );
+		    valid = valid && GRVlogin.checkLength(  $( "#lastnameUser" ), "Last name" );
+		    valid = valid && GRVlogin.checkLength(  $( "#emailUser" ), "Email" );
+		    valid = valid && GRVlogin.checkLength(  $( "#profesionUser" ), "Profession" );
+		    valid = valid && GRVlogin.checkRegexp(  $( "#emailUser" ), emailRegex, "eg. name@domain.com" );
+
+		    if ( valid ) {
+		    	var mes = $.ajax({
+		    		  url: "/ncdis/service/action/forgotPassword?language=en&firstnameUser="+$("#firstnameUser").val()+"&lastnameUser="+$("#lastnameUser").val()+"&usernameUser="+$("#usernameUser").val()+"&emailUser="+$("#emailUser").val()+"&profesionUser="+$("#profesionUser").val(),
+		    		  type: "GET",
+		    		  async : false,
+		    		  cache : false,
+		    		  dataType: "json"
+		    		});
+		    		mes.done(function( json ) {
+		    			var tips = $('.validate-tips');
+		    			if(json.status == "1"){tips.html(json.message);
+		    			}else{tips.html(json.message);}
+		    		});
+		    		mes.fail(function( jqXHR, textStatus ) {
+		    		  alert( "Error sending message : " + textStatus );
+		    		  $("#dialogForgot form")[ 0 ].reset();
+		  			  $("#dialogForgot").dialog( "close" );
+		    		});	
+
+		    }
+		    return valid;
+	}
+
+	/*subscribe send action*/
+	static subscribe(){
+		var valid = true;
+		$(".mf").removeClass( "ui-state-error" );
+		valid = valid && GRVlogin.checkLength(  $( "#firstnameSub" ), "First name" );
+		valid = valid && GRVlogin.checkLength(  $( "#lastnameSub" ), "Last name" );
+		valid = valid && GRVlogin.checkLength(  $( "#emailSub" ), "Email" );
+		valid = valid && GRVlogin.checkLength(  $( "#idcommunitySub" ), "User Community" );
+		valid = valid && GRVlogin.checkLength(  $( "#idprofesionSub" ), "Profession" );
+		valid = valid && GRVlogin.checkRegexp(  $( "#emailSub" ), emailRegex, "Email format should be : eg. name@domain.com" );
+
+	    if ( valid ) {
+	    	var mes = $.ajax({
+	    		  url: "/ncdis/service/action/subscribe?language=en&firstnameSub="+$("#firstnameSub").val()+"&lastnameSub="+$("#lastnameSub").val()+"&idcommunitySub="+$("#idcommunitySub").val()+"&emailSub="+$("#emailSub").val()+"&idprofesionSub="+$("#idprofesionSub").val(),
+	    		  type: "GET",
+	    		  async : false,
+	    		  cache : false,
+	    		  dataType: "json"
+	    		});
+	    		mes.done(function( json ) {
+	    			console.log(json);
+	    			if(json.status == "1"){
+	    				tips.html(json.message);
+	    				$("#dialog-subscribe").find("fieldset").hide();
+	    			}else{
+	    				tips.html(json.message);
+	    			}
+	    		});
+	    		mes.fail(function( jqXHR, textStatus ) {
+	    		  alert( "Error sending message : " + textStatus );
+	    		  formSubscribe[ 0 ].reset();
+	  			  $("#dialog-subscribe").dialog( "close" );
+	    		});	
+	    }
+	    return valid;
+	}
+	
+	
+	static updateTips( t ) {
+		var tips = $('.validate-tips');
+	    tips.text( t ).addClass( "ui-state-highlight" );
+	    setTimeout(function() {tips.removeClass( "ui-state-highlight", 1500 );}, 500 );
+	  }
+
+	static checkLength( o, n ) {
+	    if ( o.val().length == 0 || o.val() == '0') {
+	      o.addClass( "ui-state-error" );
+	      GRVlogin.updateTips( "Field " + n + " cannot be empty." );
+	      return false;
+	    } else {
+	      return true;
+	    }
+	  }
+
+	static checkRegexp( o, regexp, n ) {
+	    if ( !( regexp.test( o.val() ) ) ) {
+	      o.addClass( "ui-state-error" );
+	      GRVlogin.updateTips( n );
+	      return false;
+	    } else {
+	      return true;
+	    }
+	  }
+
 	
 	
 	/*

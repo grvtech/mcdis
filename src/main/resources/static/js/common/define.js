@@ -7,13 +7,13 @@ var userObj = null;
 var userProfileObj = null;
 var patientObj = null;
 var patientObjArray = null;
-var messagesArray = null;
 var patientSearchObj = null;
 var backArray = [];
 var backArrayIndex = 0;
 var $body = $("body");
 let apppath= '/ncdis/js/apps/';
 let pageNavigationElements = [];
+var emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
 
 //var usersArray = getUsers();
 //var userNotes = getUserNotes(sid);

@@ -1,12 +1,12 @@
 import Login from '/ncdis/js/apps/login/js/index.js';
-
-
+import Frontpage from '/ncdis/js/apps/frontpage/js/index.js';
 const login = new Login();
-
-
 login.render();
 
+const frontpage = new Frontpage('frontpage');
 
+
+/*
 
 var emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
 name = $( "#nameUser" ),
@@ -65,7 +65,7 @@ var formSubscribe = $("#dialogSubscribe").find( "form" ).on( "submit", function(
     //sendUserMessage();
   });
 
-
+*/
 /*
 var mes = $.ajax({
 	  url: "/ncdis/service/action/getFrontPageMessage?language=en",
@@ -118,7 +118,7 @@ var mes = $.ajax({
  * 
  * */
 
-
+/*
 function forgotPassword() {
     var valid = true;
     $(".mf").removeClass( "ui-state-error" );
@@ -157,7 +157,9 @@ function forgotPassword() {
     }
     return valid;
   }
+*/
 
+/*
 function subscribe() {
     var valid = true;
     $(".mf").removeClass( "ui-state-error" );
@@ -195,34 +197,8 @@ function subscribe() {
     }
     return valid;
   }
+*/
 
 
-function updateTips( t ) {
-    tips
-      .text( t )
-      .addClass( "ui-state-highlight" );
-    setTimeout(function() {
-      tips.removeClass( "ui-state-highlight", 1500 );
-    }, 500 );
-  }
 
-  function checkLength( o, n ) {
-    if ( o.val().length == 0 || o.val() == '0') {
-      o.addClass( "ui-state-error" );
-      updateTips( "Field " + n + " cannot be empty." );
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  function checkRegexp( o, regexp, n ) {
-    if ( !( regexp.test( o.val() ) ) ) {
-      o.addClass( "ui-state-error" );
-      updateTips( n );
-      return false;
-    } else {
-      return true;
-    }
-  }
 

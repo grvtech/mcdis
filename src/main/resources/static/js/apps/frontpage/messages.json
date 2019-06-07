@@ -1,0 +1,16 @@
+{
+	"status":"success",
+	"uuidsession":"00000000-0000-0000-0000-000000000000",
+	"action":"messages",
+	"elements":{
+		"messages":[
+			{"id":1,"text":"message1"},
+			{"id":2,"text":"message2"},
+			{"id":3,"text":"message3"},
+			{"id":4,"text":"message4"},
+			{"id":5,"text":"message5"},
+			{"id":6,"text":"message6"},
+			{"id":7,"text":"message7"}
+		]
+	}
+}
