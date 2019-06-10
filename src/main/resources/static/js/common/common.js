@@ -13,4 +13,3 @@ Array.prototype.min = function() {return Math.min.apply(null, this);};
 Number.prototype.trimNum = function(places,rounding){(rounding != 'floor' && rounding != 'ceil') ? rounding = 'round' : rounding = rounding;var result, num = this, multiplier = Math.pow( 10,places );result = Math[rounding](num * multiplier) / multiplier;return Number( result );}
 
 
-

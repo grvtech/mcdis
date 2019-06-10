@@ -42,7 +42,7 @@ widget header #E6E9EE
 
 .common-header{height:50px;width:100%;}
 /*.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#4b3b3b;z-index: 100;}*/
-.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#2D65C6;z-index: 100;}
+.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#4d4d4d;z-index: 100;}
 .common-cdisheader .logo{position:absolute;left:20px;top:50%;height:40px;width:auto;margin-top:-20px;background:no-repeat url(../../images/cdis-logo50.png) left center;background-size: 32px 40px;font-size:30px;color:#ffffff;padding:0px 0px 0px 35px;}
 .common-cdisheader .menu{position:absolute;margin:0px;padding:0px;list-style-type: none;right:15px;top:10px;height:35px;width:auto;font-size:16px;}
 .common-cdisheader .menu li {display: inline-block;width:35px;height:35px;line-height:35px;text-align:center;color:#ffffff;margin:0px 10px 0px 0px;background-color:#47BFC0;}
@@ -63,6 +63,19 @@ widget header #E6E9EE
 .mainpage .main .page .panel-full{display:block;width:98%;margin:auto;padding:5px;}
 .mainpage .main .page .panel-half{display:inline-block;width:48%;margin:auto;padding:5px;vertical-align:top;}
 
+
+
+
+/* The switch - the box around the slider */
+.grv-switch {position: relative;display: inline-block;width: 35px;height: 20px;}
+.grv-switch input {opacity: 0;width: 0;height: 0;}
+.grv-switch .slider {position: absolute;cursor: pointer;top: 0;left: 0;right: 0;bottom: 0;background-color: #ccc;-webkit-transition: .4s;transition: .4s;}
+.grv-switch .slider:before {position: absolute;content: "";height: 16px;width: 16px;left: 2px;bottom: 2px;background-color: white;-webkit-transition: .4s;transition: .4s;}
+.grv-switch input:checked + .slider {background-color: #2196F3;}
+.grv-switch input:focus + .slider {box-shadow: 0 0 1px #2196F3;}
+.grv-switch input:checked + .slider:before {-webkit-transform: translateX(16px);-ms-transform: translateX(16px);transform: translateX(16px);}
+.grv-switch .slider.round {border-radius:20px;}
+.grv-switch .slider.round:before {border-radius: 50%;}
 
 
 

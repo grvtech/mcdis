@@ -1,3 +1,7 @@
+import Frontpage from '/ncdis/js/apps/frontpage/js/index.js';
+
+
+const frontpage = new Frontpage('frontpage');
 /*
 if (!isUserLoged(sid)){
 	logoutUser(sid);
