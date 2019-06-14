@@ -66,6 +66,8 @@ widget header #E6E9EE
 
 
 
+
+
 /* The switch - the box around the slider */
 .grv-switch {position: relative;display: inline-block;width: 35px;height: 20px;}
 .grv-switch input {opacity: 0;width: 0;height: 0;}
@@ -77,6 +79,9 @@ widget header #E6E9EE
 .grv-switch .slider.round {border-radius:20px;}
 .grv-switch .slider.round:before {border-radius: 50%;}
 
+
+.grv-message-container{background-color:#E6E9EE;}
+.grv-message-tag-new{background-color:#2D65C6;color:#ffffff;}
 
 
 /*

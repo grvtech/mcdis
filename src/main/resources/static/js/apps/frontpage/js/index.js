@@ -17,42 +17,94 @@ export default class GRVfrontpage{
 
 	static render(config, messages){
 		let container = $('.'+config.container);
+		let toolbar = null;
+		let indicators = null;
 		container.empty();
-		if(config.minimize){
-			let toolbar = $('<div>',{class:'grv-frontpage-toolbar'}).appendTo(container);
-			let sb = switchButton(toolbar,'this is label');
-			sb.on('mousedown',function(){
-				if(!$(this).find('input').is(':checked')){
-					container.animate({
-					    height: "80px"
-					  }, 500, function() {
-					    // Animation complete.
-						  console.log('finish animate');
-					  });
-				}else{
-					container.animate({
-					    height: "150px"
-					  }, 500, function() {
-					    // Animation complete.
-						  console.log('finish animate');
-					  })
-				}
-				//console.log('a');
-				//console.log('b');
-			});
+		if(config.hastoolbar){
+			toolbar = $('<div>',{class:'grv-message-toolbar'}).appendTo(container);
+			if(config.minimize){
+				let label = 'Minimize message panel';
+				let mlabel = 'Maximize message panel';
+				let sb = switchButton(toolbar,label);
+				let theight=0;
+				sb.on('mousedown',function(){
+					if(!$(this).find('input').is(':checked')){
+						container.animate({
+						    height: "65px"
+						  },{
+							duration:500,
+							complete:function() {
+								  
+								    // Animation complete.
+									  $(this).find('input').prop('checked', true);
+									  $(this).find('.grv-switch-label').text(mlabel);
+									  console.log('finish animate');
+								  },
+						  	start:function(){
+						  		theight = $(this).parent().find('.grv-message-container').height();
+						  	}
+								  
+						  });
+					}else{
+						container.animate({
+						    height: (theight+25+10)+"px"
+						  },{
+							  duration:500,
+							  complete:function() {
+								    // Animation complete.
+								  $(this).find('input').prop('checked', false);
+								  $(this).find('.grv-switch-label').text(label);
+								  console.log('finish animate');
+							  }
+						  });
+					}
+				});
+			}
 		}
-		let frontpageWidget = $('<div>',{class:'grv grv-frontpage-container shadow border carousel slide','data-ride':'carousel','data-interval':config.period, 'data-wrap':true}).appendTo(container);
-		let indicators = $('<ol>',{class:'carousel-indicators'}).appendTo(frontpageWidget);
+		
+		let frontpageWidget = $('<div>',{class:'grv grv-message-container shadow carousel slide','data-ride':'carousel','data-interval':config.period, 'data-wrap':true}).appendTo(container);
+		if(config.hastoolbar){
+			indicators = $('<ol>',{class:'carousel-indicators'}).appendTo(toolbar);
+		}
+		
 		let  inner = $('<div>',{class:'carousel-inner'}).appendTo(frontpageWidget);
 		for(var i=0;i<messages.length;i++){
 			var item = messages[i];
 			var a = (i == 0)?'active':'';
-			$('<div>',{class:'carousel-item '+a}).html(item.text).appendTo(inner);
-			//$('<li>',{class:a,'data-target':'.grv-frontpage-container', 'data-slide-to':i}).appendTo(indicators);
+			var tag = null;
+			if(item.new == 1){
+				//tag =$('<div>',{class:'grv-message-tag-new'}).text('NEW');
+				tag =$('<div>',{class:'grv-message-tag-new'}).append($('<span>').text('New')).append($('<div>'));
+			}
+			$('<div>',{class:'carousel-item '+a}).html(item.text).append(tag).appendTo(inner);
+			if(config.hastoolbar){
+				$('<li>',{class:a,'data-target':'.grv-message-container', 'data-slide-to':i}).appendTo(indicators);
+			}
 		}
 		
-		
 		frontpageWidget.carousel();
+		var handled=false;//global variable
+
+		frontpageWidget.bind('slide.bs.carousel', function (e) {
+		    var current=$(e.target).find('.carousel-item.active');
+		    var indx=$(current).index();
+		    if((indx+2)>$('.carousel-indicators li').length)indx=-1
+		     if(!handled){
+		        $('.carousel-indicators li').removeClass('active')
+		        $('.carousel-indicators li:nth-child('+(indx+2)+')').addClass('active');
+		     }else{
+		        handled=!handled;//if handled=true make it back to false to work normally.
+		     }
+		});
+
+		$(".carousel-indicators li").on('click',function(){
+		   //Click event for indicators
+		   $(this).addClass('active').siblings().removeClass('active');
+		   //remove siblings active class and add it to current clicked item
+		   handled=true; //set global variable to true to identify whether indicator changing was handled or not.
+		});
+		
+		
 	}
 	
 	

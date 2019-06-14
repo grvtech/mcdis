@@ -1,11 +1,12 @@
 export default
 {
 	"index":{
-		"container": "index-frontpage-container",
+		"container": "index-message-container",
 		"css":apppath+"frontpage/css/index.css",
 		"url":"/ncdis/js/apps/frontpage/messages.json",
 		"period":3000,
-		"minimize":false
+		"minimize":false,
+		"hastoolbar":false
 			
 	},
 	"search":{
@@ -13,7 +14,8 @@ export default
 		"css":apppath+"frontpage/css/index.css",
 		"url":"/ncdis/js/apps/frontpage/messages.json",
 		"period":2000,
-		"minimize":true
+		"minimize":true,
+		"hastoolbar":true
 	}
 	
 }

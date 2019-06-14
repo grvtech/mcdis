@@ -4,8 +4,14 @@
 	padding:5px;
 	width:1000px;
 	height:200px;
+	display:flex;
+	flex-flow: column nowrap;
 }
 
-.grv-frontpage-container{width:100%;height:100%;display:block;padding:0; margin:0 auto;}
-.grv-frontpage-container .carousel-item{text-align:center;vertical-align: middle;}
-.grv-frontpage-toolbar{text-align:right;}
+.grv-message-container{flex:1 auto;padding:0;cursor:pointer;}
+.grv-message-container .carousel-item{text-align:center;vertical-align: middle;min-height:30px;overflow:hidden;}
+.grv-message-toolbar{flex:1 auto;position:relative;min-height:25px;max-height:25px;}
+.grv-message-toolbar .carousel-indicators{position:relative;}
+.grv-switch-label{color:#ffffff;}
+.grv-message-tag-new{position:absolute;top:0;left:0;width:100px;height:30px;line-height:28px;padding:2px 2px 2px 5px;font-size:16px;}
+.grv-message-tag-new div{position:absolute;top:0px;width: 0;height: 0;border-top: 30px solid #2D65C6;border-right: 30px solid #E6E9EE;vertical-align:middle;right:0px;}
