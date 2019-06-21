@@ -1,0 +1,19 @@
+.grv-input{position:relative;height:30px; border:1px solid #000000;}
+
+.grv-input label {position :absolute;}
+
+
+.grv-input.classic  label{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	transition: 0.5s;
+}
+
+
+.grv-input.classic input:focus + label{
+	top: 100%;
+  	margin-top: -16px;
+}

@@ -1,6 +1,6 @@
 import frontpageConfiguration from '../config.js'
 import MessageRequest from '/ncdis/js/common/messagerequest.js'
-import switchButton from '/ncdis/js/common/grvswitch.js'
+import switchButton from '/ncdis/js/component/grvswitch.js'
 
 export let messagesArray = [];
 
@@ -25,7 +25,7 @@ export default class GRVfrontpage{
 			if(config.minimize){
 				let label = 'Minimize message panel';
 				let mlabel = 'Maximize message panel';
-				let sb = switchButton(toolbar,label);
+				let sb = switchButton({'container':'grv-message-toolbar','label':label});
 				let theight=0;
 				sb.on('mousedown',function(){
 					if(!$(this).find('input').is(':checked')){

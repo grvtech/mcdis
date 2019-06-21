@@ -1,7 +1,8 @@
 import Frontpage from '/ncdis/js/apps/frontpage/js/index.js';
-
+import Search from '/ncdis/js/apps/search/js/index.js';
 
 const frontpage = new Frontpage('frontpage');
+const search = new Search();
 /*
 if (!isUserLoged(sid)){
 	logoutUser(sid);
