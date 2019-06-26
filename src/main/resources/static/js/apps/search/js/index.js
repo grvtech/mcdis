@@ -21,7 +21,7 @@ export default class GRVsearch{
 		inputContainer.css('height','35px');
 		const list = GRVList(this.elements, {'direction':'v', 'open':0, 'container': listStyle});
 		
-		const input = GRVInput({container:'grv-search-input',id:'myidinput',style:'classic',label:'Search for new patient'});
+		const input = GRVInput({container:'grv-search-input',id:'myidinput',style:'topup',label:'Search for new patient'});
 		
 	}
 }
