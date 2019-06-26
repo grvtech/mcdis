@@ -13,3 +13,30 @@ Array.prototype.min = function() {return Math.min.apply(null, this);};
 Number.prototype.trimNum = function(places,rounding){(rounding != 'floor' && rounding != 'ceil') ? rounding = 'round' : rounding = rounding;var result, num = this, multiplier = Math.pow( 10,places );result = Math[rounding](num * multiplier) / multiplier;return Number( result );}
 
 
+String.prototype.trimToPx = function(length)
+{
+    var tmp = this;
+    var trimmed = this;
+    if (tmp.visualLength() > length)
+    {
+        trimmed += "...";
+        while (trimmed.visualLength() > length)
+        {
+            tmp = tmp.substring(0, tmp.length-1);
+            trimmed = tmp + "...";
+        }
+    }
+    
+    return trimmed;
+}
+
+String.prototype.visualLength = function(){
+	let ruler = null;
+	if($('body').has('.ruler').length){
+		ruler = $('.ruler');
+	}else{
+		ruler = $('<span>',{class:'ruler'}).appendTo($('body'));
+	}
+	ruler.css('visibility','hidden').css('white-space','nowrap').empty().html(this);
+    return ruler.width();
+}
