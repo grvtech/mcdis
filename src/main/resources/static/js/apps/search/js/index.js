@@ -18,7 +18,7 @@ export default class GRVsearch{
 		let listStyle = 'grv-search-list-'+this.config.location;
 		let listContainer = $('<div>',{class:listStyle}).appendTo(this.container);
 		let inputContainer = $('<div>',{class:'grv-search-input'}).appendTo(this.container);
-		inputContainer.css('height','35px');
+		//inputContainer.css('height','35px');
 		const list = GRVList(this.elements, {'direction':'v', 'open':0, 'container': listStyle});
 		
 		const input = GRVInput({container:'grv-search-input',id:'myidinput',style:'topup',label:'Search for new patient'});
