@@ -11,7 +11,7 @@ export default function(elements, properties){
 		direction = (properties.direction)?properties.direction:'v'; //vertical by default
 		open = (properties.open)?properies.open:0; //close by default
 		multivalue = (properties.multivalue)?properties.multivalue:0; //radio behaivion by default
-		id = (properties.id)?properies.id:'grvlist-'+moment().unix();
+		id = (properties.id)?properties.id:'grvlist-'+moment().unix();
 		cls = (properties.class)?properties.class:'grvlist';
 		container  = (properties.container)?$('.'+properties.container):$('.grvlist-container');
 	}else{
@@ -28,8 +28,8 @@ export default function(elements, properties){
 	for(var i=0;i<elements.length;i++){
 		let element = elements[i];
 		let a = 'active';
-		if(element.status != 'active') a = '';
-		$('<li>',{class:'list-group-item list-group-item-action '+a, value:element.value}).text(element.label).appendTo(c);
+		if(element.status != 'active'){ a = '';}else{f.val(element.value);}
+		$('<li>',{value:element.value, class:'list-group-item list-group-item-action '+a}).text(element.label).appendTo(c);
 	}
 	c.children('li').on('click',function(event){
 		//let p = event.target.parent();
@@ -37,5 +37,5 @@ export default function(elements, properties){
 		$(this).addClass('active');
 		$(this).parent().siblings('input').val($(this).attr('value'));
 	});
-	return c;
+	return container;
 }

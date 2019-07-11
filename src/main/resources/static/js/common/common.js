@@ -37,6 +37,8 @@ String.prototype.visualLength = function(){
 	}else{
 		ruler = $('<span>',{class:'ruler'}).appendTo($('body'));
 	}
-	ruler.css('visibility','hidden').css('white-space','nowrap').empty().html(this);
+	
+	
+	ruler.css('visibility','hidden').css('white-space','nowrap').css('font-size',$('body').css('font-size')).empty().html(this);
     return ruler.width();
 }
