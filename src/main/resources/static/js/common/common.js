@@ -30,15 +30,16 @@ String.prototype.trimToPx = function(length)
     return trimmed;
 }
 
-String.prototype.visualLength = function(){
+String.prototype.visualLength = function(fs){
 	let ruler = null;
 	if($('body').has('.ruler').length){
 		ruler = $('.ruler');
 	}else{
 		ruler = $('<span>',{class:'ruler'}).appendTo($('body'));
 	}
+	let fontsize = $('body').css('font-size');
+	if(fs)fontsize=fs;
 	
-	
-	ruler.css('visibility','hidden').css('white-space','nowrap').css('font-size',$('body').css('font-size')).empty().html(this);
+	ruler.css('visibility','hidden').css('white-space','nowrap').css('font-size',fontsize).empty().html(this);
     return ruler.width();
 }

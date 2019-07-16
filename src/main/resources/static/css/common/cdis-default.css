@@ -42,9 +42,9 @@ widget header #E6E9EE
 
 .common-header{height:50px;width:100%;}
 /*.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#4b3b3b;z-index: 100;}*/
-.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#4d4d4d;z-index: 100;}
+.common-cdisheader{position:fixed;left:0px;top:0px;height:65px;width:100%;background-color:#4d4d4d;z-index: 100;}
 .common-cdisheader .logo{position:absolute;left:20px;top:50%;height:40px;width:auto;margin-top:-20px;background:no-repeat url(../../images/cdis-logo50.png) left center;background-size: 32px 40px;font-size:30px;color:#ffffff;padding:0px 0px 0px 35px;}
-.common-cdisheader .menu{position:absolute;margin:0px;padding:0px;list-style-type: none;right:15px;top:10px;height:35px;width:auto;font-size:16px;}
+.common-cdisheader .menu{position:absolute;margin:0px;padding:0px;list-style-type: none;right:15px;top:15px;height:35px;width:auto;font-size:16px;}
 .common-cdisheader .menu li {display: inline-block;width:35px;height:35px;line-height:35px;text-align:center;color:#ffffff;margin:0px 10px 0px 0px;background-color:#47BFC0;}
 .common-cdisheader .menu li:hover {background-color:#db4437; box-shadow: 0 0 4px rgba(0,0,0,.15),0 2px 6px rgba(0,0,0,.54);}
 
@@ -90,9 +90,9 @@ INDEX PAGE
 .index-page{}
 .index-message-container{position:absolute;left:50%;margin-left:-400px;top:20px;overflow:hidden;padding:10px;height:100px;width:800px;}
 
-.index-login-container{position:absolute;left:0;top:30%;height:330px;width:550px;border:1px solid #000000;}
+.index-login-container{position:absolute;left:10%;top:30%;height:330px;width:550px;}
 
-.index-cdistext{color:#ffffff;font-size:280%;height:50px;width:auto;z-index:1;}
+.index-cdistext{color:#ffffff;font-size:1.5rem;height:50px;width:auto;z-index:1;}
 .index-login{height:250px;width:100%;background-color: #f2f2f2;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);}
 
 
@@ -100,9 +100,9 @@ INDEX PAGE
 .index-avatar{height:150px;width:100px;background:no-repeat url(../../images/logo-front.png) #f2f2f2 center center;}
 .index-username{height:27px;width:240px;margin:30px 3px 30px 3px;}
 .index-password{height:27px;width:240px;margin:20px 3px 20px 3px;}
-.index-login-button{font-size:150%;right:20px;bottom:25px;position:absolute;}
-.index-forgot-button{text-decoration:none;cursor:pointer;}
-.index-subscribe-button{}
+.index-login-button{right:10px;bottom:10px;position:absolute;}
+.index-forgot-button{text-decoration:none;cursor:pointer;margin-top:20px;}
+.index-subscribe-button{text-decoration:none;cursor:pointer;margin-top:20px;}
 .index-dialog-subscribe .index-dialog-forgot{display:none;}
 
 .index-dialog-subscribe  input, textarea, select{

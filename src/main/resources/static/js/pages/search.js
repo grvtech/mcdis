@@ -34,7 +34,7 @@ $(document).ready(function(){
 
 
 
-search.find('input[type=text]').focus();
+$(search).find('input[type=text]').focus();
 /*
 if(typeof(userObj[0].idprofesion) != "undefined"){
 	var hcpcat = profession_index[userObj[0].idprofesion];

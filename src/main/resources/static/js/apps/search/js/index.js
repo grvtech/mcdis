@@ -2,6 +2,7 @@ import searchConfiguration from '../config.js'
 import MessageRequest from '/ncdis/js/common/messagerequest.js'
 import GRVList from '/ncdis/js/component/grvlist.js'
 import GRVInput from '/ncdis/js/component/grvinput.js'
+import GRVDropdown from '/ncdis/js/component/grvdropdown.js'
 
 export default class GRVsearch{
 	
@@ -20,11 +21,16 @@ export default class GRVsearch{
 		let listContainer = $('<div>',{class:listStyle}).appendTo(this.container);
 		let inputContainer = $('<div>',{class:'grv-search-input'}).appendTo(this.container);
 		//inputContainer.css('height','35px');
-		const listProps = {'direction':'v', 'open':0, 'container': listStyle,'id':'myidlist'}
-		const list = GRVList(this.elements, listProps);
-		
+		const id = 'search'+moment().unix();
+		if(this.config.location == 'page'){
+			const listProps = {'direction':'v', 'open':0, 'container': listStyle,'id':id+'Criteria'}
+			const list = GRVList(this.elements, listProps);
+		}else{
+			const listProps = {'container': listStyle,'id':id+'Criteria'}
+			const list = GRVDropdown(this.elements, listProps);
+		}
 		 
-		const inputProps = {container:'grv-search-input',id:'myidinput',style:'rightside',label:'Find patient',height:50, width:'100%'};
+		const inputProps = {container:'grv-search-input',id:id+'Input',style:'rightside',label:'Find patient',height:50};
 		const input = GRVInput(inputProps);
 		
 		
@@ -41,8 +47,8 @@ export default class GRVsearch{
 					url: "/ncdis/service/data/searchPatient",
 					dataType: "json",
 					data: {
-						criteria: $(list).find('input').val(),
-						term: input.find('input').val(),
+						criteria: $('#'+id+'Criteria').val(),
+						term: $('#'+id+'Input').val(),
 						language: "en",
 						uuidsession: sid,
 						action: 'search'
@@ -60,8 +66,8 @@ export default class GRVsearch{
 								ramq : row.ramq,
 								community: row.community,
 								giu: row.giu,
-								criteria : $(list).find('input').val(),
-								term : $(input).find('input').val()
+								criteria : $('#'+id+'Criteria').val(),
+								term : $('#'+id+'Input').val()
 							}
 						}));
 					}

@@ -1,5 +1,6 @@
 import loginConfiguration from '../config.js'
 import MessageRequest from '/ncdis/js/common/messagerequest.js'
+import GRVInput from '/ncdis/js/component/grvinput.js'
 
 export default class GRVlogin{
 	constructor(){
@@ -13,23 +14,31 @@ export default class GRVlogin{
 		this.container.empty();
 		this.container.hide();
 		let wc = $('<div>',{class:'container'}).appendTo(this.container);
-		
-		$('<div>',{class:'row'}).append($('<div>',{class:'cell index-cdistext'}).text('Cree Diabetes Information System')).appendTo(wc);
+		this.form = $('<form>',{class:''}).appendTo(wc);
+		$('<div>',{class:'row'}).append($('<div>',{class:'cell index-cdistext'}).text('Cree Diabetes Information System')).appendTo(this.form);
 		//$('<div>',{class:'index-cdistext'}).text('Cree Diabetes Information System').appendTo(this.container);
-		this.form = $('<form>',{class:'index-login container'}).appendTo(wc);
-		let r1 = $('<div>',{class:'row'}).appendTo(this.form);
+		this.formrow = $('<div>',{class:'container-fluid index-login'}).appendTo(this.form);
+		
+		let r1 = $('<div>',{class:'row'}).appendTo(this.formrow);
 		$('<div>',{class:'index-avatar col-3'}).appendTo(r1);
 		let c2 = $('<div>',{class:'col-6'}).appendTo(r1);
 		
-		$('<div>',{class:'index-username'}).append($('<input>',{type:'text',name:'user',id:'user',class:'form-control', placeholder:'Username',tabindex:1}).focus()).appendTo(c2);
-		$('<div>',{class:'index-password'}).append($('<input>',{type:'password',name:'pass',id:'pass',class:'form-control', placeholder:'Password',tabindex:2}).on('keyup',function(e){if(e.keyCode == 13){$("#loginbutton").click();}})).appendTo(c2);
 		
+		
+		//$('<div>',{class:'index-username'}).append($('<input>',{type:'text',name:'user',id:'user',class:'form-control', placeholder:'Username',tabindex:1}).focus()).appendTo(c2);
+		$('<div>',{class:'index-username'}).appendTo(c2);
+		const username = new GRVInput({container:'index-username',id:'user',style:'rightside',label:'Username',height:50, width:'100%'});
+		
+		
+		//$('<div>',{class:'index-password'}).append($('<input>',{type:'password',name:'pass',id:'pass',class:'form-control', placeholder:'Password',tabindex:2}).on('keyup',function(e){if(e.keyCode == 13){$("#loginbutton").click();}})).appendTo(c2);
+		$('<div>',{class:'index-password'}).appendTo(c2);
+		const password = new GRVInput({container:'index-password',id:'pass',style:'leftside',label:'Password',height:50,type:'password'});
 		//$('<div>',{class:'common-error', id:'errorText'}).appendTo(this.form);
 		
 		let c3 = $('<div>',{class:'col-3'}).appendTo(r1);
 		this.lb = $('<div>',{class:'btn btn-primary index-login-button', id:'loginButton', tabindex:3}).text('Login').appendTo(c3);
 		
-		let r2 = $('<div>',{class:'row'}).appendTo(this.form);
+		let r2 = $('<div>',{class:'row'}).appendTo(this.formrow);
 		
 		this.fb = $('<div>',{class:'btn btn-primary index-forgot-button', id:'forgotButton'}).text('Forgot password').appendTo($('<div>',{class:'col center'}).appendTo(r2));
 		this.sb = $('<div>',{class:'btn btn-primary index-subscribe-button', id:'subscribeButton'}).text('Add new CDIS user').appendTo($('<div>',{class:'col align-items-center'}).appendTo(r2));

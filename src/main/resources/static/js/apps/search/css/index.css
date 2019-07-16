@@ -8,7 +8,14 @@
 .grv-search-list-page .list-group-item{background-color:#ececec;text-align:center;}
 .grv-search-list-page .list-group-item-action:hover{background-color:#db4437;}
 .grv-search-list-page .list-group-item.active{border-color:#4b3b3b;background-color:#4b3b3b;}
-.grv-search-list-header{flex: 1 auto;}
+
+.grv-search-list-header{flex: 1 auto;min-width:15%;align-self:stretch;border-radius:5px 0px 0px 5px;background-color:red;}
+.grv-search-list-header .btn-group{width:100%;height:100%;}
+.grv-search-list-header .btn:focus, .btn.focus{box-shadow:none;}
+
+
+
+
 .grv-search-input{flex: 1 auto;min-width:85%;height:50px;}
 .grv-search-input .grv-input{border-radius:0px 5px 5px 0px;}
 .grv-search-input .grv-input input{text-transform: uppercase;}
