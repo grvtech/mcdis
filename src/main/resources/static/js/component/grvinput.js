@@ -12,6 +12,9 @@ export default function(properties){
 	let ph = container.height();
 	let c = $('<div>',{class:'grv-input'}).appendTo(container);
 	let type = 'text';
+	
+	
+	
 	if(properties.height){c.height(properties.height);}else{ c.height(container.height());}
 	if(properties.width){c.width(properties.width);} else{c.width(container.width())}
 	if(properties.type){type=properties.type;}

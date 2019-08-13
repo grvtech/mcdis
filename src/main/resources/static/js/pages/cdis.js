@@ -1,17 +1,31 @@
+import Search from '/ncdis/js/apps/search/js/index.js';
+const search = new Search();
+
+
 var cdisSection = "dashboard";
 $( window ).on( "load", initCdisPage );	
 
 
 function initCdisPage(){
+/*
 	var flag = isUserLoged(sid);
-	
 	if (!flag){
 		logoutUser(sid);
 	}else{
 		initCdisHeader();
 		loadTemplate(cdisSection);
-	}	
+	}
+*/	
 }
+
+//initCdisHeader();
+//loadTemplate(cdisSection);
+
+
+$("#cdisDashboardPage").show();
+$("#cdisSectionsPage").hide();
+
+drawPatientRecord(patientObj);
 
 
 /*

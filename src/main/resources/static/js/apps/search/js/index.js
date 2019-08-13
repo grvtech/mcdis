@@ -13,13 +13,15 @@ export default class GRVsearch{
 	constructor(){
 		var view = page.view;
 		this.config = eval("searchConfiguration."+view);
-		loadcss(this.config.css);
+		//loadcss(this.config.css);
 		this.elements = this.config.elements;
 		this.container = $('.'+this.config.container);
 		this.container.addClass('grv-search');
 		let listStyle = 'grv-search-list-'+this.config.location;
 		let listContainer = $('<div>',{class:listStyle}).appendTo(this.container);
 		let inputContainer = $('<div>',{class:'grv-search-input'}).appendTo(this.container);
+		
+		
 		//inputContainer.css('height','35px');
 		const id = 'search'+moment().unix();
 		if(this.config.location == 'page'){
@@ -32,8 +34,6 @@ export default class GRVsearch{
 		 
 		const inputProps = {container:'grv-search-input',id:id+'Input',style:'rightside',label:'Find patient',height:50};
 		const input = GRVInput(inputProps);
-		
-		
 		
 		
 		var optionSelected = false;
@@ -56,8 +56,6 @@ export default class GRVsearch{
 					success: function( data ) {
 						console.log(data);
 						response($.map( data.elements.search, function( row ) {
-							//console.log('array element');
-							//console.log(row);
 							return {
 								idpatient:row.idpatient,
 								lastname:row.lastname,
@@ -97,7 +95,7 @@ export default class GRVsearch{
 				
 				/**/
 				//var $line = $("<a>");
-				var $container = $("<div>");
+				var $container = $("<div>",{class:'search-result-line'});
 				//$line.height("95px");
 				if(item.criteria == "fnamelname"){
 					var fn = (item.firstname+" "+item.lastname).toString().toLowerCase();

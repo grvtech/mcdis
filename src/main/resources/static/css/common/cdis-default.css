@@ -41,10 +41,10 @@ widget header #E6E9EE
 .common-error{text-align:center; font-weight:900; color:#ff0000;}
 
 .common-header{height:50px;width:100%;}
-/*.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#4b3b3b;z-index: 100;}*/
-.common-cdisheader{position:fixed;left:0px;top:0px;height:65px;width:100%;background-color:#4d4d4d;z-index: 100;}
+.common-cdisheader{position:fixed;left:0px;top:0px;height:50px;width:100%;background-color:#4b3b3b;z-index: 100;}
+
 .common-cdisheader .logo{position:absolute;left:20px;top:50%;height:40px;width:auto;margin-top:-20px;background:no-repeat url(../../images/cdis-logo50.png) left center;background-size: 32px 40px;font-size:30px;color:#ffffff;padding:0px 0px 0px 35px;}
-.common-cdisheader .menu{position:absolute;margin:0px;padding:0px;list-style-type: none;right:15px;top:15px;height:35px;width:auto;font-size:16px;}
+.common-cdisheader .menu{position:absolute;margin:0px;padding:0px;list-style-type: none;right:15px;top:10px;height:35px;width:auto;font-size:16px;}
 .common-cdisheader .menu li {display: inline-block;width:35px;height:35px;line-height:35px;text-align:center;color:#ffffff;margin:0px 10px 0px 0px;background-color:#47BFC0;}
 .common-cdisheader .menu li:hover {background-color:#db4437; box-shadow: 0 0 4px rgba(0,0,0,.15),0 2px 6px rgba(0,0,0,.54);}
 
@@ -151,7 +151,8 @@ INDEX PAGE
 SEARCH PAGE CSS
 */
 
-.mysearch{width:1000px;margin:0 auto;}
+.mysearch{width:800px;margin:0 auto;}
+
 .search-message{width:1000px;margin:auto;background-color:rgba(251,251,251, 1);margin-top:10px;margin-bottom:10px;height:150px;}
 
 

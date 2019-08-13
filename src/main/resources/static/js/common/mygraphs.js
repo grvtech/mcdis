@@ -137,7 +137,7 @@ window.chartColors = {
 
 var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		var config = {
-			type: 'scater',
+			type: 'line',
 			data: {
 				labels: [0, 10, 20, 30, 40, 50, 60],
 				datasets: [{
