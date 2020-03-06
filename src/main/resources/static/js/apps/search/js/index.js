@@ -40,7 +40,7 @@ export default class GRVsearch{
 		var searchResult = [];
 		$('.grv-search-input input').autocomplete({
 			delay: 300,
-			minLength: 2,
+			minLength: 1,
 			autoFocus: true,
 			source: function( request, response ) {
 				$.ajax({
@@ -54,7 +54,6 @@ export default class GRVsearch{
 						action: 'search'
 					},
 					success: function( data ) {
-						console.log(data);
 						response($.map( data.elements.search, function( row ) {
 							return {
 								idpatient:row.idpatient,
@@ -90,8 +89,6 @@ export default class GRVsearch{
 			}
 		}).data("ui-autocomplete")._renderItem = function(ul,item) {
 				
-				//console.log("item");
-				console.log(item);
 				
 				/**/
 				//var $line = $("<a>");
@@ -107,12 +104,9 @@ export default class GRVsearch{
 				$("<div>",{class:'searchcommunity'}).text(item.community).appendTo($container);
 				if(item.criteria == "chart"){
 					var cn = item.chart.toString();
-					//console.log(cn);
 					cn = replaceAll(cn,item.term, "<strong>"+item.term+"</strong>");
-					//$("<div>",{class:'searchchart'}).html("<label>Chart Number :</label> <span>"+cn+"</span>").appendTo($container);
 					$("<div>",{class:'searchchart'}).html("<span> "+cn+" </span>").appendTo($container);
 				}else{
-					//$("<div>",{class:'searchchart'}).html("<label>Chart Number :</label> <span>"+item.chart+"</span>").appendTo($container);
 					$("<div>",{class:'searchchart'}).html("<span>[ "+item.chart+" ]</span>").appendTo($container);
 				}
 				if(item.criteria == "ramq"){
@@ -131,9 +125,7 @@ export default class GRVsearch{
 					$("<div>",{class:'searchgiu'}).html("<span>"+item.giu+"</span>").appendTo($container);
 				}
 				
-				//var $line = $("<div>").text(item.chart);
 				var $liline = $("<li>");
-				//$liline.height("35px");
 				$liline.append($container).appendTo(ul);
 				$(ul).css("overflow-x","hidden");
 				return $liline;

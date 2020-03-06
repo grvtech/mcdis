@@ -1,6 +1,6 @@
 html {text-rendering: optimizelegibility !important;-webkit-font-smoothing: antialiased !important;height: 100%;}
 /*body{font-size:14px;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans-Serif, Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;background:#5c6c9d;}*/
-body{font-size:1.2vw;font-weight:normal;font-family: Sans-Serif,Trebuchet MS,Helvetica,Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;
+body{font-size:.8vw;font-weight:normal;font-family: Sans-Serif,Trebuchet MS,Helvetica,Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;
 /*background:rgba(49,49,49,1);*/
 background-image: radial-gradient(circle, #4D81DC, #305BA2);
 color:#4d4d4d;
@@ -151,7 +151,7 @@ INDEX PAGE
 SEARCH PAGE CSS
 */
 
-.mysearch{width:800px;margin:0 auto;}
+.mysearch{width:1000px;margin:0 auto;}
 
 .search-message{width:1000px;margin:auto;background-color:rgba(251,251,251, 1);margin-top:10px;margin-bottom:10px;height:150px;}
 
@@ -198,15 +198,16 @@ SEARCH PAGE CSS
 
 
 
-.search-page .ui-autocomplete{width:612px;margin-left:-200px;height:400px;overflow: auto;-moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;}
+.search-page .ui-autocomplete{width:612px;margin-left:-200px;height:300px;overflow: auto;-moz-border-radius: 0px;-webkit-border-radius: 0px;border-radius: 0px;}
 .search-page .ui-autocomplete li div div{display:inline-block;padding:3px;overflow:hidden;}
-.search-page  .ui-autocomplete li div div strong{background-color:rgba(46,80,150,1);}
+.search-page  .ui-autocomplete li div div strong{background-color:#db4437;color:#ffffff;}
+/*
 .search-page .searchname {width:330px;}
 .search-page .searchcommunity {width:130px;}
 .search-page .searchchart {width:80px;}
 .search-page .searchramq {width:180px;}
 .search-page .searchgiu {width:80px;}
-
+*/
 
 
 .notes-alert{position:relative;height:100px;width:1000px;margin:auto;z-index:2;background-color:#efefef;display:none;overflow-x: hidden;padding:5px;}
