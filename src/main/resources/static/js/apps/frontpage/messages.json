@@ -1,0 +1,11 @@
+{
+	"status":"success",
+	"uuidsession":"00000000-0000-0000-0000-000000000000",
+	"action":"messages",
+	"elements":{
+		"messages":[
+			{"id":1,"text":"message1","new":"1","resumat":"this is resumat message 1"}
+			
+		]
+	}
+}

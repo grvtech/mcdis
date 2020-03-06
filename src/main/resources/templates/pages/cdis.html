@@ -30,60 +30,141 @@
 			    <div class="col-9">
 			      	<div class="container-fluid">
 			      		<div class="row">
-			      			<div class="col-8">
-			      				
-			      				<div class="patient-container patient-record-container umbra">
-			      					<div class="prc-wmenu"><i class="fas fa-ellipsis-v"></i></div>
-			      					<div class="container-fluid">
-			      						<div class="row">
-			      							<div class="col-7">
-			      								<div class="container-fluid">
-				      								<div class="row">
-				      									<div class="col">
-				      										<div class="prc-avatar"><i class="fas fa-mars"></i></div>
-				      										<div class="prc-name"><span class="prc-fname">First Name</span><br/><span class="prc-lname">Last Name asdasdas</span></div>
-				      									</div>
-				      								</div>
-				      								<div class="row-fluid">
-				      									<span class="prc-community">Chisasibi</span>
-				      								</div>
+			      			<div class="col">
+			      				<div class="patient-container patient-graph-container">
+			      					<div class="block-title"><span>ABC Graphs</span><div></div></div>
+			      					<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
+			      					
+			      					<div class="abcgraphs-container">
+			      						<div class="widget-container">
+			      							<div class="widget-menu">
+			      								<div class="widget-menu-item"><i class="fas fa-table"></i></div>
+			      								<div class="widget-menu-item"><i class="fas fa-history"></i></div>
+			      								<div class="widget-menu-item"><i class="fas fa-plus"></i></div>
+			      								<div class="widget-menu-item"><i class="fas fa-print"></i></div>
+			      							</div>
+			      							<div class="widget"><canvas id="canvas1"></canvas></div>
+			      						</div>
+				      					<div class="widget-container">
+				      							<div class="widget-menu">
+				      								<div class="widget-menu-item grvtm"><i class="fas fa-table"></i></div>
+				      								<div class="widget-menu-item grvhm"><i class="fas fa-history"></i></div>
+				      								<div class="widget-menu-item grvam"><i class="fas fa-plus"></i></div>
+				      								<div class="widget-menu-item grvpm"><i class="fas fa-print"></i></div>
 				      							</div>
-			      							</div>
-			      							<div class="col-5">
-			      								<div class="prc-ramq"><span class="spanv">ABCD12341234</span><span class="spanl">ramq</span></div>
-			      								<div class="prc-chart"><span class="spanv">23456</span><span class="spanl">chart</span></div>
-			      								<div class="prc-ipm"><span class="spanv">12345</span><span class="spanl">ipm</span></div>
-			      								<div class="prc-dtype"><span class="spanv">Type 2 DM</span><br/><span class="spanl">2019-05-28</span></div>
-			      							</div>
+			      							<div class="widget"><canvas id="canvas2"></canvas></div>
+			      						</div>
+				      					<div class="widget-container">
+				      							<div class="widget-menu">
+				      								<div class="widget-menu-item"><i class="fas fa-table"></i></div>
+				      								<div class="widget-menu-item"><i class="fas fa-history"></i></div>
+				      								<div class="widget-menu-item"><i class="fas fa-plus"></i></div>
+				      								<div class="widget-menu-item"><i class="fas fa-print"></i></div>
+				      							</div>
+	
+			      							<div class="widget"><canvas id="canvas3"></canvas></div>
+			      						</div>
+				      					<div class="widget-container">
+				      							<div class="widget-menu">
+				      								<div class="widget-menu-item"><i class="fas fa-table"></i></div>
+				      								<div class="widget-menu-item"><i class="fas fa-history"></i></div>
+				      								<div class="widget-menu-item"><i class="fas fa-plus"></i></div>
+				      								<div class="widget-menu-item"><i class="fas fa-print"></i></div>
+				      							</div>
+	
+			      							<div class="widget"><canvas id="canvas4"></canvas></div>
 			      						</div>
 			      					</div>
+			      					
 			      				</div>
 			      				
 			      			</div>
-			      			<div class="col-4">
-			      				<div class="patient-container patient-thumbnail-container"></div>
-			      			</div>
 			      		</div>
+			      	
 			      		<div class="row">
-			      			<div class="col">
-			      				<div class="patient-container patient-graph-container umbra"></div>
+			      			<div class="col-4">
+				      			<div class="patient-container patient-tools-container">
+					      			<div class="block-title"><span>Tools</span><div></div></div>
+					      			<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
+					      		</div>	
+			      			</div>
+			      			<div class="col-4">
+			      				<div class="patient-container patient-hcw-container">
+				      				<div class="block-title"><span>Healthcare Worker</span><div></div></div>
+				      				<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
+				      			</div>	
+			      			</div>
+			      			<div class="col-4">
+			      				<div class="patient-container patient-thumbnail-container">
+			      					<div class="block-title"><span>Blood Pressure</span><div></div></div>
+			      					<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
+			      				</div>	
 			      			</div>
 			      		</div>
+
 			      	</div>
 			    </div>
 			    <div class="col-3">
 			      <div class="container-fluid">
 			      	<div class="row">
-			      		<div class="patient-container patient-tools-container"></div>
+			      		<div class="col">
+			      			<div class="patient-container patient-record-container umbra">
+			      					<div class="block-title"><span>Patient Record</span><div></div></div>
+			      					<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
+			      					
+			      					<div class="container-fluid">
+	      								<div class="row">
+	      									<div class="col">
+	      										<div class="prc-avatar"><i class="fas fa-mars"></i></div>
+	      										<div class="prc-name"><span class="prc-fname">First Name</span><br/><span class="prc-lname">Last Name asdasdas</span></div>
+	      									</div>
+	      								</div>
+	      								<div class="row">
+	      									<div class="col-7">
+	      										<div class="prc-ramq"><span class="spanl">ramq</span><span class="spanv">ABCD12341234</span></div>
+      											<div class="prc-chart"><span class="spanl">chart</span><span class="spanv">23456</span></div>
+      											<div class="prc-ipm"><span class="spanl">ipm</span><span class="spanv">12345</span></div>
+	      									</div>
+	      									<div class="col-5">
+	      										<div class="prc-dtype"><div class="spanv">Type 2 DM</div><div class="spanl">2019-05-28</div></div>
+	      										<div class="prc-community">Chisasibi</div>
+	      									</div>
+	      									
+	      								</div>
+	      							</div>
+			      							
+			      						
+			      						
+			      					
+			      			</div>
+			      		</div>
 			      	</div>
 			      	<div class="row">
-			      		<div class="patient-container patient-hcw-container"></div>
+			      		<div class="col">
+				      		
+				      		
+				      	</div>
 			      	</div>
 			      	<div class="row">
-			      		<div class="patient-container patient-notes-container"></div>
+			      		<div class="col">
+				      		
+				      	</div>
 			      	</div>
 			      	<div class="row">
-			      		<div class="patient-container  patient-stats-container"></div>
+			      		<div class="col">
+				      		<div class="patient-container patient-notes-container">
+				      			<div class="block-title"><span>Patient Notes</span><div></div></div>
+				      			<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
+				      		</div>
+				      	</div>
+			      	</div>
+			      	<div class="row">
+			      		<div class="col">
+				      		<div class="patient-container  patient-stats-container">
+				      			<div class="block-title"><span>Patient Statistics</span><div></div></div>
+				      			<div class="block-wmenu"><div class="slider"></div><i class="fas fa-ellipsis-v"></i></div>
+				      		</div>
+				      	</div>
 			      	</div>
 			      	
 			      </div>
@@ -101,7 +182,7 @@
 			      	<div class="container-fluid">
 			      		<div class="row">
 			      			<div class="col">
-			      				<div class="patient-container patient-menu-container umbra"></div>
+			      				<div class="patient-container patient-menu-container umbra" role='navigation'></div>
 			      			</div>
 			      		</div>
 			      		<div class="row">
@@ -120,7 +201,10 @@
 			      <div class="container-fluid">
 			      	<div class="row">
 			      		<div class="col">
-			      			<div class="patient-container patient-record-container umbra"></div>
+			      			<div class="patient-container patient-record-container umbra">
+			      				
+			      			
+			      			</div>
 			      		</div>
 			      	</div>
 			      	<div class="row">
@@ -155,6 +239,7 @@
 		<div class="common-cdisheader uss">
 			<div class="logo">CDIS</div>
 			 
+			 <!--
 			<div class="search">
 						<input type="hidden" name="criteria" id="criteria" value="chart"/>
 						<div class="input-group mb-3">
@@ -175,22 +260,11 @@
 						    
 						</div>
 					
-			
-			
-			
-			
-			
-					<!-- 
-					<div id="criteria">CHART</div>
-				  	<div id="radios" class="scriteria btn-group-vertical" data-toggle="buttons">
-					    <label for="chart" class="btn btn-default active"><input type="radio" id="chart" name="criteria" checked="checked">CHART</label>
-					    <label for="ipm" class="btn btn-default"><input type="radio" id="ipm" name="criteria" >IPM</label>
-					    <label for="ramq" class="btn btn-default"><input type="radio" id="ramq" name="criteria">RAMQ</label>
-					    <label for="fnamelname" class="btn btn-default"><input type="radio" id="fnamelname" name="criteria">NAME</label>
-				  	</div>
-				  	<div class="ssearch"><input type="text" name="search" id="search" class="searchtext" tabindex="1"/></div>
-				  	 -->
+					
 			</div>
+			
+			-->
+			<div class="mysearch"></div>
 			
 			<ul class="menu">
 				<li class="personalinfo ubs" data-toggle="tooltip" data-placement="bottom" title="User personal information"><i class="far fa-user"></i></li>

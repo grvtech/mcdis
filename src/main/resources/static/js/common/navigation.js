@@ -59,13 +59,24 @@ function initNavigation() {
 	
 	
 	function getPage() {
-		var url =  window.location.href;
-	    var index = url.lastIndexOf("/") + 1;
-	    var filenameWithExtension = url.substr(index);
+		var result = {};
+		result['url'] =  window.location.href;
+	    var index = result['url'].lastIndexOf("/") + 1;
+	    var filenameWithExtension = result['url'].substr(index);
 	    var filename = filenameWithExtension.split(".")[0]; 
 	    filename = filename.split("?")[0]; // <-- added this line
 	    if(filename == ""){filename="index";}
-	    return filename;                                  
+	    result['view'] = filename;
+	    result['server'] = window.location.hostname;
+	    result['protocol'] = window.location.protocol;
+	    var vars = {};
+	    var url = window.atob(location.search.substring(1));
+	    var parts = url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+	        vars[key] = value;
+	    });
+	    result['paramters'] = vars;
+	    //return filename;
+	    return result;
 	}
 
 	function getParameterByName(name) {

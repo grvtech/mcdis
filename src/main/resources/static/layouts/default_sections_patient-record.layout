@@ -1,0 +1,20 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="prc-avatar"><i class="fas" recordValue="gender"></i></div>
+			<div class="prc-name"><span class="prc-fname" recordValue="fname">First Name</span><br/><span class="prc-lname" recordValue="lname">Last Name asdasdas</span></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-7">
+			<div class="prc-ramq"><span class="spanl">ramq</span><span class="spanv" recordValue="ramq">ABCD12341234</span></div>
+			<div class="prc-chart"><span class="spanl">chart</span><span class="spanv" recordValue="chart">23456</span></div>
+			<div class="prc-ipm"><span class="spanl">ipm</span><span class="spanv" recordValue="giu">12345</span></div>
+		</div>
+		<div class="col-5">
+			<div class="prc-dtype"><div class="spanv" recordValue="dtype">Type 2 DM</div><div class="spanl" recordValue="ddate">2019-05-28</div></div>
+			<div class="prc-community" recordValue="community">Chisasibi</div>
+		</div>
+		
+	</div>
+</div>

@@ -1,7 +1,12 @@
-/*
- * MAIN
- * */
+import Login from '/ncdis/js/apps/login/js/index.js';
+import Frontpage from '/ncdis/js/apps/frontpage/js/index.js';
+const login = new Login();
+login.render();
 
+const frontpage = new Frontpage('frontpage');
+
+
+/*
 
 var emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
 name = $( "#nameUser" ),
@@ -11,11 +16,11 @@ admin = $("#adminUser"),
 tips = $( ".validateTips" );
 var imsg = "All form fields are required.";
 
-$("#user").focus();
 
 
 $("#forgotButton").click(function (){
-	$("#dialogForgot").dialog("open");
+	//$("#dialogForgot").dialog("open");
+	
 });
 
 $("#subscribeButton").click(function (){
@@ -23,26 +28,6 @@ $("#subscribeButton").click(function (){
 });
 
 
-$("#dialogForgot").dialog({
-	  autoOpen: false,
-    	resizable: false,
-    	height: 650,
-   		width: 420,
-    	modal: true,
-    buttons: {
-      Cancel: function() {
-        $( this ).dialog( "close" );
-      },
-      "Recover Password": function() {
-    	  forgotPassword(formForgot[0]);
-        }
-    },
-    close: function() {
-        formForgot[ 0 ].reset();
-        $(".mf").removeClass( "ui-state-error" );
-        tips.text(imsg);
-      }
-  });
 
 
 $("#dialogSubscribe").dialog({
@@ -80,7 +65,7 @@ var formSubscribe = $("#dialogSubscribe").find( "form" ).on( "submit", function(
     //sendUserMessage();
   });
 
-
+*/
 /*
 var mes = $.ajax({
 	  url: "/ncdis/service/action/getFrontPageMessage?language=en",
@@ -125,68 +110,6 @@ var mes = $.ajax({
 
 
 
-$("#loginButton").click(function() {
-	
-	
-	var user = $("#user").val();
-	var pass = $("#pass").val();
-	var validUser = Validate.now(Validate.Presence, $("#user").val());
-	var validPass = Validate.now(Validate.Presence, $("#pass").val());
-	
-	
-	
-	if(validUser && validPass){
-		
-		var data = {'elements':{'username':user, 'password':pass, 'reswidth':$(window).width(), 'resheight':$(window).height()} , 'uuidsession': emptySession, 'action':'gol'};
-		
-		
-		var request = $.ajax({
-		  url: "/ncdis/user/authenticate",
-		  type: "post",
-		  dataType: "json",
-		  contentType: 'application/json',
-		  data : JSON.stringify(data)
-		});
-		request.done(function( json ) {
-			
-			console.log(json);
-			
-		  if(json.status == "error"){
-			  $("#errorText").text(json.elements.message);
-		  }else{
-			 //userObj = json.objs[0];
-			 userObj = json.elements.user;
-			 sid = getSession(userObj.iduser);
-			 //var ramq = $.cookie('ramq');
-			 var ramq = null;
-			 if((ramq != null) && (ramq != "")){
-				 //window.location = "cdis.html?section=patient&ramq="+ramq+"&sid="+sid+"&language=en";
-				 //window.location = "search.html?sid="+sid+"&language=en";
-				 gts(sid,"en");
-				 //gtc(sid,"en",ramq,"patient");
-			 }else{
-				 //startUser();
-				 //window.location = "search.html?sid="+sid+"&language=en";
-				 gts(sid,"en");
-			 }
-		  }
-		});
-		request.fail(function( jqXHR, textStatus ) {
-			$("#errorText").text("Wrong Username or Password");
-		});
-		
-	}else{
-		$("#errorText").text("Username or Password cannot be empty");
-		
-	}
-});
-
-$("#pass").keyup(function(e){
-	if(e.keyCode == 13){
-		$("#loginbutton").click();
-	}
-});
-
 
 
 
@@ -195,7 +118,7 @@ $("#pass").keyup(function(e){
  * 
  * */
 
-
+/*
 function forgotPassword() {
     var valid = true;
     $(".mf").removeClass( "ui-state-error" );
@@ -234,7 +157,9 @@ function forgotPassword() {
     }
     return valid;
   }
+*/
 
+/*
 function subscribe() {
     var valid = true;
     $(".mf").removeClass( "ui-state-error" );
@@ -272,34 +197,8 @@ function subscribe() {
     }
     return valid;
   }
+*/
 
 
-function updateTips( t ) {
-    tips
-      .text( t )
-      .addClass( "ui-state-highlight" );
-    setTimeout(function() {
-      tips.removeClass( "ui-state-highlight", 1500 );
-    }, 500 );
-  }
 
-  function checkLength( o, n ) {
-    if ( o.val().length == 0 || o.val() == '0') {
-      o.addClass( "ui-state-error" );
-      updateTips( "Field " + n + " cannot be empty." );
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  function checkRegexp( o, regexp, n ) {
-    if ( !( regexp.test( o.val() ) ) ) {
-      o.addClass( "ui-state-error" );
-      updateTips( n );
-      return false;
-    } else {
-      return true;
-    }
-  }
 

@@ -1,3 +1,8 @@
+import Frontpage from '/ncdis/js/apps/frontpage/js/index.js';
+import Search from '/ncdis/js/apps/search/js/index.js';
+
+const frontpage = new Frontpage('frontpage');
+const search = new Search();
 /*
 if (!isUserLoged(sid)){
 	logoutUser(sid);
@@ -29,7 +34,7 @@ $(document).ready(function(){
 
 
 
-$('#search').focus();
+$(search).find('input[type=text]').focus();
 /*
 if(typeof(userObj[0].idprofesion) != "undefined"){
 	var hcpcat = profession_index[userObj[0].idprofesion];
@@ -62,11 +67,12 @@ if(userNotes.length > 0){
 
 */
 
-/**/
+/*
 $("#radios .btn").focusin(function() {
 	$("#search").val("");
 	$("#search").focus();
 });
+*/
 
 $("#linkedPatients").click(function(){
 	$(".personal-patients table").toggle();
@@ -83,8 +89,11 @@ $("#linkedPatients").click(function(){
 initNavigation();
 
 
-
+/*
 var optionSelected = false;
+
+
+
 $("#search").autocomplete({
 	delay: 300,
 	minLength: 2,
@@ -142,7 +151,7 @@ $("#search").autocomplete({
 		//console.log("item");
 		//console.log(item);
 		
-		/**/
+		
 		//var $line = $("<a>");
 		var $container = $("<div>");
 		//$line.height("95px");
@@ -187,3 +196,5 @@ $("#search").autocomplete({
 		$(ul).css("overflow-x","hidden");
 		return $liline;
 	};
+
+*/
