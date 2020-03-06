@@ -47,6 +47,7 @@ import com.grv.cdis.model.Values;
 import com.grv.cdis.util.FileTool;
 
 
+
 public class CdisDBridge {
 	
 	public ArrayList<String> getAllCommunities(){
