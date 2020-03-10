@@ -16,13 +16,14 @@ export default class GRVsearch{
 		//loadcss(this.config.css);
 		this.elements = this.config.elements;
 		this.container = $('.'+this.config.container);
-		this.container.addClass('grv-search');
-		let listStyle = 'grv-search-list-'+this.config.location;
-		let listContainer = $('<div>',{class:listStyle}).appendTo(this.container);
-		let inputContainer = $('<div>',{class:'grv-search-input'}).appendTo(this.container);
+		let c = $('<div>',{class:'grvsearch'}).appendTo(this.container);
+		
+		let listStyle = 'grvsearch-list-'+this.config.location;
+		let listContainer = $('<div>',{class:listStyle}).appendTo(c);
+		let inputContainer = $('<div>',{class:'grvsearch-input'}).appendTo(this.container);
 		
 		
-		//inputContainer.css('height','35px');
+
 		const id = 'search'+moment().unix();
 		if(this.config.location == 'page'){
 			const listProps = {'direction':'v', 'open':0, 'container': listStyle,'id':id+'Criteria'}
