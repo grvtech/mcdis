@@ -1,10 +1,23 @@
 
-.grv-input{position:relative;height:100%;width:100%;border-radius:5px;overflow:hidden; background-color:#ffffff;}
-.grv-input label {position :absolute;width:100%;height:100%;padding-left:5px;margin:0px;line-height:1rem;}
-.grv-input input {border:none;width:100%;height:100%;line-height: 1rem;padding-left:6px;}
-.grv-input input:focus {outline: none;border:none;box-shadow: none;}
 
-.grv-input .grv-input-spacer {position:relative;height:15px;background-color:transparent;}
-.grv-input .grv-input-hspacer {position:relative;height:7px;background-color:transparent;}
+.grvinput{display:grid;height:100%;width:100%;margin:5px;}
 
 
+.grvinput .grvinput-label {width:100%;height:100%;vertical-align: middle;line-height: normal;}
+.grvinput .grvinput-label.focus {font-weight:bold;}
+.grvinput .grvinput-control{width:100%;height:100%;margin:0px;padding:0px;border:1px solid #cdcdcd;}
+.grvinput .grvinput-control input {width:100%;height:100%;outline: none;border:none;box-shadow: none;padding:0px;font-size:100%;background:transparent;}
+.grvinput .grvinput-control.focus {border-color:transparent;border-bottom:1px solid #000000;}
+
+
+
+.grvbutton{padding:0.2em 0.3em;margin:0.2em;box-sizing: border-box;text-decoration:none;font-weight:400;text-align:center;position:relative;cursor:default;}
+
+.grvbutton.normal{border:0.15em solid #305BA2;color:#ffffff;background-color:#305BA2;}
+.grvbutton.normal:hover{background-color:#0245b8;}
+
+.grvbutton.search{border:0.15em solid #47BFC0;color:#ffffff;background-color:#47BFC0;}
+.grvbutton.search:hover{background-color:#db4437;}
+
+.grvbutton.common{border:0.15em solid #4b3b3b;color:#ffffff;background-color:#4b3b3b;}
+.grvbutton.common:hover{background-color:#db4437;}

@@ -5,110 +5,70 @@ import switchButton from '/ncdis/js/component/grvswitch.js'
 export let messagesArray = [];
 
 export default class GRVfrontpage{
+	
+	
 	constructor(type){
 		this.type = type;
 		var view = page.view;
 		this.config = eval("frontpageConfiguration."+view);
 		this.config['type'] = type;
 		loadcss(this.config.css);
+		this.carouselid = 0;
+		this.index = 0;
 		this.redraw(this.config);
-		//this.interval = setInterval(this.redraw, 5000, this.type, this.config.url, this.config.container);
+		this.carousel(this.config);
 	}
 
 	static render(config, messages){
+		
 		let container = $('.'+config.container);
 		let toolbar = null;
 		let indicators = null;
 		container.empty();
-		if(config.hastoolbar){
-			toolbar = $('<div>',{class:'grv-message-toolbar'}).appendTo(container);
-			if(config.minimize){
-				let label = 'Minimize message panel';
-				let mlabel = 'Maximize message panel';
-				let sb = switchButton({'container':'grv-message-toolbar','label':label});
-				let theight=0;
-				sb.on('mousedown',function(){
-					if(!$(this).find('input').is(':checked')){
-						container.animate({
-						    height: "65px"
-						  },{
-							duration:500,
-							complete:function() {
-								  
-								    // Animation complete.
-									  $(this).find('input').prop('checked', true);
-									  $(this).find('.grv-switch-label').text(mlabel);
-									  console.log('finish animate');
-								  },
-						  	start:function(){
-						  		theight = $(this).parent().find('.grv-message-container').height();
-						  	}
-								  
-						  });
-					}else{
-						container.animate({
-						    height: (theight+25+10)+"px"
-						  },{
-							  duration:500,
-							  complete:function() {
-								    // Animation complete.
-								  $(this).find('input').prop('checked', false);
-								  $(this).find('.grv-switch-label').text(label);
-								  console.log('finish animate');
-							  }
-						  });
-					}
-				});
-			}
-		}
+		let widget = $('<div>',{class:'grvmessage','data-interval':config.period}).appendTo(container);
+		let msgs = $('<div>',{class:'grvmessage-container umbra','data-interval':config.period}).appendTo(widget);
+		toolbar = $('<div>',{class:'grvmessage-toolbar'}).appendTo(widget);
+
+		if(config.hastoolbar){indicators = $('<ol>',{class:'grvmessage-indicators'}).appendTo(toolbar);}
 		
-		let frontpageWidget = $('<div>',{class:'grv grv-message-container shadow carousel slide','data-ride':'carousel','data-interval':config.period, 'data-wrap':true}).appendTo(container);
-		if(config.hastoolbar){
-			indicators = $('<ol>',{class:'carousel-indicators'}).appendTo(toolbar);
-		}
-		
-		let  inner = $('<div>',{class:'carousel-inner'}).appendTo(frontpageWidget);
 		for(var i=0;i<messages.length;i++){
 			var item = messages[i];
 			var a = (i == 0)?'active':'';
 			var tag = null;
-			if(item.new == 1){
-				//tag =$('<div>',{class:'grv-message-tag-new'}).text('NEW');
-				tag =$('<div>',{class:'grv-message-tag-new'}).append($('<span>').text('New')).append($('<div>'));
-			}
-			$('<div>',{class:'carousel-item '+a}).html(item.text).append(tag).appendTo(inner);
-			if(config.hastoolbar){
-				$('<li>',{class:a,'data-target':'.grv-message-container', 'data-slide-to':i}).appendTo(indicators);
-			}
+			if(item.new == 1){tag = $('<div>',{class:'grvmessage-tag-new'}).append($('<span>').text('New')).append($('<div>'));}
+			$('<div>',{class:'grvmessage-item item'+i+' '+a}).html(item.text).append(tag).append($('<p>').html(item.resumat)).appendTo(msgs);
+			if(config.hastoolbar){$('<li>',{class:a + ' dot dot'+i, 'slideIndex':i}).appendTo(indicators);}
 		}
-		
-		frontpageWidget.carousel();
-		var handled=false;//global variable
 
-		frontpageWidget.bind('slide.bs.carousel', function (e) {
-		    var current=$(e.target).find('.carousel-item.active');
-		    var indx=$(current).index();
-		    if((indx+2)>$('.carousel-indicators li').length)indx=-1
-		     if(!handled){
-		        $('.carousel-indicators li').removeClass('active')
-		        $('.carousel-indicators li:nth-child('+(indx+2)+')').addClass('active');
-		     }else{
-		        handled=!handled;//if handled=true make it back to false to work normally.
-		     }
-		});
-
-		$(".carousel-indicators li").on('click',function(){
-		   //Click event for indicators
+		$(".grvmessage-indicators li").on('click',function(){
 		   $(this).addClass('active').siblings().removeClass('active');
-		   //remove siblings active class and add it to current clicked item
-		   handled=true; //set global variable to true to identify whether indicator changing was handled or not.
+		   let idx = $(this).attr("slideIndex");
+		   $('.item'+idx).siblings().removeClass('active').hide();
+		   $('.item'+idx).fadeIn(1000, function(){
+			   $(this).addClass('active');
+			   $(this).trigger("fadeInComplete");
+		   });
 		});
-		
 		
 	}
 	
-	
 
+	carousel(config){
+		this.carouselid = setInterval(function(obj){
+			if(obj.index >= messagesArray.length ){
+				obj.index = 0; /*reset index if more than lease*/
+			}
+			$('.dot'+obj.index).addClass('active').siblings().removeClass('active');
+			$('.item'+obj.index).siblings().removeClass('active').hide();
+			$('.item'+obj.index).fadeIn(1000, function(){
+				   $(this).addClass('active');
+		   });
+		obj.index++;
+		},config.period, this);
+	}
+	
+	
+	
 	redraw(config){
 		var mes = $.ajax({
   		  url: config.url+'?type='+config.type,
@@ -118,11 +78,12 @@ export default class GRVfrontpage{
   		});
   		mes.done(function( json ) {
   			var messages = json.elements.messages;
-  			var update  = GRVfrontpage.isUpdate(messages,messagesArray);
-  			if(update){
-  				messagesArray = messages;
-  				GRVfrontpage.render(config, messagesArray);
-  			}
+  			//var update  = GRVfrontpage.isUpdate(messages,messagesArray);
+  			//if(update){
+  			messagesArray = messages;
+  			GRVfrontpage.render(config, messagesArray);
+  			
+  			//}
   			console.log(messagesArray);
   		});
   		mes.fail(function( jqXHR, textStatus ) {

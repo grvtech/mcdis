@@ -37,25 +37,21 @@ export default class GRVlogin{
 		this.form = $('<form>',{class:''}).appendTo(wc);
 		$('<div>',{class:'header'}).append($('<div>',{class:'login-text'}).text('Cree Diabetes Information System')).appendTo(this.form);
 
-		this.formbody = $('<div>',{class:'body'}).appendTo(this.form);
-		
+		this.formbody = $('<div>',{class:'body umbra'}).appendTo(this.form);
 		let r1 = $('<div>',{class:'body-row'}).appendTo(this.formbody);
 		$('<div>',{class:'login-avatar'}).appendTo(r1);
 		let c2 = $('<div>',{class:'login-fields'}).appendTo(r1);
-		
+		$('<div>',{id:'errorText'}).appendTo(c2);
 		$('<div>',{class:'login-username'}).appendTo(c2);
-		const username = new GRVInput({container:'login-username',id:'user',style:'rightside',label:'Username',height:50, width:'100%'});
-
+		const username = new GRVInput({container:'login-username',id:'user',style:'leftside',label:'Username'});
 		$('<div>',{class:'login-password'}).appendTo(c2);
-		const password = new GRVInput({container:'login-password',id:'pass',style:'leftside',label:'Password',height:50,type:'password'});
+		const password = new GRVInput({container:'login-password',id:'pass',style:'leftside',label:'Password',type:'password'});
 		
-		
-		let r2 = $('<div>',{class:'body-buttons'}).appendTo(this.formrow);
-
-		this.lb = $('<div>',{class:'grvbutton', id:'loginButton', tabindex:3}).text('Login').appendTo(r2);
-		this.fb = $('<div>',{class:'grvbutton', id:'forgotButton'}).text('Forgot password').appendTo($('<div>',{class:'col center'}).appendTo(r2));
-		this.sb = $('<div>',{class:'grvbutton', id:'subscribeButton'}).text('Add new CDIS user').appendTo($('<div>',{class:'col align-items-center'}).appendTo(r2));
-		
+		let lbc = $('<div>',{class:'login-button'}).appendTo(c2);
+		this.lb = $('<div>',{class:'grvbutton normal', id:'loginButton', tabindex:3}).text('Login').appendTo(lbc);
+		let r2 = $('<div>',{class:'body-buttons'}).appendTo(this.formbody);
+		this.fb = $('<div>',{class:'grvbutton normal', id:'forgotButton'}).text('Forgot password').appendTo(r2);
+		this.sb = $('<div>',{class:'grvbutton normal', id:'subscribeButton'}).text('Add new CDIS user').appendTo(r2);
 		this.lb.on('click',{action:this.config.actions.login},this.l);
 		this.fb.on('click',this.f);
 		this.sb.on('click',this.s);
@@ -143,11 +139,23 @@ export default class GRVlogin{
 	
 	/*login method*/
 	l(event){
-		var user = $("#user").val();var pass = $("#pass").val();var error = $("#errorText");var validUser = Validate.now(Validate.Presence, $("#user").val());var validPass = Validate.now(Validate.Presence, $("#pass").val());
+		var user = $("#user").val();
+		var pass = $("#pass").val();
+		var error = $("#errorText");
+		var validUser = Validate.now(Validate.Presence, $("#user").val());
+		var validPass = Validate.now(Validate.Presence, $("#pass").val());
 		if(validUser && validPass){
 			var data = {'elements':{'username':user, 'password':pass, 'reswidth':$(window).width(), 'resheight':$(window).height()} , 'uuidsession': emptySession, 'action':'gol'};
 			var request = $.ajax({url:event.data.action,type: "post",dataType: "json",contentType: 'application/json',data : JSON.stringify(data)});
-			request.done(function( json ) {if(json.status == "error"){error.text(json.elements.message);}else{userObj = json.elements.user;sid = json.uuidsession;gts(sid,"en");}});
+			request.done(function( json ) {
+				if(json.status == "error"){
+					error.text(json.elements.message);
+				}else{
+					userObj = json.elements.user;
+					sid = json.uuidsession;
+					gts(sid,"en");
+				}
+			});
 			request.fail(function( jqXHR, textStatus ) {error.text("Wrong Username or Password");});
 		}else{
 			error.text("Username or Password cannot be empty");

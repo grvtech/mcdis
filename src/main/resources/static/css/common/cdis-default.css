@@ -88,9 +88,10 @@ widget header #E6E9EE
 INDEX PAGE
 */
 .index-page{}
-.index-message-container{position:absolute;left:50%;margin-left:-400px;top:20px;overflow:hidden;padding:10px;height:100px;width:800px;}
+/*.index-message-container{position:absolute;left:50%;margin-left:-400px;top:20px;padding:10px;height:100px;width:800px;border:2px solid red;}*/
 
-.index-login-container{position:absolute;left:10%;top:30%;height:330px;width:550px;}
+.index-message-container{position:absolute;left:700px;top:30%;overflow:hidden;padding:10px;height:250px;width:400px;margin-top:20px;}
+.index-login-container{position:absolute;left:130px;top:30%;height:330px;width:550px;}
 
 .index-cdistext{color:#ffffff;font-size:1.5rem;height:50px;width:auto;z-index:1;}
 .index-login{height:250px;width:100%;background-color: #f2f2f2;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);}
@@ -173,7 +174,8 @@ SEARCH PAGE CSS
 .search-search #radios .btn.focus {  outline: none;box-shadow:none;}
 
 
-.search-dashboard-menu{position:relative;width:1000px;text-align:right;margin:auto;padding:5px;}
+.search-dashboard-menu{position:relative;width:700px;text-align:right;margin:auto;padding:5px;display:grid;grid-template-columns:200px 200px 200px;grid-column-gap: 20px;}
+.dashboard-menu.item{}
 
 .search-personal-patients{position:relative;max-height:250px;width:1000px;margin:auto;z-index:2;background-color:#efefef;overflow-x: hidden;padding:5px;}
 .search-personal-patients .linkedHeader{position:relative;width:auto;padding:5px;background:rgba(46,80,150,1);border:1px solid #4d4d4d;}

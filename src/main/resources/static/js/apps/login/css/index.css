@@ -1,6 +1,14 @@
 .login-container{}
+.login-container .header{font-size:1.5vw;color:#ffffff;}
+.login-container .body{width:95%;background-color:#efefef;}
+.login-container .body .body-row{width:95%; margin:auto;display:grid;grid-template-columns:150px auto;}
+.login-container .body .body-row .login-avatar{width:110px; height:170px;background:no-repeat url(../../../../images/logo-front.png) center center;}
+.login-container .body .body-row .login-fields{width:95%;}
+.login-container .body .body-row .login-fields .login-username{margin:10px 0px 20px 0px; }
+.login-container .body .body-row .login-fields .login-password{margin:10px 0px 20px 0px;}
+.login-container .body .body-row .login-fields .login-button{text-align:right;}
+.login-container .body .body-buttons{width:95%; margin:auto;display:grid;grid-template-columns:33% 33% 33%;align-items:center;padding:10px 0px 10px 0px;}
+.login-container .body .body-row .login-fields #errorText{min-height:30px;color:red;font-weight:bold;}
 .dialog-forgot{}
 .dialog-subscribe{}
-
-
 

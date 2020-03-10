@@ -4,8 +4,9 @@
 	"action":"messages",
 	"elements":{
 		"messages":[
-			{"id":1,"text":"message1","new":"1","resumat":"this is resumat message 1"}
-			
+			{"id":1,"text":"message1","new":"1","resumat":"this is resumat message 1"},
+			{"id":2,"text":"message2","new":"0","resumat":"this is resumat message 2"},
+			{"id":3,"text":"message3","new":"0","resumat":"<p>this</p> <br>is <h1>resumat</h1> message 3"}
 		]
 	}
 }

@@ -4,9 +4,9 @@ export default
 		"container": "index-message-container",
 		"css":apppath+"frontpage/css/index.css",
 		"url":"/ncdis/js/apps/frontpage/messages.json",
-		"period":3000,
+		"period":10000,
 		"minimize":false,
-		"hastoolbar":false
+		"hastoolbar":true
 			
 	},
 	"search":{
