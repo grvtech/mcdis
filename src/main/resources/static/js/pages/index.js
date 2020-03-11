@@ -3,7 +3,7 @@ import Frontpage from '/ncdis/js/apps/frontpage/js/index.js';
 const login = new Login();
 login.render();
 
-const frontpage = new Frontpage('frontpage');
+//const frontpage = new Frontpage('frontpage');
 
 
 /*

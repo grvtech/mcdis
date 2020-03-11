@@ -22,14 +22,15 @@ export default function(elements, properties){
 		cls = 'grvlist';
 		container = $('.grvlist-container');
 	}
-	let c = $('<ul>',{class:'list-group'}).appendTo(container);
-	let f = $('<input>',{type:'hidden',value:'', id:id}).appendTo(container);
-	if(direction != 'v') c = $('<ul>',{class:'list-inline'}).appendTo(container);
+	let cont = $('<div>',{class:'grvlist'}).appendTo(container);
+	let c = $('<ul>',{class:'grvlist-group-'+direction}).appendTo(cont);
+	let f = $('<input>',{type:'hidden',value:'', id:id}).appendTo(cont);
+	
 	for(var i=0;i<elements.length;i++){
 		let element = elements[i];
 		let a = 'active';
 		if(element.status != 'active'){ a = '';}else{f.val(element.value);}
-		$('<li>',{value:element.value, class:'list-group-item list-group-item-action '+a}).text(element.label).appendTo(c);
+		$('<li>',{value:element.value, class:'grvlist-group-item '+a}).text(element.label).appendTo(c);
 	}
 	c.children('li').on('click',function(event){
 		//let p = event.target.parent();

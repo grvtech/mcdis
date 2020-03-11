@@ -18,9 +18,9 @@ export default class GRVsearch{
 		this.container = $('.'+this.config.container);
 		let c = $('<div>',{class:'grvsearch'}).appendTo(this.container);
 		
-		let listStyle = 'grvsearch-list-'+this.config.location;
+		let listStyle = 'grvsearch-list';
 		let listContainer = $('<div>',{class:listStyle}).appendTo(c);
-		let inputContainer = $('<div>',{class:'grvsearch-input'}).appendTo(this.container);
+		let inputContainer = $('<div>',{class:'grvsearch-input'}).appendTo(c);
 		
 		
 
@@ -33,7 +33,7 @@ export default class GRVsearch{
 			const list = GRVDropdown(this.elements, listProps);
 		}
 		 
-		const inputProps = {container:'grv-search-input',id:id+'Input',style:'rightside',label:'Find patient',height:50};
+		const inputProps = {container:'grvsearch-input',id:id+'Input',style:'rightside',label:'Find patient'};
 		const input = GRVInput(inputProps);
 		
 		
