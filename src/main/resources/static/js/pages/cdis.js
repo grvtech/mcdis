@@ -322,10 +322,10 @@ function initCdisHeader(){
 
 
 function drawPatientRecord(pObj){
-	var patientRecord = pObj.record;
+	//var patientRecord = pObj.record;
 	//patientObj = prepareData(patientObj);
 	
-	var container = $('.patient-record-container');
+	//var container = $('.patient-record-container');
 	//container.empty();
 	/*
 	$("#patient-record div .record").each(function( index ) {

@@ -37,6 +37,7 @@ export default function(elements, properties){
 		$(this).siblings('li').removeClass('active');
 		$(this).addClass('active');
 		$(this).parent().siblings('input').val($(this).attr('value'));
+		$(this).parent().siblings('input').trigger('change');
 	});
 	return container;
 }

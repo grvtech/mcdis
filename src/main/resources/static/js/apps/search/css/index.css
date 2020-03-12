@@ -1,14 +1,17 @@
-.grvsearch{
-	width:100%;
-	height:100%;
-	display:grid;
-	grid-template-columns:80px auto;}
-	
-}
-
+.grvsearch{	width:100%;	height:100%;display:grid;grid-template-columns:80px auto;}
 .grvsearch-list{}
 .grvsearch-input{align-self:center;}
 .grvsearch-input .grvinput .grvinput-control{font-size:1.2vw;text-transform: uppercase;background-color:#efefef;border-color:#efefef;}
 .grvsearch-input .grvinput .grvinput-control input{text-transform: uppercase;}
 .grvsearch-input .grvinput .grvinput-control:focus{border-color:#efefef;}
 .grvsearch-input .grvinput .grvinput-label{font-size:1.1vw;padding-left:10px;background-color:#4b3b3b;border:1px solid #4b3b3b; color:#efefef;line-height:1.5;border-radius:0px 5px 5px 0px; }
+
+.grvsearch-result-line{
+	width:100%;
+	display:grid;
+	grid-template-columns:auto 150px 80px 150px 100px;
+}
+
+.grvsearch .grvdropdown{background-color:#efefef;border:1px solid #efefef;}
+.grvsearch .grvdropdown .grvdropdown-value{color:#000000;}
+

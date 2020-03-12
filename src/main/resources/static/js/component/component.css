@@ -30,5 +30,10 @@
 .grvlist .grvlist-group-v .grvlist-group-item:hover{background-color:#db4437;color:#ffffff;}
 
 
+.grvdropdown{height:100%;}
+.grvdropdown-value{color:#ffffff;display:grid;grid-template-columns:auto 15px;height:100%;}
+.grvdropdown-value-label{line-height:1.8;text-align:center;}
+.grvdropdown-value-icon{line-height:1.8;text-align:center;}
 
+.grvdropdown-menu{display:none;}
 

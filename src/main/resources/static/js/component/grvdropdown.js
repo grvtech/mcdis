@@ -16,11 +16,13 @@ export default function(elements, properties){
 		cls = 'grvdropdown';
 		container = $('.grvdropdown-container');
 	}
-	let f = $('<input>',{type:'hidden',value:'', id:id}).appendTo(container);
-	let c = $('<div>',{class:'btn-group'}).appendTo(container);
-	let b = $('<button>',{type:'button',id:id+'Dropdown',class:'btn dropdown-toggle','data-toggle':'dropdown', 'aria-haspopup':'true', 'aria-expanded':'false'}).appendTo(c);
+	let cont = $('<div>',{class:'grvdropdown'}).appendTo(container);
+	let f = $('<input>',{type:'hidden',value:'',id:id}).appendTo(cont);
+	let c = $('<div>',{class:'grvdropdown-value'}).appendTo(cont);
+	let clabel = $('<div>',{class:'grvdropdown-value-label'}).appendTo(c);
+	let cicon = $('<div>',{class:'grvdropdown-value-icon'}).append($('<i>',{class:'fas fa-caret-down'})).appendTo(c);
 	
-	let m = $('<div>',{class:'dropdown-menu', 'aria-lebaledby':id+'Dropdown'}).appendTo(c);
+	let m = $('<ul>',{class:'grvdropdown-menu'}).appendTo(cont);
 	for(var i=0;i<elements.length;i++){
 		let element = elements[i];
 		let a = 'active';
@@ -28,16 +30,17 @@ export default function(elements, properties){
 			a = '';
 		}else{
 			f.val(element.value);
-			b.text(element.label);
+			clabel.text(element.label);
 		}
-		$('<button>',{value:element.value,type:'button', class:'dropdown-item '+a}).text(element.label).appendTo(m);
+		$('<li>',{value:element.value,type:'button', class:'grvdropdown-item '+a}).text(element.label).appendTo(m);
 	}
-	m.children('button').on('click',function(event){
+	m.on('click','li',function(event){
 		//let p = event.target.parent();
-		$(this).siblings('button').removeClass('active');
+		$(this).siblings().removeClass('active');
 		$(this).addClass('active');
 		$(this).parent().parent().siblings('input').val($(this).attr('value'));
 		$(this).parent().siblings('button').text($(this).text());
 	});
-	return container;
+	
+	return cont;
 }

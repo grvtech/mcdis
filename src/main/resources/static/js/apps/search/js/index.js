@@ -27,19 +27,25 @@ export default class GRVsearch{
 		const id = 'search'+moment().unix();
 		if(this.config.location == 'page'){
 			const listProps = {'direction':'v', 'open':0, 'container': listStyle,'id':id+'Criteria'}
-			const list = GRVList(this.elements, listProps);
+			this.list = GRVList(this.elements, listProps);
 		}else{
 			const listProps = {'container': listStyle,'id':id+'Criteria'}
-			const list = GRVDropdown(this.elements, listProps);
+			this.list = GRVDropdown(this.elements, listProps);
 		}
 		 
 		const inputProps = {container:'grvsearch-input',id:id+'Input',style:'rightside',label:'Find patient'};
-		const input = GRVInput(inputProps);
+		this.input = GRVInput(inputProps);
 		
+			
+		this.list.on('change','input',{object:this.input},function(event){
+			event.data.object.find('input').val('');
+			event.data.object.find('input').focus();
+		});
+	
 		
 		var optionSelected = false;
 		var searchResult = [];
-		$('.grv-search-input input').autocomplete({
+		$('.grvsearch-input input').autocomplete({
 			delay: 300,
 			minLength: 1,
 			autoFocus: true,
@@ -89,12 +95,9 @@ export default class GRVsearch{
 		    	}
 			}
 		}).data("ui-autocomplete")._renderItem = function(ul,item) {
-				
-				
-				/**/
 				//var $line = $("<a>");
-				var $container = $("<div>",{class:'search-result-line'});
-				//$line.height("95px");
+				var $container = $("<div>",{class:'grvsearch-result-line'});
+				
 				if(item.criteria == "fnamelname"){
 					var fn = (item.firstname+" "+item.lastname).toString().toLowerCase();
 					fn = replaceAll(fn,item.term.toLowerCase(), "<strong>"+item.term.toLowerCase()+"</strong>");
@@ -131,7 +134,7 @@ export default class GRVsearch{
 				$(ul).css("overflow-x","hidden");
 				return $liline;
 			};
-		
+	
 		
 		
 	}
