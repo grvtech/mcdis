@@ -30,10 +30,13 @@
 .grvlist .grvlist-group-v .grvlist-group-item:hover{background-color:#db4437;color:#ffffff;}
 
 
-.grvdropdown{height:100%;}
-.grvdropdown-value{color:#ffffff;display:grid;grid-template-columns:auto 15px;height:100%;}
-.grvdropdown-value-label{line-height:1.8;text-align:center;}
-.grvdropdown-value-icon{line-height:1.8;text-align:center;}
-
-.grvdropdown-menu{display:none;}
-
+.grvdropdown{display:grid;grid-template-rows:auto;cursor:default;}
+.grvdropdown-value{display:grid;grid-template-columns:auto 15px;line-height:normal;align-self:center;height:100%;}
+.grvdropdown-value:hover{font-weight:bold;}
+.grvdropdown-value-label{line-height:normal;text-align:center;align-self:center;}
+.grvdropdown-value-icon{text-align:center;align-self:center;}
+.grvdropdown-menu{display:none;position:absolute;list-style: none;margin:0px;padding:0px;}
+.grvdropdown-item{width:100%;padding:5px 0px 5px 0px;}
+.grvdropdown-item span{padding-left:5px;}
+.grvdropdown-item:hover{background-color:#db4437;color:#ffffff;width:100%;}
+.grvdropdown-item.active{background-color:#4b3b3b;color:#ffffff;}

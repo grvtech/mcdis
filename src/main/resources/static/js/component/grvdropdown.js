@@ -22,7 +22,8 @@ export default function(elements, properties){
 	let clabel = $('<div>',{class:'grvdropdown-value-label'}).appendTo(c);
 	let cicon = $('<div>',{class:'grvdropdown-value-icon'}).append($('<i>',{class:'fas fa-caret-down'})).appendTo(c);
 	
-	let m = $('<ul>',{class:'grvdropdown-menu'}).appendTo(cont);
+	let m = $('<ul>',{class:'grvdropdown-menu umbra'}).appendTo(cont);
+	let maxw = 0;
 	for(var i=0;i<elements.length;i++){
 		let element = elements[i];
 		let a = 'active';
@@ -32,14 +33,26 @@ export default function(elements, properties){
 			f.val(element.value);
 			clabel.text(element.label);
 		}
-		$('<li>',{value:element.value,type:'button', class:'grvdropdown-item '+a}).text(element.label).appendTo(m);
+		let li = $('<li>',{value:element.value, class:'grvdropdown-item '+a}).append($('<span>').text(element.label)).appendTo(m);
+		let lw = li.text().visualLength(li.css('font-size'));
+		maxw =  Math.max(maxw, lw);
 	}
+	
+	maxw = Math.max(maxw, c.width());
+	m.css('width',maxw+'px');
+	cont.on('click',function(){
+		let p = $(this).position();
+		let ultop = $(this).outerHeight(true)+p.top;
+		m.css("top",ultop+"px");
+		m.toggle();
+	});
+	
+	
 	m.on('click','li',function(event){
-		//let p = event.target.parent();
-		$(this).siblings().removeClass('active');
-		$(this).addClass('active');
-		$(this).parent().parent().siblings('input').val($(this).attr('value'));
-		$(this).parent().siblings('button').text($(this).text());
+		$(this).addClass('active').siblings().removeClass('active');
+		$(this).parent().siblings('input').val($(this).attr('value'));
+		$(this).parent().siblings('.grvdropdown-value').children('.grvdropdown-value-label').text($(this).find('span').text());
+		this.toggle();
 	});
 	
 	return cont;

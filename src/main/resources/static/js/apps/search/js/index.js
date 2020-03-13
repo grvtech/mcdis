@@ -16,7 +16,14 @@ export default class GRVsearch{
 		//loadcss(this.config.css);
 		this.elements = this.config.elements;
 		this.container = $('.'+this.config.container);
-		let c = $('<div>',{class:'grvsearch'}).appendTo(this.container);
+		let clss = 'grvsearch-page';
+		if(this.config.location == 'page'){
+			clss = 'grvsearch-page';
+		}else{
+			clss = 'grvsearch-header';
+		}
+		
+		let c = $('<div>',{class:clss}).appendTo(this.container);
 		
 		let listStyle = 'grvsearch-list';
 		let listContainer = $('<div>',{class:listStyle}).appendTo(c);

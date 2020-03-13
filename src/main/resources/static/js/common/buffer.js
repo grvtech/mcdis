@@ -817,6 +817,8 @@ function initPage(){
 	}
 	$("#search").focus();
 	initNavigation();
+	
+	
 	$(document).ready(function(){
 		$('[data-toggle="tooltip"]').tooltip(); 
 	});
