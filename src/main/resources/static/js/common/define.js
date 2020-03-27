@@ -5,9 +5,9 @@ console.log(page)
 var applanguage="en";
 var userObj = null;
 var userProfileObj = null;
-var patientObj = null;
-var patientObjArray = null;
-var patientSearchObj = null;
+var patientObj = {};
+var patientObjArray = [];
+var patientSearchObj = {};
 var backArray = [];
 var backArrayIndex = 0;
 var $body = $("body");

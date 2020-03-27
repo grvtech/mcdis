@@ -40,3 +40,5 @@
 .grvdropdown-item span{padding-left:5px;}
 .grvdropdown-item:hover{background-color:#db4437;color:#ffffff;width:100%;}
 .grvdropdown-item.active{background-color:#4b3b3b;color:#ffffff;}
+.grvdropdown-menu.out{display:none;}
+.grvdropdown-menu.in{display:block;}

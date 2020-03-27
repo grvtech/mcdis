@@ -452,25 +452,7 @@ function logoutLocal(){
 
 /* user action*/
 
-function logoutUser(sid){
-	var request = $.ajax({
-		  url: "/ncdis/service/data/logoutSession?sid="+sid+"&language=en",
-		  type: "GET",
-		  async : false,
-		  dataType: "json"
-		});
-		request.done(function( json ) {
-			var r = getParameterByName("ramq");
-			if ((r != null) && (r != "")){
-				$.cookie('ramq',r);
-			}
-		});
-		request.fail(function( jqXHR, textStatus ) {
-		  alert( "Request failed: " + textStatus );
-		});
-	//window.location = "index.html";
-		gti();
-}
+
 
 
 function getSession(iduser){

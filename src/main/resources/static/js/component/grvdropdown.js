@@ -18,7 +18,7 @@ export default function(elements, properties){
 	}
 	let cont = $('<div>',{class:'grvdropdown'}).appendTo(container);
 	let f = $('<input>',{type:'hidden',value:'',id:id}).appendTo(cont);
-	let c = $('<div>',{class:'grvdropdown-value'}).appendTo(cont);
+	let c = $('<div>',{class:'grvdropdown-value','tabindex':'0'}).appendTo(cont);
 	let clabel = $('<div>',{class:'grvdropdown-value-label'}).appendTo(c);
 	let cicon = $('<div>',{class:'grvdropdown-value-icon'}).append($('<i>',{class:'fas fa-caret-down'})).appendTo(c);
 	
@@ -40,19 +40,26 @@ export default function(elements, properties){
 	
 	maxw = Math.max(maxw, c.width());
 	m.css('width',maxw+'px');
-	cont.on('click',function(){
-		let p = $(this).position();
-		let ultop = $(this).outerHeight(true)+p.top;
-		m.css("top",ultop+"px");
-		m.toggle();
+	c.on('click',function(){
+		let p = $(this).parent().position();
+		let ultop = $(this).parent().outerHeight(true)+p.top;
+		$(this).parent().children('ul')
+		$(this).parent().children('ul').css("top",ultop+"px");
+		$(this).parent().children('ul').css("left",p.left+"px");
+		$(this).parent().children('ul').removeClass('out').addClass('in');
 	});
-	
+	c.on("blur",function(event){
+		setTimeout(function(obj){
+			$(obj).siblings('ul').removeClass('in').addClass('out');
+		}, 200, this) ;
+	});
 	
 	m.on('click','li',function(event){
 		$(this).addClass('active').siblings().removeClass('active');
 		$(this).parent().siblings('input').val($(this).attr('value'));
 		$(this).parent().siblings('.grvdropdown-value').children('.grvdropdown-value-label').text($(this).find('span').text());
-		this.toggle();
+		$(this).parent().removeClass('in').addClass("out");
+		$(this).parent().siblings('input').trigger('change');
 	});
 	
 	return cont;

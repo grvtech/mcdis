@@ -45,6 +45,7 @@ function initNavigation() {
 		$(".cdisfull").click(function(){
 			gtc(sid,applanguage,getParameterByName("ramq"),"mdvisits");
 		});
+		init();
 }
 
 	function startReport(reportid){
@@ -57,35 +58,6 @@ function initNavigation() {
 
 
 	
-	
-	function getPage() {
-		var result = {};
-		result['url'] =  window.location.href;
-	    var index = result['url'].lastIndexOf("/") + 1;
-	    var filenameWithExtension = result['url'].substr(index);
-	    var filename = filenameWithExtension.split(".")[0]; 
-	    filename = filename.split("?")[0]; // <-- added this line
-	    if(filename == ""){filename="index";}
-	    result['view'] = filename;
-	    result['server'] = window.location.hostname;
-	    result['protocol'] = window.location.protocol;
-	    var vars = {};
-	    var url = window.atob(location.search.substring(1));
-	    var parts = url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-	        vars[key] = value;
-	    });
-	    result['paramters'] = vars;
-	    //return filename;
-	    return result;
-	}
-
-	function getParameterByName(name) {
-		var url = window.atob(location.search.substring(1));
-		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),results = regex.exec("?"+url);
-	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-	}
-
 
 	function gti(){window.location = "index.html";}/*go to index*/
 	
@@ -123,5 +95,3 @@ function initNavigation() {
 	}
 	
 
-	$( window ).on( "load", init );
-	

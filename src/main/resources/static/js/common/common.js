@@ -11,35 +11,6 @@ Array.prototype.sum = function(selector) {if (typeof selector !== 'function') {s
 Array.prototype.max = function() {return Math.max.apply(null, this);}
 Array.prototype.min = function() {return Math.min.apply(null, this);};
 Number.prototype.trimNum = function(places,rounding){(rounding != 'floor' && rounding != 'ceil') ? rounding = 'round' : rounding = rounding;var result, num = this, multiplier = Math.pow( 10,places );result = Math[rounding](num * multiplier) / multiplier;return Number( result );}
+String.prototype.trimToPx = function(length){var tmp = this;var trimmed = this;if (tmp.visualLength() > length){trimmed += "...";while (trimmed.visualLength() > length){tmp = tmp.substring(0, tmp.length-1);trimmed = tmp + "...";}}return trimmed;}
+String.prototype.visualLength = function(fs){let ruler = null;if($('body').has('.ruler').length){ruler = $('.ruler');}else{ruler = $('<span>',{class:'ruler'}).appendTo($('body'));}let fontsize = $('body').css('font-size');if(fs)fontsize=fs;ruler.css('visibility','hidden').css('white-space','nowrap').css('font-size',fontsize).empty().html(this);let len =ruler.width();ruler.remove(); return len;}
 
-
-String.prototype.trimToPx = function(length)
-{
-    var tmp = this;
-    var trimmed = this;
-    if (tmp.visualLength() > length)
-    {
-        trimmed += "...";
-        while (trimmed.visualLength() > length)
-        {
-            tmp = tmp.substring(0, tmp.length-1);
-            trimmed = tmp + "...";
-        }
-    }
-    
-    return trimmed;
-}
-
-String.prototype.visualLength = function(fs){
-	let ruler = null;
-	if($('body').has('.ruler').length){
-		ruler = $('.ruler');
-	}else{
-		ruler = $('<span>',{class:'ruler'}).appendTo($('body'));
-	}
-	let fontsize = $('body').css('font-size');
-	if(fs)fontsize=fs;
-	
-	ruler.css('visibility','hidden').css('white-space','nowrap').css('font-size',fontsize).empty().html(this);
-    return ruler.width();
-}

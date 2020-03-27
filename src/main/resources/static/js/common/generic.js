@@ -1,4 +1,27 @@
 
+function isLogin(sid){
+	return isUserLoged(sid);
+}
+
+
+function isUserLoged(sessionId){
+	var result = false;var request = $.ajax({url: "/ncdis/service/data/isValidSession?uuidsession="+sessionId+"&language=en",type: "GET",async : false,cache : false,dataType: "json"});
+	request.done(function( json ) {console.log(json);result = (json.status == 'success');});
+	request.fail(function( jqXHR, textStatus ) {alert( "Request failed: " + textStatus );});
+	return result;
+}
+
+
+function logoutUser(sid){
+	var request = $.ajax({url: "/ncdis/service/data/logoutSession?sid="+sid+"&language=en",type: "GET",async : false,dataType: "json"});
+	request.done(function( json ) {var r = getParameterByName("ramq");if ((r != null) && (r != "")){$.cookie('ramq',r);}});
+	request.fail(function( jqXHR, textStatus ) {alert( "Request failed: " + textStatus );});
+	gti();
+}
+
+
+
+
 
 
 function getSortedKeys(obj){

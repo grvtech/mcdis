@@ -6,26 +6,59 @@ var cdisSection = "dashboard";
 $( window ).on( "load", initCdisPage );	
 
 
-function initCdisPage(){
-/*
-	var flag = isUserLoged(sid);
-	if (!flag){
-		logoutUser(sid);
-	}else{
-		initCdisHeader();
-		loadTemplate(cdisSection);
+function getPatientTemplate(){
+	let template = 'default';
+	if(validPatientObj(patientObj)){
+		let dtype = getDtype(patientObj);
+		if(dtype == "5"){
+			template = 'temp1';
+		}
 	}
-*/	
+	return template;
 }
+
+function validPatientObj(po){
+	let result = false;
+	if(po.length > 0){
+		result = true;
+	}
+	return result;
+}
+
+
+
+function initCdisPage(){
+	if(isLogin(sid)){
+		
+		let template = getPatientTemplate();
+		let ppage = $("#cdisDashboardPage-"+template);
+		renderPage(ppage);
+		
+		
+		$("#cdisDashboardPage").hide();
+		$("#cdisSectionsPage").hide();
+
+		//drawPatientRecord(patientObj);
+	}else{
+		logoutUser(sid);
+	}
+	
+}
+
+
+function renderPage(pobj){
+	
+	pobj.show();
+}
+
+
+
 
 //initCdisHeader();
 //loadTemplate(cdisSection);
 
 
-$("#cdisDashboardPage").show();
-$("#cdisSectionsPage").hide();
 
-drawPatientRecord(patientObj);
 
 
 /*
