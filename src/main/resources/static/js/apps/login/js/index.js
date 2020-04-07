@@ -1,5 +1,4 @@
 import loginConfiguration from '../config.js'
-import MessageRequest from '/ncdis/js/common/messagerequest.js'
 import GRVInput from '/ncdis/js/component/grvinput.js'
 
 /*
@@ -10,11 +9,11 @@ import GRVInput from '/ncdis/js/component/grvinput.js'
  * ||      |    -----------------------   |
  * ||      |   |                      |   |
  * ||      |   ------------------------   |
- * |-------                    
+ * |--------                              |
  * |            -----------------------   |
  * |           |                      |   |
  * |           ------------------------   |
- * |
+ * |                                      |
  * |  |||||||||   ||||||||||    ||||||||| |
  * |---------------------------------------
  * 
@@ -145,14 +144,16 @@ export default class GRVlogin{
 		var validUser = Validate.now(Validate.Presence, $("#user").val());
 		var validPass = Validate.now(Validate.Presence, $("#pass").val());
 		if(validUser && validPass){
-			var data = {'elements':{'username':user, 'password':pass, 'reswidth':$(window).width(), 'resheight':$(window).height()} , 'uuidsession': emptySession, 'action':'gol'};
-			var request = $.ajax({url:event.data.action,type: "post",dataType: "json",contentType: 'application/json',data : JSON.stringify(data)});
+			var data = {'username':user, 'password':pass, 'reswidth':$(window).width(), 'resheight':$(window).height()};
+			let mreq = new GRVMessageRequest(data,"gol",emptySession, 0);
+			var request = $.ajax({url:event.data.action,type: "post",dataType: "json",contentType: 'application/json',data : JSON.stringify(mreq)});
 			request.done(function( json ) {
+				let mres = new GRVMessageResponse(json);
+				console.log(mres);
 				if(json.status == "error"){
-					error.text(json.elements.message);
+					error.text(mres.elements.message);
 				}else{
-					userObj = json.elements.user;
-					sid = json.uuidsession;
+					sid = mres.uuidsession;
 					gts(sid,"en");
 				}
 			});

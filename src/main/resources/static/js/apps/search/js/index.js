@@ -1,5 +1,4 @@
 import searchConfiguration from '../config.js'
-import MessageRequest from '/ncdis/js/common/messagerequest.js'
 import GRVList from '/ncdis/js/component/grvlist.js'
 import GRVInput from '/ncdis/js/component/grvinput.js'
 import GRVDropdown from '/ncdis/js/component/grvdropdown.js'
@@ -57,18 +56,31 @@ export default class GRVsearch{
 			minLength: 1,
 			autoFocus: true,
 			source: function( request, response ) {
+				let d = {
+					criteria: $('#'+id+'Criteria').val(),
+					term: $('#'+id+'Input').val(),
+					language: "en",
+					uuidsession: sid,
+					action: 'search'
+				};
+				let mreq = new GRVMessageRequest(d, "searchPatient", sid, 0);
 				$.ajax({
 					url: "/ncdis/service/data/searchPatient",
+					type: "post",
 					dataType: "json",
-					data: {
-						criteria: $('#'+id+'Criteria').val(),
-						term: $('#'+id+'Input').val(),
-						language: "en",
-						uuidsession: sid,
-						action: 'search'
-					},
+					contentType: 'application/json',
+					data: JSON.stringify(mreq),
 					success: function( data ) {
-						response($.map( data.elements.search, function( row ) {
+						let mres = new GRVMessageResponse(data);
+						let elems = JSON.parse(mres.elements.search);
+						console.log(elems);
+						console.log(typeof(elems));
+						$.each(elems, function(k,v){
+							console.log(v.firstname);
+						});
+						
+						
+						response($.map(elems, function( row ) {
 							return {
 								idpatient:row.idpatient,
 								lastname:row.lastname,

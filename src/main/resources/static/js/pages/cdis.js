@@ -1,5 +1,7 @@
 import Search from '/ncdis/js/apps/search/js/index.js';
+import Widget from '/ncdis/js/apps/widget/js/index.js';
 const search = new Search();
+
 
 
 var cdisSection = "dashboard";
@@ -9,7 +11,8 @@ $( window ).on( "load", initCdisPage );
 function getPatientTemplate(){
 	let template = 'default';
 	if(validPatientObj(patientObj)){
-		let dtype = getDtype(patientObj);
+		//let dtype = getDtype(patientObj);
+		let dtype = "1";
 		if(dtype == "5"){
 			template = 'temp1';
 		}
@@ -26,19 +29,34 @@ function validPatientObj(po){
 }
 
 
+function getCdisPage(cdispage){
+	let result = null;
+	if(cdispage == 'dashboard'){
+		result = 'cdisDashboardPage';
+	}else{
+		result = 'cdis'+cdispage+'Page';
+	}
+	return result;
+}
+
+
 
 function initCdisPage(){
 	if(isLogin(sid)){
+		let ramq = getParameterByName('ramq');
+		if(ramq != ""){
+			loadPatientObject(ramq);
+			
+			
+			let cdispage = getParameterByName('section');
+			if(cdispage === '')cdispage='dashboard';
+			let template = getPatientTemplate();
+			let ppage = getCdisPage(cdispage)+"-"+template;
+			renderPage(ppage);
+		}else{
+			alert("no patient selected");
+		}
 		
-		let template = getPatientTemplate();
-		let ppage = $("#cdisDashboardPage-"+template);
-		renderPage(ppage);
-		
-		
-		$("#cdisDashboardPage").hide();
-		$("#cdisSectionsPage").hide();
-
-		//drawPatientRecord(patientObj);
 	}else{
 		logoutUser(sid);
 	}
@@ -46,9 +64,45 @@ function initCdisPage(){
 }
 
 
-function renderPage(pobj){
-	
-	pobj.show();
+function renderPage(sectionname){
+	$("#cdisPage").empty();
+	$("#cdisPage").hide();
+	$("#cdisPage").load(sectionsPath+sectionname+'.html', function(){
+		$(this).find("[widget]").each(function(){
+			let w = $(this).attr('widget');
+			let wo = new Widget(w);
+			pageWidgets.push(wo);
+		});
+		$(this).fadeIn(1000);
+	});
+}
+
+
+
+
+function loadPatientObject(value){
+	console.log();
+	let mreq = new GRVMessageRequest({"ramq":value},"getpatient",sid,0);
+	var patient = $.ajax({
+		  url: "/ncdis/service/data/getPatient",
+		  type: "POST",
+		  async : false,
+		  cache : false,
+		  dataType: "json",
+		  contentType: 'application/json',
+	      data: JSON.stringify(mreq)
+		});
+		patient.done(function( json ) {
+			let mres = new GRVMessageResponse(json);
+			patientObj = JSON.parse(mres.elements.patient);
+			patientObjArray = JSON.parse(mres.elements.values);
+			console.log(patientObj);
+			console.log(patientObjArray);
+		});
+		patient.fail(function( jqXHR, textStatus ) {
+		  alert( "Request failed: " + textStatus );
+		  console.log(this.url);
+		});	
 }
 
 

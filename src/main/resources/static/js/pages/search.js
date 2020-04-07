@@ -5,6 +5,7 @@ $( window ).on( "load", initSearchPage );
 
 function initSearchPage(){
 	if(isLogin(sid)){
+		
 		const frontpage = new Frontpage('frontpage');
 		const search = new Search();
 		$(search).find('input[type=text]').focus();
@@ -17,11 +18,9 @@ function initSearchPage(){
 				$("#linkedPatients").text("Open Patient List");
 			}
 		});
-
-		
-		
 		initNavigation();
 		enableTooltips();
+		$('.main').fadeIn(1000);
 	}else{
 		logoutUser(sid);
 	}

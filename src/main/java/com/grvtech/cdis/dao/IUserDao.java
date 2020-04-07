@@ -11,6 +11,7 @@ public interface IUserDao {
 	public boolean deleteUser(User user);
 	public boolean deactivateUser(User user);
 	public User getUserByUsernamePassword(String username, String password);
+	public User getUserBySession(String usersession);
 	public User getUserById(long id);
 
 }

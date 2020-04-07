@@ -13,6 +13,7 @@ var backArrayIndex = 0;
 var $body = $("body");
 let apppath= '/ncdis/js/apps/';
 let pageNavigationElements = [];
+let pageWidgets=[];
 var emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
 
 //var usersArray = getUsers();
@@ -278,4 +279,68 @@ acei_values={"0":"No","1":"Yes"};
 statin_values={"0":"No","1":"Yes"};
 asa_values={"0":"No","1":"Yes"};
 
+
+
+/*
+ * fields
+ * value type : index (dans un select), icon - dans un fontawsome
+ * */
+let cdisfields = [
+		{"name":"idcommunity","iddata":"0","type":"single","unit":"","valuetype":"index","hasdate":0,"section":"record","values":[{"index":"0","value":"Unknown"},{"index":"1","value":"Chisasibi"},{"index":"2","value":"Eastmain"},{"index":"3","value":"Mistissini"},{"index":"4","value":"Nemaska"},{"index":"5","value":"Oujebougoumou"},{"index":"6","value":"Waskaganish"},{"index":"7","value":"Waswanipi"},{"index":"8","value":"Wemindji"},{"index":"9","value":"Whapmagoostui"}],"limits":{}},
+		{"name":"sex","iddata":"0","type":"single","unit":"","valuetype":"icon","hasdate":0,"section":"record","values":[{"index":"0","value":"Unknown"},{"index":"1","value":"fas fa-mars"},{"index":"2","value":"fas fa-venus"}],"limits":{}},
+		{"name":"dtype","iddata":"1","type":"multi","unit":"","valuetype":"index","hasdate":1,"section":"diabet","values":[{"index":"0","value":"Unknown"},{"index":"1","value":"Type 1 DM"},{"index":"2","value":"Type 2 DM"},{"index":"3","value":"PRE DM"},{"index":"4","value":"GDM"}],"limits":{}}
+];
+
+/*
+ * labels
+ * */
+let cdislabels = {
+	"common":{
+		"ramq":"RAMQ",
+		"chart":"Chart Number",
+		"idpatient":"ID Patient",
+		"giu":"IPM",
+		"jbnqa":"JBNQA",
+		"fname":"First Name",
+		"lname":"Last Name",
+		"sex":"Gender",
+		"dob":"Date of birth",
+		"mfname":"Mother First Name",
+		"mlname":"Mother Last Name",
+		"pfname":"Father First Name ",
+		"plname":"Father Last Name",
+		"address":"Address",
+		"city":"City",
+		"idprovince":"ID Province",
+		"postalcode":"Postal Code",
+		"dod":"Date of death",
+		"idcommunity":"Community",
+		"iscree":"Cree",
+		"band":"Band number",
+		"consent":"Consent",
+		"death_cause":"Death Cause",
+		"dtype":"Type of diabetes",
+		"dtype_collected_date":"Diagnosed on :"
+	}	
+};
+
+/*  template for cdis page sections*/
+let sectionsPath='/ncdis/layouts/';
+let cdisDateFormat = "YYYY-MM-DD";
+let cdisTimeFormat = "YYYY-MM-DD";
+let cdisDateTimeFormat = "YYYY-MM-DD";
+let abcgraphsConfig={
+		"title":"ABC GRAPHS",
+		"style":"default",
+		"actions":["print"],
+		"elements":[
+			{"name":"hba1c","type":"graph","style":"default"},
+			{"name":"ldl","type":"graph", "style":"default"},
+			{"name":"acratio_or_pcgr","type":"graph", "style":"default"},
+			{"name":"egfr","type":"graph", "style":"default"},
+			{"name":"sbp_and_dbp","type":"table","style":"default"}
+			]
+};
+
+let temp_abcgraphs_temp1 = {"title":"ABC GRAPHS Healthy Patients", "elements":[{"name":"weight", "style":"temp1"},{"name":"sbp_and_dbp", "style":"default"}]};
 

@@ -1,5 +1,4 @@
 import frontpageConfiguration from '../config.js'
-import MessageRequest from '/ncdis/js/common/messagerequest.js'
 import switchButton from '/ncdis/js/component/grvswitch.js'
 
 export let messagesArray = [];

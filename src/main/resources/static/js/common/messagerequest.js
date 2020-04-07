@@ -1,4 +1,4 @@
-export default class GRVMessageRequest{
+class GRVMessageRequest{
 	constructor(objectArray,action,idsession,iduser,encrypted=true){
 		var result = {};
 		result['uuidsession'] = idsession;

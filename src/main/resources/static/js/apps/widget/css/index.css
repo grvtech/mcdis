@@ -1,0 +1,16 @@
+.grvwidget {margin: 5px;background-color:#efefef;box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);}
+.grvwidget .header{display:grid; grid-template-columns:auto 15px;}
+.grvwidget .header .title{padding:0px;display:grid;grid-template-columns:auto auto;align-self: center;}
+.grvwidget .header .title .text{align-self: center;background-color:#47BFC0;height:30px; line-height:30px;color:#ffffff;padding-left:5px;}
+.grvwidget .header .title .end{
+    height: 0;
+    border-top: 30px solid #47BFC0;
+    border-right: 30px solid #efefef;
+    vertical-align: middle;
+    width:0px;
+}
+.grvwidget .header .menu{text-align:center;align-self: center;pading:2px;}
+.grvwidget .header .menu:hover{color:#efefef;background-color:#4d4d4d;}
+.grvwidget .header .menu.selected{color:#efefef;background-color:#4d4d4d;}
+
+.grvwidget .body{padding-bottom:5px;}

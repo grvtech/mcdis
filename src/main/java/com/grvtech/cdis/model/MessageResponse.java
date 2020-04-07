@@ -1,5 +1,6 @@
 package com.grvtech.cdis.model;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.UUID;
@@ -51,8 +52,9 @@ an event
 */
 
 public class MessageResponse {
-	private UUID uuidsession; // clear|enc
+	private UUID uuidsession; 
 	private String status; // success|error
+	private String state; // clear|enc
 	private String action;
 	private ObjectNode elements; // on error is empty
 
@@ -65,6 +67,10 @@ public class MessageResponse {
 		super();
 		ObjectMapper mapper = new ObjectMapper();
 		this.action = mr.getAction();
+		this.state = mr.getState();
+		
+		System.out.println("the state in message request is   : " + mr.getState());
+		
 		this.uuidsession = mr.getUuidsession();
 		if (status) {
 			this.status = "success";
@@ -79,10 +85,16 @@ public class MessageResponse {
 			try {
 				System.out.println("response field name : " + fieldName);
 				System.out.println("response field  : " + map.get(fieldName));
-				JsonNode node = mapper.valueToTree(map.get(fieldName));
-				this.elements.set(fieldName, node);
+				
+				System.out.println("the state is   : " + this.state);
+				
+				if(this.state.equals("enc")) {
+					this.elements.put(fieldName, Base64.getEncoder().encodeToString(mapper.writeValueAsString(map.get(fieldName)).getBytes() ));
+				}else {
+					JsonNode node = mapper.valueToTree(map.get(fieldName));
+					this.elements.set(fieldName, node);
+				}
 			} catch (Exception e) {
-
 				e.printStackTrace();
 				this.status = "error";
 				break;
@@ -162,6 +174,14 @@ public class MessageResponse {
 				break;
 			}
 		}
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 }

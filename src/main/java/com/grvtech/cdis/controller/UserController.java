@@ -47,10 +47,10 @@ public class UserController {
 		MessageRequest mreq = new MessageRequest(req);
 		HashMap<String, Object> map = new HashMap<>();
 		// User u = userservice.getUserById(1);
-		String user = req.get("elements").get("username").asText();
-		String pass = req.get("elements").get("password").asText();
-		String reswidth = req.get("elements").get("reswidth").asText();
-		String resheight = req.get("elements").get("resheight").asText();
+		String user = mreq.getElements().get("username").asText();
+		String pass = mreq.getElements().get("password").asText();
+		String reswidth = mreq.getElements().get("reswidth").asText();
+		String resheight = mreq.getElements().get("resheight").asText();
 		String ip = req.get("ip").asText();
 
 		User u = userservice.getUserByUsernamePassword(user, pass);
@@ -60,7 +60,6 @@ public class UserController {
 			return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
 		} else {
 			// good user
-
 			u.getUsername();
 			(new Date()).toString();
 			// String idsession =
@@ -87,6 +86,31 @@ public class UserController {
 
 	}
 
+	@RequestMapping(value = "/service/data/getUserBySession", method = RequestMethod.POST)
+	public ResponseEntity<MessageResponse> getUserBySession(final HttpServletRequest request) throws JsonProcessingException {
+		JsonNode req = HttpUtil.getJSONFromPost(request);
+		MessageRequest mreq = new MessageRequest(req);
+		HashMap<String, Object> map = new HashMap<>();
+		JsonNode elems = mreq.getElements();
+		System.out.println("-----------------------------------------------------");
+		System.out.println(" user session : "+elems.get("sessionid").asText());
+		System.out.println("-----------------------------------------------------");
+		String usersession = elems.get("sessionid").asText();
+		String ip = req.get("ip").asText();
+
+		User u = userservice.getUserBySession(usersession);
+		if (u.isEmpty()) {
+			map.put("message", "Unknown user");
+			MessageResponse mres = new MessageResponse(false, mreq, map);
+			return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
+		} else {
+			map.put("user", u);
+			MessageResponse mres = new MessageResponse(true, mreq, map);
+			return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
+		}
+	}
+	
+	
 	@RequestMapping(value = {"/service/data/getUserSession"}, method = RequestMethod.GET)
 	public ResponseEntity<MessageResponse> getUserSession(final HttpServletRequest request) throws JsonProcessingException {
 

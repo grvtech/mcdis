@@ -1,5 +1,6 @@
 package com.grvtech.cdis.model;
 
+import java.util.Base64;
 import java.util.Iterator;
 import java.util.UUID;
 
@@ -14,6 +15,9 @@ public class MessageRequest {
 	private UUID uuidsession;
 	private String action; // for logging and tracing
 	private ObjectNode elements;
+	private String state;
+	private String ip;
+	
 
 	public MessageRequest(JsonNode jn) {
 
@@ -27,22 +31,23 @@ public class MessageRequest {
 			System.out.println("json elements  in message request :" + mapper.writeValueAsString(jn));
 			this.action = jn.get("action").asText();
 			this.uuidsession = UUID.fromString(jn.get("uuidsession").asText());
-
+			this.state = jn.get("state").asText();
+			this.ip = jn.get("ip").asText();
 			JsonNode elems = jn.get("elements");
 			this.elements = mapper.createObjectNode();
 			Iterator<String> fieldNames = elems.fieldNames();
 
 			while (fieldNames.hasNext()) {
 				String fieldName = fieldNames.next();
-				elems.get(fieldName).asText();
-
-				// System.out.println(" crypto key : " + cryptoKey + " decript:
-				// " + CryptoUtil.decrypt(cryptoKey,
-				// elems.get(fieldName).asText()) + " value : " +
-				// elems.get(fieldName).asText());
-				// this.elements.put(fieldName, CryptoUtil.decrypt(cryptoKey,
-				// elems.get(fieldName).asText()));
-				this.elements.set(fieldName, elems.get(fieldName));
+				if(this.state.equals("enc")) {
+					byte[] decodedBytes = Base64.getDecoder().decode(elems.get(fieldName).asText());
+					System.out.println("-------------------------------");
+					System.out.println("decode  : "+new String(decodedBytes));
+					System.out.println("-------------------------------");
+					this.elements.put(fieldName, new String(decodedBytes));
+				}else {
+					this.elements.set(fieldName, elems.get(fieldName));
+				}
 			}
 		} catch (Exception e) {
 		}
@@ -108,6 +113,14 @@ public class MessageRequest {
 	 */
 	public void setUuidsession(UUID uuidsession) {
 		this.uuidsession = uuidsession;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 }

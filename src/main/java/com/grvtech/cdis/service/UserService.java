@@ -22,4 +22,9 @@ public class UserService implements IUserService {
 		return udao.getUserByUsernamePassword(username, password);
 	}
 
+	@Override
+	public User getUserBySession(String usersession) {
+		return udao.getUserBySession(usersession);
+	}
+
 }

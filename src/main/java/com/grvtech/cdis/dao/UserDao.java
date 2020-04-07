@@ -54,4 +54,12 @@ public class UserDao implements IUserDao {
 		return users.get(0);
 	}
 
+	@Override
+	public User getUserBySession(String usersession) {
+		List<User> users = jdbcTemplate.query("select uu.* from ncdis.ncdis.users uu left join ncdis.ncdis.session ee on uu.iduser=ee.iduser where ee.idsession = '"+usersession+"'", new UserMapper());
+		if (users.isEmpty())
+			return new User();
+		return users.get(0);
+	}
+
 }
