@@ -6,6 +6,9 @@ background-image: radial-gradient(circle, #efefef, #cdcdcd);
 /*background-image: radial-gradient(circle, #4D81DC, #305BA2);*/
 color:#4d4d4d;
 }
+
+*{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+
 /*
 
 gradinet background  #4D81DC  to #305BA2
@@ -124,4 +127,4 @@ CDIS PAGE
 .abcgraphs-container {height:100%;}
 .abcgraphs-container .grvwidget{height:100%;}
 .abcgraphs-container .grvwidget .body{height:100%;}
-.abcgraphs-container .body{display:grid;grid-template-columns:auto auto; grid-template-rows: auto auto;grid-gap:10px;padding:10px;}
+.abcgraphs-container .body{display:grid;grid-template-columns:auto auto; grid-template-rows: auto auto;grid-gap:10px;}

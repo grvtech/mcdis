@@ -284,11 +284,19 @@ asa_values={"0":"No","1":"Yes"};
 /*
  * fields
  * value type : index (dans un select), icon - dans un fontawsome
+ * value type d3 = double 3 decimals
  * */
 let cdisfields = [
 		{"name":"idcommunity","iddata":"0","type":"single","unit":"","valuetype":"index","hasdate":0,"section":"record","values":[{"index":"0","value":"Unknown"},{"index":"1","value":"Chisasibi"},{"index":"2","value":"Eastmain"},{"index":"3","value":"Mistissini"},{"index":"4","value":"Nemaska"},{"index":"5","value":"Oujebougoumou"},{"index":"6","value":"Waskaganish"},{"index":"7","value":"Waswanipi"},{"index":"8","value":"Wemindji"},{"index":"9","value":"Whapmagoostui"}],"limits":{}},
 		{"name":"sex","iddata":"0","type":"single","unit":"","valuetype":"icon","hasdate":0,"section":"record","values":[{"index":"0","value":"Unknown"},{"index":"1","value":"fas fa-mars"},{"index":"2","value":"fas fa-venus"}],"limits":{}},
-		{"name":"dtype","iddata":"1","type":"multi","unit":"","valuetype":"index","hasdate":1,"section":"diabet","values":[{"index":"0","value":"Unknown"},{"index":"1","value":"Type 1 DM"},{"index":"2","value":"Type 2 DM"},{"index":"3","value":"PRE DM"},{"index":"4","value":"GDM"}],"limits":{}}
+		{"name":"dtype","iddata":"1","type":"multi","unit":"","valuetype":"index","hasdate":1,"section":"diabet","values":[{"index":"0","value":"Unknown"},{"index":"1","value":"Type 1 DM"},{"index":"2","value":"Type 2 DM"},{"index":"3","value":"PRE DM"},{"index":"4","value":"GDM"}],"limits":{}},
+		{"name":"hba1c","iddata":"27","type":"graph","unit":"Percentage","valuetype":"d3","hasdate":1,"section":"lab","values":[],"limits":{"maxvalue":"0.085","minvalue":"0.055","stages":[{"title":"HbA1C > 7%","min":"0.07","max":"0.085","color":"rgba(255,0,0,0.4)"},{"title":"Target HbA1C 7%","min":"0.06","max":"0.07","color":"rgba(0, 255, 0,0.3)"},{"title":"Normal HbA1C < 6%","min":"0.055","max":"0.06","color":"rgba(0, 255, 0,0.6)"}]}},
+		{"name":"ldl","iddata":"24","type":"graph","unit":"mmol/L","valuetype":"d3","hasdate":1,"section":"lipids","values":[],"limits":{"maxvalue":"0.085","minvalue":"0.055","stages":[{"title":"HbA1C > 7%","min":"0.07","max":"0.085","color":"rgba(255,0,0,0.4)"},{"title":"Target HbA1C 7%","min":"0.06","max":"0.07","color":"rgba(0, 255, 0,0.3)"},{"title":"Normal HbA1C < 6%","min":"0.055","max":"0.06","color":"rgba(0, 255, 0,0.6)"}]}},
+		{"name":"acratio","iddata":"15","type":"graph","unit":"mg/mmol","valuetype":"i","hasdate":1,"section":"renal","values":[],"limits":{"maxvalue":"20","minvalue":"1","stages":[{"title":"AC ratio > 2","min":"2","max":"20","color":"rgba(255,0,0,0.4)"},{"title":"AC ratio < 2","min":"1","max":"2","color":"rgba(0, 255, 0,0.3)"}]}},
+		{"name":"pcrg","iddata":"21","type":"graph","unit":"g/g","valuetype":"i","hasdate":1,"section":"renal","values":[],"limits":{"maxvalue":"20","minvalue":"1","stages":[{"title":"PCR > 2","min":"2","max":"20","color":"rgba(255,0,0,0.4)"},{"title":"PCR < 2","min":"1","max":"2","color":"rgba(0, 255, 0,0.3)"}]}},
+		{"name":"sbp_and_dbp","iddata":"2_and_3","type":"multi","unit":"","valuetype":"i","hasdate":1,"section":"mdvisit","values":[],"limits":{}},
+		{"name":"sbp","iddata":"2","type":"multi","unit":"","valuetype":"i","hasdate":1,"section":"mdvisit","values":[],"limits":{}},
+		{"name":"dbp","iddata":"3","type":"multi","unit":"","valuetype":"i","hasdate":1,"section":"mdvisit","values":[],"limits":{}}
 ];
 
 /*
@@ -320,7 +328,15 @@ let cdislabels = {
 		"consent":"Consent",
 		"death_cause":"Death Cause",
 		"dtype":"Type of diabetes",
-		"dtype_collected_date":"Diagnosed on :"
+		"dtype_collected_date":"Diagnosed on :",
+		"acratio":"AC Ratio",
+		"acratio_collected_date":"Date",
+		"hba1c":"HBA1C",
+		"hba1c_collected_date":"Date",
+		"ldl":"LDL-C",
+		"ldl_collected_date":"Date",
+		"pcrg":"PCR",
+		"pcrg_collected_date":"Date"
 	}	
 };
 
@@ -329,18 +345,6 @@ let sectionsPath='/ncdis/layouts/';
 let cdisDateFormat = "YYYY-MM-DD";
 let cdisTimeFormat = "YYYY-MM-DD";
 let cdisDateTimeFormat = "YYYY-MM-DD";
-let abcgraphsConfig={
-		"title":"ABC GRAPHS",
-		"style":"default",
-		"actions":["print"],
-		"elements":[
-			{"name":"hba1c","type":"graph","style":"default"},
-			{"name":"ldl","type":"graph", "style":"default"},
-			{"name":"acratio_or_pcgr","type":"graph", "style":"default"},
-			{"name":"egfr","type":"graph", "style":"default"},
-			{"name":"sbp_and_dbp","type":"table","style":"default"}
-			]
-};
 
-let temp_abcgraphs_temp1 = {"title":"ABC GRAPHS Healthy Patients", "elements":[{"name":"weight", "style":"temp1"},{"name":"sbp_and_dbp", "style":"default"}]};
+
 

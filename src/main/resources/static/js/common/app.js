@@ -97,11 +97,34 @@ function getFieldValues(field, order="desc"){
 	var result = [];
 	let config = getFieldConfig(field);
 	if(config.iddata > 0){
-		$.each(patientObjArray, function(i, v){
-			if(v.iddata == config.iddata){
-				result.push(v);
-			}
-		});
+		if(field.indexOf('_and_') >= 0){
+			/*
+			 * this is a multi field we have to put all values by date
+			 * */
+			let idds = config.iddata.split('_and_');
+			$.each(patientObjArray, function(i, v){
+				$.each(idds,function(ii, idd){
+					if(idd == v.iddata){
+						if(result.length == 0 ){
+							result.push(v);
+						}else{
+							for(var ii in result){
+								if(result[ii].datevalue == v.datevalue){
+									result[ii].value += " - "+v.value; 
+								}
+							}
+						}
+						
+					}
+				});
+			});
+		}else{
+			$.each(patientObjArray, function(i, v){
+				if(v.iddata == config.iddata){
+					result.push(v);
+				}
+			});
+		}
 		result.sort(function(a,b){return new Date(b.datevalue) - new Date(a.datevalue);});
 	}else{
 		// iddata == 0 means is in record
