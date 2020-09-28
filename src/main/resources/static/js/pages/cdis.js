@@ -52,7 +52,7 @@ function initCdisPage(){
 			if(cdispage === '')cdispage='dashboard';
 			let template = getPatientTemplate();
 			let ppage = getCdisPage(cdispage)+"-"+template;
-			renderPage(ppage);
+			renderPage(ppage); 
 		}else{
 			alert("no patient selected");
 		}
@@ -74,6 +74,7 @@ function renderPage(sectionname){
 			pageWidgets.push(wo);
 		});
 		$(this).fadeIn(1000);
+		initNavigation();
 	});
 }
 

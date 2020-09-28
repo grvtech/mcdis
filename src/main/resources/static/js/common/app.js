@@ -95,48 +95,56 @@ function getFieldConfig(field){
 
 function getFieldValues(field, order="desc"){
 	var result = [];
-	let config = getFieldConfig(field);
-	if(config.iddata > 0){
-		if(field.indexOf('_and_') >= 0){
-			/*
-			 * this is a multi field we have to put all values by date
-			 * */
-			let idds = config.iddata.split('_and_');
-			$.each(patientObjArray, function(i, v){
-				$.each(idds,function(ii, idd){
-					if(idd == v.iddata){
-						if(result.length == 0 ){
-							result.push(v);
-						}else{
-							for(var ii in result){
-								if(result[ii].datevalue == v.datevalue){
-									result[ii].value += " - "+v.value; 
+	if(field == ''){
+		return result;
+	}else{
+		
+		let config = getFieldConfig(field);
+		if(config.iddata > 0){
+			if(field.indexOf('_and_') >= 0){
+				/*
+				 * this is a multi field we have to put all values by date
+				 * */
+				let idds = config.iddata.split('_and_');
+				$.each(patientObjArray, function(i, v){
+					$.each(idds,function(ii, idd){
+						if(idd == v.iddata){
+							if(result.length == 0 ){
+								result.push(v);
+							}else{
+								for(var ii in result){
+									if(result[ii].datevalue == v.datevalue){
+										result[ii].value += " - "+v.value; 
+									}
 								}
 							}
+							
 						}
-						
+					});
+				});
+			}else{
+				$.each(patientObjArray, function(i, v){
+					if(v.iddata == config.iddata){
+						result.push(v);
 					}
 				});
-			});
+			}
+			result.sort(function(a,b){return new Date(b.datevalue) - new Date(a.datevalue);});
 		}else{
-			$.each(patientObjArray, function(i, v){
-				if(v.iddata == config.iddata){
-					result.push(v);
-				}
-			});
+			// iddata == 0 means is in record
+			result.push(eval("patientObj."+field));
 		}
-		result.sort(function(a,b){return new Date(b.datevalue) - new Date(a.datevalue);});
-	}else{
-		// iddata == 0 means is in record
-		result.push(eval("patientObj."+field));
+		
+		
+		
 	}
-	
 	console.log(result);
 	return result;
 }
 
 function getFieldLabel(field){
-	return eval('cdislabels.common.'+field);
+	if(field == '')return '';
+	else return eval('cdislabels.common.'+field);
 }
 
 function getFieldLabelDate(field){
@@ -156,19 +164,21 @@ function getIndexValue(value, values){
 
 function renderFieldValue(field, value){
 	var result = "";
-	let config = getFieldConfig(field);
-	let v = value;
-	if(typeof(value) == "object"){v = value.value;}
-	if(config != null){
-		if(config.valuetype == "index"){
-			/*value is an index in an array values in config*/
-			result = getIndexValue(v, config.values);
-		}else if(config.valuetype == "icon"){
-			let cls = getIndexValue(v, config.values);
-			result = "<i class='"+cls+"'></i>";
+	if(field != ''){
+		let config = getFieldConfig(field);
+		let v = value;
+		if(typeof(value) == "object"){v = value.value;}
+		if(config != null){
+			if(config.valuetype == "index"){
+				/*value is an index in an array values in config*/
+				result = getIndexValue(v, config.values);
+			}else if(config.valuetype == "icon"){
+				let cls = getIndexValue(v, config.values);
+				result = "<i class='"+cls+"'></i>";
+			}
+		}else{
+			result = value;
 		}
-	}else{
-		result = value;
 	}
 	return result;
 }

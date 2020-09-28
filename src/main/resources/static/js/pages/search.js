@@ -19,7 +19,7 @@ function initSearchPage(){
 			}
 		});
 		initNavigation();
-		enableTooltips();
+		//enableTooltips();
 		$('.main').fadeIn(1000);
 	}else{
 		logoutUser(sid);

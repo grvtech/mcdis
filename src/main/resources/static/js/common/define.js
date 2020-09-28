@@ -336,7 +336,8 @@ let cdislabels = {
 		"ldl":"LDL-C",
 		"ldl_collected_date":"Date",
 		"pcrg":"PCR",
-		"pcrg_collected_date":"Date"
+		"pcrg_collected_date":"Date",
+		"nodata":"No Data"
 	}	
 };
 

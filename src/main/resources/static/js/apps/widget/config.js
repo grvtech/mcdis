@@ -15,7 +15,7 @@ export default
 		"title":"Patient Record",
 		"style":"default",
 		"actions":[{"label":"Print Record","action":"printwidget"}],
-		"elements":[{"name":"patientrecord","type":"table","style":"default","menu":[]}]
+		"elements":[{"name":"patientrecord","type":"table","style":"default","menu":[{"label":"Edit patient","icon":"fas fa-table","action":"editPatient","role":"1"}]}],
 	},
 	"bp":{
 		"title":"Blood Pressure",

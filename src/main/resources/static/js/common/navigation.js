@@ -2,50 +2,93 @@
 /*
  * function to apply actions to buttons in the page
  * */
+
+let navconfig = {
+		"cdis":
+			{	
+				"cdisFullButton":function(){gtc(sid,applanguage,getParameterByName("ramq"),"mdvisits");},
+				"personalinfo":function(){gto(sid,applanguage,"personalinfo");},
+				"frontpage": function(){gta(sid,applanguage,"frontpage");},
+				"users": function(){gta(sid,applanguage,"users");},
+				"audit":function(){gta(sid,applanguage,"audit");},
+				"freports":function(){gtr(sid,"en",null);},
+				"flogout":function(){logoutUser(sid);},
+				"fnew":function(){gtc(sid,applanguage,null,"addpatient");}
+			},
+			"search":
+			{	
+				"personalinfo":function(){gto(sid,applanguage,"personalinfo");},
+				"frontpage": function(){gta(sid,applanguage,"frontpage");},
+				"users": function(){gta(sid,applanguage,"users");},
+				"audit":function(){gta(sid,applanguage,"audit");},
+				"freports":function(){gtr(sid,"en",null);},
+				"flogout":function(){logoutUser(sid);},
+				"fnew":function(){gtc(sid,applanguage,null,"addpatient");},
+				"reportsButton":function(){gtr(sid,"en",null);},
+				"addpatientButton":function(){gtc(sid,applanguage,null,"addpatient");},
+				"frontpageButton": function(){gta(sid,applanguage,"frontpage");}
+				
+			}
+		
+};
+
+
 function initNavigation() {
 	
-	$(".fback").click(function() {gts(sid,applanguage);	});
+	var btns = $('.grvbutton');
+	var actions = eval("navconfig."+page.view);
+	
+	console.log(btns);
+	console.log(actions);
+	$.each(btns, function(i,btn){
+		var id = $(btn).attr('id');
+		var action = eval("actions."+id);
+		if(typeof(action) == 'function'){
+			$(btn).on('click', action);
+		}
+		
+	});
+	
+	//$(".fback").click(function() {gts(sid,applanguage);	});
 	$("#addpatient-button").click(function() {
-		//alert("add patient");
-			gtc(sid,applanguage,null,"addpatient");
-			//window.location = "cdis.html?section=addpatient&sid="+sid+"&language=en";
-		});
+		gtc(sid,applanguage,null,"addpatient");
+		//window.location = "cdis.html?section=addpatient&sid="+sid+"&language=en";
+	});
 		
-		$("#frontpage-button").click(function() {
-			//gtc(sid,applanguage,null,"addpatient");
-			//window.location = "cdis.html?section=frontpage&sid="+sid+"&language=en";
-			gta(sid,applanguage,"frontpage");
-		});
-		$(".frontpage").click(function() {
-			gta(sid,applanguage,"frontpage");
-			//window.location = "cdis.html?section=frontpage&sid="+sid+"&language=en";
-		});
-		
-		$(".personalinfo").click(function() {
-			gto(sid,applanguage,"personalinfo");
-			//window.location = "cdis.html?section=personalinfo&sid="+sid+"&language=en";
-		});
-		$(".users").click(function() {
-			gta(sid,applanguage,"users");
-			//window.location = "cdis.html?section=users&sid="+sid+"&language=en";
-		});
-		$(".audit").click(function() {
-			gta(sid,applanguage,"audit");
-			//window.location = "cdis.html?section=audit&sid="+sid+"&language=en";
-		});
-		$("#reports-button").click(function() {
-			gtr(sid,"en",null);
-			//window.location = "cdis.html?section=frontpage&sid="+sid+"&language=en";
-		});
-		$(".freports").click(function() {gtr(sid,"en",null);});
-		$(".flogout").click(function() {logoutUser(sid);});
-
-		$(".fnew").click(function() {gtc(sid,applanguage,null,"addpatient");});
-		
-		$(".cdisfull").click(function(){
-			gtc(sid,applanguage,getParameterByName("ramq"),"mdvisits");
-		});
-		init();
+	$("#frontpage-button").click(function() {
+		//gtc(sid,applanguage,null,"addpatient");
+		//window.location = "cdis.html?section=frontpage&sid="+sid+"&language=en";
+		gta(sid,applanguage,"frontpage");
+	});
+	/*
+	$(".frontpage").click(function() {
+		gta(sid,applanguage,"frontpage");
+		//window.location = "cdis.html?section=frontpage&sid="+sid+"&language=en";
+	});
+	
+	$(".personalinfo").click(function() {
+		gto(sid,applanguage,"personalinfo");
+		//window.location = "cdis.html?section=personalinfo&sid="+sid+"&language=en";
+	});
+	$(".users").click(function() {
+		gta(sid,applanguage,"users");
+		//window.location = "cdis.html?section=users&sid="+sid+"&language=en";
+	});
+	$(".audit").click(function() {
+		gta(sid,applanguage,"audit");
+		//window.location = "cdis.html?section=audit&sid="+sid+"&language=en";
+	});
+	*/
+	$("#reports-button").click(function() {
+		gtr(sid,"en",null);
+		//window.location = "cdis.html?section=frontpage&sid="+sid+"&language=en";
+	});
+	
+	
+	$(".cdisfull").click(function(){
+		gtc(sid,applanguage,getParameterByName("ramq"),"mdvisits");
+	});
+	init();
 }
 
 	function startReport(reportid){

@@ -52,8 +52,13 @@ export default function GRVWidget(valueName) {
 						$(this).hide();
 					}
 				});
+				console.log('vnames');
+				console.log(vnames);
+				if(vnames.length == 0){
+					renderNoData(object);
+				}
 				$.each(vnames, function(k, v){
-					let c = $("."+v+"-container");
+					//let c = $("."+v+"-container");
 					let f = getFieldConfig(v);
 					renderElement(v, object);
 				});
@@ -61,6 +66,8 @@ export default function GRVWidget(valueName) {
 		});
 		
 	let evaluateCondition = function(value, condition){
+		console.log('evaluate condition');
+		console.log(value+'-------'+condition);
 		let result = [];
 		if(value.indexOf('_or_') >= 0){
 			if(condition == 'last'){
@@ -73,21 +80,30 @@ export default function GRVWidget(valueName) {
 						vresult = v;
 					}
 				});
-				result.push(vresult);
+				if(vresult != ""){
+					result.push(vresult);
+				}
 			}
 		}else if(value.indexOf('_and_') >= 0 ){
 			//result = value.split('_and_');
 			result.push(value);
 		}
+		console.log(result);
+		console.log('evaluate condition end');
+		
 		return result;
 	}	
 	
 	let getLastDate = function(value){
-		let vs = getFieldValues(value)
-		return vs[0].date;
+		let vs = getFieldValues(value);
+		if(typeof(vs) == 'Array')
+			return vs[0].date;
+		else
+			return 0;
 	}
 	
 	let renderElement = function(value,object){
+		
 		console.log("object type");
 		console.log(typeof(object.condition) +"    "+value);
 		/*
@@ -104,7 +120,16 @@ export default function GRVWidget(valueName) {
 	
 	let renderSimple = function(container, value, object){
 		$("<div>",{class:"label"}).appendTo(container).text(getFieldLabel(value));
+		console.log('-----------'+value);
+		console.log(container);
+		console.log(object);
 		$("<div>",{class:"value"}).appendTo(container).text(renderFieldValue(value, eval('patientObj.'+value)));
+	}
+	
+	
+	let renderNoData = function(object){
+		var c = $('.'+object.name+'-default');
+		$("<div>",{class:"label"}).appendTo(c).text(getFieldLabel('nodata'));
 	}
 	
 	let renderSingle = function(container, value, object){
