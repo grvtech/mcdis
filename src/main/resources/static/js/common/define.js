@@ -1,11 +1,11 @@
 var emptySession = "00000000-0000-0000-0000-000000000000";
 var sid = getParameterByName("uuidsession");
 var page = getPage();
-console.log(page)
 var applanguage="en";
 var userObj = null;
 var userProfileObj = null;
 var patientObj = {};
+var patientHcp = {};
 var patientObjArray = [];
 var patientSearchObj = {};
 var backArray = [];
@@ -14,7 +14,7 @@ var $body = $("body");
 let apppath= '/ncdis/js/apps/';
 let pageNavigationElements = [];
 let pageWidgets=[];
-var emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+var emailRegex = "/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,";
 
 //var usersArray = getUsers();
 //var userNotes = getUserNotes(sid);
@@ -294,9 +294,12 @@ let cdisfields = [
 		{"name":"ldl","iddata":"24","type":"graph","unit":"mmol/L","valuetype":"d3","hasdate":1,"section":"lipids","values":[],"limits":{"maxvalue":"0.085","minvalue":"0.055","stages":[{"title":"HbA1C > 7%","min":"0.07","max":"0.085","color":"rgba(255,0,0,0.4)"},{"title":"Target HbA1C 7%","min":"0.06","max":"0.07","color":"rgba(0, 255, 0,0.3)"},{"title":"Normal HbA1C < 6%","min":"0.055","max":"0.06","color":"rgba(0, 255, 0,0.6)"}]}},
 		{"name":"acratio","iddata":"15","type":"graph","unit":"mg/mmol","valuetype":"i","hasdate":1,"section":"renal","values":[],"limits":{"maxvalue":"20","minvalue":"1","stages":[{"title":"AC ratio > 2","min":"2","max":"20","color":"rgba(255,0,0,0.4)"},{"title":"AC ratio < 2","min":"1","max":"2","color":"rgba(0, 255, 0,0.3)"}]}},
 		{"name":"pcrg","iddata":"21","type":"graph","unit":"g/g","valuetype":"i","hasdate":1,"section":"renal","values":[],"limits":{"maxvalue":"20","minvalue":"1","stages":[{"title":"PCR > 2","min":"2","max":"20","color":"rgba(255,0,0,0.4)"},{"title":"PCR < 2","min":"1","max":"2","color":"rgba(0, 255, 0,0.3)"}]}},
-		{"name":"sbp_and_dbp","iddata":"2_and_3","type":"multi","unit":"","valuetype":"i","hasdate":1,"section":"mdvisit","values":[],"limits":{}},
+		{"name":"sbp_and_dbp","iddata":"2_and_3","type":"multi","unit":"","valuetype":"text","hasdate":1,"section":"mdvisit","separator":"&#47;","values":[],"limits":{}},
 		{"name":"sbp","iddata":"2","type":"multi","unit":"","valuetype":"i","hasdate":1,"section":"mdvisit","values":[],"limits":{}},
-		{"name":"dbp","iddata":"3","type":"multi","unit":"","valuetype":"i","hasdate":1,"section":"mdvisit","values":[],"limits":{}}
+		{"name":"dbp","iddata":"3","type":"multi","unit":"","valuetype":"i","hasdate":1,"section":"mdvisit","values":[],"limits":{}},
+		{"name":"hcp","iddata":"100","type":"multi","populate":"populateHcp"}
+		
+		
 ];
 
 /*
@@ -337,7 +340,11 @@ let cdislabels = {
 		"ldl_collected_date":"Date",
 		"pcrg":"PCR",
 		"pcrg_collected_date":"Date",
-		"nodata":"No Data"
+		"nodata":"No Data",
+		"md":"MD",
+		"nur":"Nurse",
+		"nut":"Nutritionist",
+		"chr":"CHR"
 	}	
 };
 
@@ -348,4 +355,10 @@ let cdisTimeFormat = "YYYY-MM-DD";
 let cdisDateTimeFormat = "YYYY-MM-DD";
 
 
-
+/*
+ * http://localhost:8080/ncdis/webjars/viewerjs/0.5.8/ViewerJS/index.html?#../../../../../ncdis/docs/recomandation_lab.pdf
+ * 
+ * <iframe src = "/ViewerJS/#../demo/ohm2013.odp" width='400' height='300' allowfullscreen webkitallowfullscreen></iframe>
+ * 
+ * 
+ * */

@@ -1,4 +1,4 @@
-package com.grvtech.cdis.dao;
+package com.grvtech.cdis.dao.mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

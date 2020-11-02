@@ -18,6 +18,7 @@ import com.grvtech.cdis.dao.IPatientCustomDao;
 import com.grvtech.cdis.model.MessageRequest;
 import com.grvtech.cdis.model.MessageResponse;
 import com.grvtech.cdis.model.Patient;
+import com.grvtech.cdis.model.PatientHcp;
 import com.grvtech.cdis.model.SearchPatient;
 import com.grvtech.cdis.model.Value;
 import com.grvtech.cdis.service.IPatientService;
@@ -87,7 +88,9 @@ public class PatientController {
 			//List<SearchPatient> sp = pcdao.searchPatient(criteria, value);
 			map.put("patient", p);
 			ArrayList<Value> values = pservice.getPatientDataHistory(p.getIdpatient());
+			PatientHcp hcp = pservice.getPatientHcp(p.getIdpatient());
 			map.put("values", values);
+			map.put("hcp", hcp);
 			mres = new MessageResponse(true, mreq, map);
 
 		}else {

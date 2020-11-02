@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.grvtech.cdis.model.Cdisdata;
 import com.grvtech.cdis.model.DataLimits;
 import com.grvtech.cdis.model.Patient;
+import com.grvtech.cdis.model.PatientHcp;
 import com.grvtech.cdis.model.Value;
 
 public interface IPatientService {
@@ -15,5 +16,6 @@ public interface IPatientService {
 	public ArrayList<Value> getPatientDataHistory(int id);
 	public Cdisdata getData(long id);
 	public DataLimits getDataLimits(long id);
+	public PatientHcp getPatientHcp(long idpatient);
 	
 }

@@ -1,8 +1,5 @@
 import Search from '/ncdis/js/apps/search/js/index.js';
 import Widget from '/ncdis/js/apps/widget/js/index.js';
-const search = new Search();
-
-
 
 var cdisSection = "dashboard";
 $( window ).on( "load", initCdisPage );	
@@ -40,34 +37,30 @@ function getCdisPage(cdispage){
 }
 
 
-
 function initCdisPage(){
 	if(isLogin(sid)){
 		let ramq = getParameterByName('ramq');
 		if(ramq != ""){
 			loadPatientObject(ramq);
-			
-			
 			let cdispage = getParameterByName('section');
 			if(cdispage === '')cdispage='dashboard';
 			let template = getPatientTemplate();
 			let ppage = getCdisPage(cdispage)+"-"+template;
-			renderPage(ppage); 
+			const search = new Search();
+			renderPage($('#cdisPage'), ppage); 
 		}else{
 			alert("no patient selected");
 		}
-		
 	}else{
 		logoutUser(sid);
 	}
 	
 }
 
-
-function renderPage(sectionname){
-	$("#cdisPage").empty();
-	$("#cdisPage").hide();
-	$("#cdisPage").load(sectionsPath+sectionname+'.html', function(){
+function renderPage(container, sectionname){
+	$(container).empty();
+	$(container).hide();
+	$(container).load(sectionsPath+sectionname+'.html', function(){
 		$(this).find("[widget]").each(function(){
 			let w = $(this).attr('widget');
 			let wo = new Widget(w);
@@ -77,7 +70,6 @@ function renderPage(sectionname){
 		initNavigation();
 	});
 }
-
 
 
 
@@ -96,6 +88,7 @@ function loadPatientObject(value){
 		patient.done(function( json ) {
 			let mres = new GRVMessageResponse(json);
 			patientObj = JSON.parse(mres.elements.patient);
+			patientHcp = JSON.parse(mres.elements.hcp);
 			patientObjArray = JSON.parse(mres.elements.values);
 			console.log(patientObj);
 			console.log(patientObjArray);

@@ -446,7 +446,7 @@ public class DataProcessor {
 			pat = db.getPatientById(Integer.parseInt(id));
 		}
 		obs.add(pat);
-		Hcp hcps = db.getHcpOfPatient(pat.getIdpatient());
+		PatientHcp hcps = db.getHcpOfPatient(pat.getIdpatient());
 		obs.add(hcps);
 		Diabet latest_diabet = (Diabet) db.getValues("Diabet", pat.getIdpatient(),"asc");
 		obs.add(latest_diabet);
@@ -541,7 +541,7 @@ public class DataProcessor {
 		
 		pat = chb.getPatientById(Integer.parseInt(idpatient));
 		obs.add(pat);
-		Hcp hcps = chb.getHcpOfPatient(pat.getIdpatient());
+		PatientHcp hcps = chb.getHcpOfPatient(pat.getIdpatient());
 		obs.add(hcps);
 		Diabet latest_diabet = (Diabet) chb.getValues("Diabet", pat.getIdpatient(),"asc");
 		obs.add(latest_diabet);
@@ -599,7 +599,7 @@ public class DataProcessor {
 		if(chb.deleteValue(idvalue)){
 			pat = chb.getPatientById(Integer.parseInt(idpatient));
 			obs.add(pat);
-			Hcp hcps = chb.getHcpOfPatient(pat.getIdpatient());
+			PatientHcp hcps = chb.getHcpOfPatient(pat.getIdpatient());
 			obs.add(hcps);
 			Diabet latest_diabet = (Diabet) chb.getValues("Diabet", pat.getIdpatient(),"asc");
 			obs.add(latest_diabet);

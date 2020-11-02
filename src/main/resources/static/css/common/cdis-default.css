@@ -1,6 +1,6 @@
 html {text-rendering: optimizelegibility !important;-webkit-font-smoothing: antialiased !important;height: 100%;padding:0px; margin:0px;}
 /*body{font-size:14px;font-weight:normal;font-family: Trebuchet MS,Helvetica,Sans-Serif, Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;background:#5c6c9d;}*/
-body{font-size:.8vw;font-weight:normal;font-family: Sans-Serif,Trebuchet MS,Helvetica,Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;
+body{font-size:.9vw;font-weight:normal;font-family: Sans-Serif,Trebuchet MS,Helvetica,Verdana, Courier, Arial;margin: 0px;padding : 0px;height: 100%;
 /*background:rgba(49,49,49,1);*/
 background-image: radial-gradient(circle, #efefef, #cdcdcd);
 /*background-image: radial-gradient(circle, #4D81DC, #305BA2);*/
@@ -70,24 +70,13 @@ INDEX PAGE
 SEARCH PAGE CSS
 */
 
-#cdisPage .mysearch{width:1000px;margin:0 auto;}
+.mysearch{width:800px;margin:0 auto;}
+.search-dashboard-menu{width:1000px;margin:0 auto;display:grid;grid-gap:20px;grid-template-columns:33% 33% 33%;}
+.search-dashboard-menu .dashboard-menu-item{width:180px;}
 
-.personal-patients{position:relative;max-height:250px;width:1000px;margin:auto;z-index:2;background-color:#efefef;overflow-x: hidden;padding:5px;}
-.personal-patients .linkedHeader{position:relative;width:auto;padding:5px;background:rgba(46,80,150,1);border:1px solid #4d4d4d;}
-.personal-patients .linkedHeader #linkedPatients{position:absolute;right:2px;top:6px;}
-.personal-patients table{width:100%;display:none;border:1px solid #4d4d4d;}
-.personal-patients table thead{font-size:90%;font-weight:bold;background:#4d4d4d;color:#ffffff;text-transform: uppercase;}
-.personal-patients table tbody{font-size:80%;background:#ffffff;}
-.personal-patients table thead td{padding:5px;text-align:center;}
-.personal-patients table tbody td{padding:5px;text-align:center;}
-.personal-patients table tbody tr{background:#ffffff;cursor:pointer;}
-.personal-patients table tbody tr:hover{background:rgba(46,80,150,1);}
-.personal-patients table tbody tr.notvisits{background:#ffc4c4;}
-.personal-patients table tbody tr.notvisits:hover{background:rgba(46,80,150,1);}
-.personal-patients table tbody tr.currentvisits{background:#c4ffc8;}
-.personal-patients table tbody tr.currentvisits:hover{background:rgba(46,80,150,1);}
-.personal-patients p{margin:2px;padding:2px;}
-.personal-patients #userfullname{font-weight:bold;}
+.personal-patients{width:1000px;margin:0 auto;}
+
+
 
 
 
@@ -97,21 +86,13 @@ CDIS PAGE
 #cdisPage .mysearch{width:100%;margin:0 auto;}
 
 #cdisDashboardPage-default.main{display:grid;grid-gap:20px;grid-template-rows:auto 200px;width:100%;height:100%;}
-#cdisDashboardPage-default.main .row1{width:100%;height:100%;display:grid;grid-template-columns:250px auto 250px;grid-gap:10px;/*border:1px solid red;*/}
+#cdisDashboardPage-default.main .row1{width:100%;height:100%;display:grid;grid-template-columns:300px auto 250px;grid-gap:10px;/*border:1px solid red;*/}
 #cdisDashboardPage-default.main .row2{width:100%;height:100%;display:grid;grid-template-columns: 45% 45%;grid-gap:10px;/*border:1px solid green;*/}
 #cdisDashboardPage-default.main .row1 .column1{width:100%;height:100%;display:grid;grid-template-rows:auto auto 50px;grid-gap:10px;}
 #cdisDashboardPage-default.main .row1 .column2{width:100%;height:100%;}
 #cdisDashboardPage-default.main .row1 .column3{width:100%;height:100%;display:grid;grid-tempate-rows:33% 33% 33%;grid-gap:5px;}
 
-.patientrecord-container{width:100%;height:100%;}
-.patientrecord-default{display:grid;grid-template-rows:auto 30px;}
-.patientrecord-default .avatar{width:60px; height:60px;background:#4d4d4d;color:#ffffff;grid-column-start: 2;grid-column-end: 2;grid-row-start: 1;grid-row-end: 3;align-self:center;justify-self: center;text-align:center;display:grid;}
-.patientrecord-default .avatar .label{display:none;}
-.patientrecord-default .avatar .value{padding:0px;align-self:center;font-size:1.5vw;}
-.patientrecord-default .r1{display:grid; grid-template-columns: auto 80px;grid-template-rows: auto auto;margin-top:5px;}
-.patientrecord-default .r{margin-top:5px;}
-.patientrecord-default .label{font-size:0.6vw;padding-left:10px;}
-.patientrecord-default .value{font-size:1.1vw;padding-left:10px;font-weight:bold;}
+
 
 
 .diabethistory-default {margin:5px;}
@@ -121,8 +102,8 @@ CDIS PAGE
 .diabethistory-default .label{display:none;}
 
 .diabethistory-default .r .value{font-size:1.1vw;font-weight:bold;text-align:center;width:100%;height:100%;line-height:1.8;}
-.diabethistory-default .r .labeldate{display:inline-block;font-size:0.7vw;text-align:center;width:100%;}
-.diabethistory-default .r .valuedate{display:inline-block;font-size:0.7vw;font-weight:bold;text-align:center;width:100%;}
+.diabethistory-default .r .labeldate{display:inline-block;font-size:0.9vw;text-align:center;width:100%;}
+.diabethistory-default .r .valuedate{display:inline-block;font-size:1.1vw;font-weight:bold;text-align:center;width:100%;}
 
 .abcgraphs-container {height:100%;}
 .abcgraphs-container .grvwidget{height:100%;}

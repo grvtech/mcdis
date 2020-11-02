@@ -1,0 +1,89 @@
+<div class="ppatients-container">
+	<div class="ppatients-header">
+		<div class="grvbutton normal">Add Patient to List</div>
+		<div class="grvbutton normal">Remove Patient from List</div>
+		<div class="grvbutton normal">Schedule visit</div>
+	</div>
+	<div class="ppatients-body">
+		<input type="hidden" name="ppatientLine" id="ppatientLine" value="0">
+		<table cellpadding="0" cellspacing="0">
+			<thead>
+				<tr>
+					<td>patient full name</td>
+					<td>chart</td>
+					<td>ramq</td>
+					<td>community</td>
+					<td>Next Visit Date</td>
+				</tr>
+			</thead>
+			<tbody id="ppatients-table-body">
+			</tbody>
+		</table>
+	</div>
+</div>
+<style>
+	.ppatients-container{min-height:200px;}
+	
+	.ppatients-header{display:grid;grid-gap:20px;grid-template-columns:33% 33% 33%;}
+	.ppatients-header .grvbutton{width:200px;}
+	.ppatients-container table{width:100%;border:1px solid #4d4d4d;}
+	.ppatients-container table thead{font-size:90%;font-weight:bold;background:#4d4d4d;color:#ffffff;text-transform: uppercase;}
+	.ppatients-container table tbody{font-size:80%;background:#ffffff;}
+	.ppatients-container table thead td{padding:5px;text-align:center;}
+	.ppatients-container table tbody td{padding:5px;text-align:center;}
+	.ppatients-container table tbody tr{background:#ffffff;cursor:pointer;}
+	.ppatients-container table tbody tr:hover{background:rgba(183, 204, 247,1);}
+	.ppatients-container table tbody tr.selected{background:rgba(46,80,150,1);color:#ffffff;}
+	.ppatients-container table tbody tr.notvisits{background:#ffc4c4;}
+	.ppatients-container table tbody tr.notvisits:hover{background:rgba(46,80,150,1);}
+	.ppatients-container table tbody tr.currentvisits{background:#c4ffc8;}
+	.ppatients-container table tbody tr.currentvisits:hover{background:rgba(46,80,150,1);}
+	.ppatients-container p{margin:2px;padding:2px;}
+	.ppatients-container #userfullname{font-weight:bold;}
+</style>
+
+<script>
+
+(function(){
+	var data = {};
+	let mreq = new GRVMessageRequest(data,"PersonalPatients",sid, userObj.iduser);
+	var request = $.ajax({url:"/ncdis/service/data/getUserPatients",type: "post",dataType: "json",contentType: 'application/json',data : JSON.stringify(mreq)});
+	request.done(function( json ) {
+		let mres = new GRVMessageResponse(json);
+		console.log(mres);
+		if(json.status == "error"){
+			error.text(mres.elements.message);
+		}else{
+			sid = mres.uuidsession;
+			var patients = JSON.parse(mres.elements.ppatients);
+			
+			if(patients.lenght == 0){
+				alert('add no patient in the table');
+			}else{
+				$.each(patients, function(k,p){
+					var line = $('<tr>',{class:"ppatients-table-body-line"});
+					$('<td>',{class:"ppatients-table-body-cell"}).text(p.firstname+" "+p.lastname).appendTo(line);
+					$('<td>',{class:"ppatients-table-body-cell"}).text(p.chart).appendTo(line);
+					$('<td>',{class:"ppatients-table-body-cell"}).text(p.ramq).appendTo(line);
+					$('<td>',{class:"ppatients-table-body-cell"}).text(p.community).appendTo(line);
+					var nv = '';
+					if(p.nextvisit != null){
+						nv = moment(p.nextvisit).format("MMMM YYYY");
+					}
+					$('<td>',{class:"ppatients-table-body-cell"}).text(nv).appendTo(line);
+					$('#ppatients-table-body').append(line);
+					line.click(function(event){
+						$(".ppatients-table-body-line").removeClass("selected");
+						$(this).addClass("selected");
+						$("#ppatientLine").val(p.idpatient);
+					});
+				});
+			}
+		}
+	});
+	request.fail(function( jqXHR, textStatus ) {error.text("Wrong Username or Password");});
+
+	
+})();
+
+</script>

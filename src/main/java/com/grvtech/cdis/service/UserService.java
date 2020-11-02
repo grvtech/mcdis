@@ -1,9 +1,12 @@
 package com.grvtech.cdis.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.grvtech.cdis.dao.IUserDao;
+import com.grvtech.cdis.model.PersonalPatient;
 import com.grvtech.cdis.model.User;
 
 @Service
@@ -25,6 +28,13 @@ public class UserService implements IUserService {
 	@Override
 	public User getUserBySession(String usersession) {
 		return udao.getUserBySession(usersession);
+	}
+
+	@Override
+	public ArrayList<PersonalPatient> getPersonalpatients(long iduser) {
+		User u = getUserById(iduser);
+		String profesion = udao.getUserProfesion(iduser);
+		return udao.getPersonalPatients(iduser, profesion);
 	}
 
 }

@@ -4,7 +4,7 @@
 
 
 .grvinput .grvinput-label {width:100%;height:100%;vertical-align: middle;line-height: normal;}
-.grvinput .grvinput-label.focus {font-weight:bold;}
+./*grvinput .grvinput-label.focus {font-weight:bold;}*/
 .grvinput .grvinput-control{width:100%;height:100%;margin:0px;padding:0px;border:1px solid #cdcdcd;}
 .grvinput .grvinput-control input {width:100%;height:100%;outline: none;border:none;box-shadow: none;padding:0px;font-size:100%;background:transparent;}
 .grvinput .grvinput-control.focus {border-color:transparent;border-bottom:1px solid #000000;}

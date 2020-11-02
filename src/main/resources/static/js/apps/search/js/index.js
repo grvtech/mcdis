@@ -55,6 +55,7 @@ export default class GRVsearch{
 			delay: 300,
 			minLength: 1,
 			autoFocus: true,
+			classes: {"ui-autocomplete": "grvsearch-result-container"},
 			source: function( request, response ) {
 				let d = {
 					criteria: $('#'+id+'Criteria').val(),
@@ -73,13 +74,6 @@ export default class GRVsearch{
 					success: function( data ) {
 						let mres = new GRVMessageResponse(data);
 						let elems = JSON.parse(mres.elements.search);
-						console.log(elems);
-						console.log(typeof(elems));
-						$.each(elems, function(k,v){
-							console.log(v.firstname);
-						});
-						
-						
 						response($.map(elems, function( row ) {
 							return {
 								idpatient:row.idpatient,
@@ -147,7 +141,7 @@ export default class GRVsearch{
 				}else{
 					$("<div>",{class:'searchgiu'}).html("<span>"+item.giu+"</span>").appendTo($container);
 				}
-				
+				/**/
 				var $liline = $("<li>");
 				$liline.append($container).appendTo(ul);
 				$(ul).css("overflow-x","hidden");

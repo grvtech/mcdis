@@ -11,10 +11,12 @@ import org.springframework.stereotype.Service;
 
 import com.grvtech.cdis.dao.ICdisdata;
 import com.grvtech.cdis.dao.ICdisvalueDao;
+import com.grvtech.cdis.dao.IPatientCustomDao;
 import com.grvtech.cdis.dao.IPatientDao;
 import com.grvtech.cdis.model.Cdisdata;
 import com.grvtech.cdis.model.DataLimits;
 import com.grvtech.cdis.model.Patient;
+import com.grvtech.cdis.model.PatientHcp;
 import com.grvtech.cdis.model.Value;
 
 
@@ -23,6 +25,9 @@ public class PatientService implements IPatientService {
 
 	@Autowired
 	IPatientDao pdao;
+	
+	@Autowired
+	IPatientCustomDao pcdao;
 	
 	@Autowired
 	ICdisvalueDao cvdao;
@@ -94,6 +99,13 @@ public class PatientService implements IPatientService {
 	public DataLimits getDataLimits(long id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+
+	@Override
+	public PatientHcp getPatientHcp(long idpatient) {
+		return pcdao.getPatienthcp(idpatient);
 	}
 
 }

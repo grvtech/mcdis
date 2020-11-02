@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.grvtech.cdis.dao.mapper.PatientHcpMapper;
+import com.grvtech.cdis.dao.mapper.SearchPatientMapper;
+import com.grvtech.cdis.model.PatientHcp;
 import com.grvtech.cdis.model.SearchPatient;
 
 @Service
@@ -34,6 +37,14 @@ public class PatientCustomDao implements IPatientCustomDao {
 		}
 
 		result = jdbctemplate.query(sql, new SearchPatientMapper());
+		return result;
+	}
+
+	@Override
+	public PatientHcp getPatienthcp(long idpatient) {
+		PatientHcp result = new PatientHcp();
+		String sql = "select top 1 * from ncdis.ncdis.patient_hcp where idpatient='"+idpatient+"'";
+		result = jdbctemplate.queryForObject(sql, new PatientHcpMapper());
 		return result;
 	}
 

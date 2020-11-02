@@ -148,4 +148,27 @@ public class UserController {
 		}
 	}
 
+	
+	@RequestMapping(value = "/service/data/getUserPatients", method = RequestMethod.POST)
+	public ResponseEntity<MessageResponse> getUserPatients(final HttpServletRequest request) throws JsonProcessingException {
+		JsonNode req = HttpUtil.getJSONFromPost(request);
+		MessageRequest mreq = new MessageRequest(req);
+		HashMap<String, Object> map = new HashMap<>();
+		JsonNode elems = mreq.getElements();
+		
+		String session = req.get("uuidsession").asText();
+		String ip = req.get("ip").asText();
+
+		User u = userservice.getUserBySession(session);
+		if (u.isEmpty()) {
+			map.put("message", "Unknown user");
+			MessageResponse mres = new MessageResponse(false, mreq, map);
+			return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
+		} else {
+			map.put("ppatients", userservice.getPersonalpatients(u.getIduser()));
+			MessageResponse mres = new MessageResponse(true, mreq, map);
+			return new ResponseEntity<MessageResponse>(mres, HttpStatus.OK);
+		}
+	}
+	
 }

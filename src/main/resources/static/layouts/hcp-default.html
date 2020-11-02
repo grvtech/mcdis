@@ -1,0 +1,37 @@
+<div class="hcp-default">
+	<div class="fields-container">
+		<div data="hcp" class="hcppatient-container"></div>
+	</div>
+	<div class="buttons-container"></div>
+</div>
+
+<style>
+	.hcp-default{display:grid;grid-template-rows:auto 30px;}
+	.hcp-default .r{display:grid;grid-template-columns:35% 65%;}
+</style>
+	
+<script>
+(function(){
+	
+	
+})();
+
+function populateHcp(obj){
+	var c = $('.hcppatient-container');
+	var md = obj.md;
+	$('<div>',{class:"r"}).append($('<div>',{class:"label"}).text(getFieldLabel("md"))).append($('<div>',{class:"value"}).text((md.empty)?"":md.fname+" "+md.lname)).appendTo(c);
+	var nur = obj.nur;
+	$('<div>',{class:"r"}).append($('<div>',{class:"label"}).text(getFieldLabel("nur"))).append($('<div>',{class:"value"}).text((nur.empty)?"":nur.fname+" "+nur.lname)).appendTo(c);
+	var nut = obj.nut;
+	$('<div>',{class:"r"}).append($('<div>',{class:"label"}).text(getFieldLabel("nut"))).append($('<div>',{class:"value"}).text((nut.empty)?"":nut.fname+" "+nut.lname)).appendTo(c);
+	var chr = obj.chr;
+	$('<div>',{class:"r"}).append($('<div>',{class:"label"}).text(getFieldLabel("chr"))).append($('<div>',{class:"value"}).text((chr.empty)?"":chr.fname+" "+chr.lname)).appendTo(c);
+	
+}
+
+function changeHcp(){
+	alert('aaaa');
+}
+
+
+</script>

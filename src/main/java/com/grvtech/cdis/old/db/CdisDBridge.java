@@ -332,13 +332,13 @@ public class CdisDBridge {
 	}
 	
 	
-	public Hcp getHcpById(String idpatient){
+	public PatientHcp getHcpById(String idpatient){
 		Context initContext;
 		DataSource ds;
 		ResultSet rs = null;
 		PreparedStatement cs=null;
 		Connection conn = null;
-		Hcp result = null;
+		PatientHcp result = null;
 		try {
 			initContext = new InitialContext();
 			//Context envContext  = (Context)initContext.lookup("java:comp/env");
@@ -350,7 +350,7 @@ public class CdisDBridge {
 		    cs.setString(1, idpatient);
 		    rs = cs.executeQuery();
 		    while (rs.next()) {
-		        result = 	new Hcp(rs.getString("casem"), rs.getString("md"), rs.getString("nut"), rs.getString("nur"), rs.getString("chr"), rs.getString("idpatient")); 
+		        result = 	new PatientHcp(rs.getString("casem"), rs.getString("md"), rs.getString("nut"), rs.getString("nur"), rs.getString("chr"), rs.getString("idpatient")); 
 		    }
 		    
 		    
@@ -371,13 +371,13 @@ public class CdisDBridge {
 	}
 	
 	
-	public Hcp getHcpOfPatient(int idpatient){
+	public PatientHcp getHcpOfPatient(int idpatient){
 		Context initContext;
 		DataSource ds;
 		ResultSet rs = null;
 		PreparedStatement cs=null;
 		Connection conn = null;
-		Hcp result = new Hcp();
+		PatientHcp result = new PatientHcp();
 		try {
 			initContext = new InitialContext();
 			//Context envContext  = (Context)initContext.lookup("java:comp/env");
@@ -389,7 +389,7 @@ public class CdisDBridge {
 		    cs.setInt(1, idpatient);
 		    rs = cs.executeQuery();
 		    while (rs.next()) {
-		       result = new Hcp(rs.getString("casem"), rs.getString("md"), rs.getString("nut"), rs.getString("nur"), rs.getString("chr"), rs.getString("idpatient"));
+		       result = new PatientHcp(rs.getString("casem"), rs.getString("md"), rs.getString("nut"), rs.getString("nur"), rs.getString("chr"), rs.getString("idpatient"));
 		    }
 		    
 		    

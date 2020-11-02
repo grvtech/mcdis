@@ -4,3 +4,45 @@
 	</div>
 	<div class="buttons-container"></div>
 </div>
+
+<style>
+	.sbp_and_dbp-default .fields-container{max-height:150px;overflow: auto;}
+
+	.sbp_and_dbp-default .r{display:grid;grid-template-columns: 50% 50%;}
+	.sbp_and_dbp-default .r:hover{background-color:rgba(183, 204, 247,1);}
+	.sbp_and_dbp-default .r.selected{background-color:rgba(46,80,150,1);color:#ffffff;}
+	.sbp_and_dbp-default .datecell{display:grid;}
+	.sbp_and_dbp-default .valuedate{font-size:.9vw;align-self:center;}
+
+	.sbp_and_dbp-default .last span{font-size:1.3vw;}
+	
+</style>
+			
+
+<script>
+$('.sbp_and_dbp-default').delegate(".r","click",function(){
+	$('.sbp_and_dbp-default .r').removeClass("selected");
+	$(this).addClass("selected");
+	sbp_and_dbp_selected = $(this).attr("id");
+});
+
+var sbp_and_dbp_selected = 0;
+
+(function(){
+	
+	
+})();
+
+
+function addBp(){
+	alert('aaaa');
+}
+
+function editBp(){
+	alert('aaaa');
+}
+
+function deleteBp(){
+	alert('aaaa');
+}
+</script>
